@@ -10,5 +10,7 @@
 /**/*.project
 /**/target/
 /**/generated/
+!/**/billingcycle/generated/
 target/
 rebel.xml
+*.DS_Store
