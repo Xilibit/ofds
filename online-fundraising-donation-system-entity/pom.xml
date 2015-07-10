@@ -27,40 +27,27 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-core-version}</version>
+            <scope>provided</scope>
         </dependency>
         <!--Hibernate Entitymanager Functionality-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate-core-version}</version>
+            <scope>provided</scope>
         </dependency>
         <!--PostgreSQL JDBC Driver-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql-jdbc-driver-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>javax.persistence</artifactId>
-            <version>2.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--Bean Validation API » 1.1.0.Final-->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.1.0.Final</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>eclipselink</artifactId>
-            <version>2.5.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
-            <version>2.5.2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -73,6 +60,25 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <executions>
+                    <execution>
+                        <id>GlassfishResources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <executable>${glassfish.home}/bin/asadmin${glassfish.executables.suffix}</executable>
+                            <successCodes>
+                                <successCode>0</successCode>
+                                <successCode>1</successCode>
+                            </successCodes>
+                            <arguments>
+                                <argument>add-resources</argument>
+                                <argument>src/main/setup/glassfish-resources.xml</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>WebappsRealm</id>
                         <phase>compile</phase>
