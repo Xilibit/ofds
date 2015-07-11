@@ -1,0 +1,15 @@
+*.iml
+*.idea
+/.*
+/bat
+/**/*.iml
+/**/*.idea
+/**/*.classpath
+/**/*.settings
+/**/*.buildpath
+/**/*.project
+/**/target/
+/**/generated/
+target/
+rebel.xml
+*.DS_Store
