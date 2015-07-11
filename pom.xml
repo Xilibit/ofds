@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>online-fundraising-donation-system-entity</module>
+        <module>online-fundraising-donation-system-ejb</module>
     </modules>
 
 
