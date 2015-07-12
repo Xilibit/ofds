@@ -10,6 +10,183 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>online-fundraising-donation-system-ejb</artifactId>
+    <packaging>ejb</packaging>
 
+    <properties>
+        <hibernate-core-version>5.0.0.CR1</hibernate-core-version>
+        <postgresql-jdbc-driver-version>9.4-1200-jdbc41</postgresql-jdbc-driver-version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.4</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--PostgreSQL JDBC Driver-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql-jdbc-driver-version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>online-fundraising-donation-system</groupId>
+            <artifactId>online-fundraising-donation-system-entity</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.spec.javax.annotation</groupId>
+            <artifactId>jboss-annotations-api_1.1_spec</artifactId>
+            <version>1.0.1.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <version>1.0.2.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>2.0-EDR1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--Test dependencies-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <version>1.0.0.Final</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.container</groupId>
+            <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+            <version>1.0.0.CR4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>3.1.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Core Hibernate O/RM Functionality-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-core-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--Hibernate Entitymanager Functionality-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate-core-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--PostgreSQL JDBC Driver-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql-jdbc-driver-version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <argLine>-XX:MaxPermSize=256m -Xms512m -Xmx512m -XX:+UseConcMarkSweepGC
+                        -XX:+CMSClassUnloadingEnabled -XX:+CMSClassUnloadingEnabled
+                    </argLine>
+                    <classpathDependencyExcludes>
+                        <classpathDependencyExcludes>org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec
+                        </classpathDependencyExcludes>
+                        <classpathDependencyExcludes>org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec
+                        </classpathDependencyExcludes>
+                        <classpathDependencyExcludes>javax.enterprise:cdi-api</classpathDependencyExcludes>
+                        <classpathDependencyExcludes>com.sun.faces:jsf-api</classpathDependencyExcludes>
+                        <classpathDependencyExcludes>javax.validation:validation-api</classpathDependencyExcludes>
+                        <classpathDependencyExcludes>org.hibernate.javax.persistence:hibernate-jpa-2.0-api
+                        </classpathDependencyExcludes>
+                    </classpathDependencyExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <compilerArguments>
+                        <bootclasspath>
+                            ${settings.localRepository}/javax/javaee-endorsed-api/7.0/javaee-endorsed-api-7.0.jar${path.separator}${sun.boot.class.path}
+                        </bootclasspath>
+                    </compilerArguments>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>javax</groupId>
+                        <artifactId>javaee-endorsed-api</artifactId>
+                        <version>7.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <ejbVersion>3.0</ejbVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
