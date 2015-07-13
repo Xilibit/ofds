@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DonationDAOImpl extends GenericDAOImpl<Donation, String> implements DonationDAO {
 
-    @PersistenceContext(unitName = "onlineFundraisingDonationsPU")
+    @PersistenceContext
     private EntityManager em;
 
     /**

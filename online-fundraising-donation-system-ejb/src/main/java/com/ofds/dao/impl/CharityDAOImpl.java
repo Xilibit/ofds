@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 public class CharityDAOImpl extends GenericDAOImpl<Charity, String> implements CharityDAO {
 
-    @PersistenceContext(unitName = "onlineFundraisingDonationsPU")
+    @PersistenceContext
     private EntityManager em;
 
     /**

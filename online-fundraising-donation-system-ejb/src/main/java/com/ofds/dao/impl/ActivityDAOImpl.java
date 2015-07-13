@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ActivityDAOImpl extends GenericDAOImpl<Activity, String> implements ActivityDAO {
 
-    @PersistenceContext(unitName = "onlineFundraisingDonationsPU")
+    @PersistenceContext
     private EntityManager em;
 
     public ActivityDAOImpl() {

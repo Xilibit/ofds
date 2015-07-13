@@ -6,7 +6,6 @@ import com.ofds.entity.Donation;
 import com.ofds.entity.Fundraiser;
 import com.ofds.entity.Groups;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.core.api.annotation.Inject;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -15,23 +14,17 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.Before;
 
+import javax.inject.Inject;
 import javax.transaction.UserTransaction;
 
 public class AbstractDAOTest {
 
-    @Deployment
-    public static Archive<?> createTestArchive() {
-        return ShrinkWrap
-                .create(JavaArchive.class, "test.jar")
-                .addAsResource("arquillian.xml")
-                .addAsResource("log4j.xml")
-                .addPackages(true, FundraiserDAOImpl.class.getPackage())
+    @Deployment public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class, "test.jar")
+                .addPackage(FundraiserDAOImpl.class.getPackage())
                 .addPackage(FundraiserDAO.class.getPackage())
                 .addPackage(Fundraiser.class.getPackage())
-                .addPackage(Activity.class.getPackage())
-                .addPackage(Donation.class.getPackage())
-                .addPackage(Groups.class.getPackage())
-                .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+                .addAsManifestResource("persistence.xml", "persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
