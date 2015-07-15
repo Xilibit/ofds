@@ -40,6 +40,6 @@ public class DonationDAOImpl extends GenericDAOImpl<Donation, String> implements
      */
     @Override
     public List<Donation> getDonationsByFundraiserEmail(String fundraiserEmail) {
-        return getByEntityParameter(fundraiserEmail);
+        return getByEntityParameter("Email", fundraiserEmail);
     }
 }

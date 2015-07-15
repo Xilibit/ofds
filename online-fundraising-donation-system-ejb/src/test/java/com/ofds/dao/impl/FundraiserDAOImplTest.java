@@ -69,7 +69,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
     }
 
     @Test
-    public void createFewFundraisers_newValidFundraisers_oneFoundFundraiser() throws ParseException {
+    public void createFewFundraisers_newValidFundraisers_foundOneFundraiser() throws ParseException {
         DateFormat formatter;
         formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
@@ -147,7 +147,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
     }
 
     @Test
-    public void remove_newValidFundraisers_oneFoundFundraiser() throws ParseException {
+    public void remove_newValidFundraisers_foundOneFundraiser() throws ParseException {
         DateFormat formatter;
         formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
@@ -187,7 +187,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
     }
 
     @Test
-    public void loadAll_newValidFundraisers_twoFoundFundraisers() throws ParseException {
+    public void loadAll_newValidFundraisers_foundTwoFundraisers() throws ParseException {
         DateFormat formatter;
         formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
@@ -225,7 +225,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
     }
 
     @Test
-    public void count_newValidFundraisers_countOfTwoFundraisers() throws ParseException {
+    public void count_newValidFundraisers_countTwoFundraisers() throws ParseException {
         DateFormat formatter;
         formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
@@ -263,7 +263,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
     }
 
     @Test
-    public void findRange_newValidFundraisers_foundOfTwoFundraisers() throws ParseException {
+    public void findRange_newValidFundraisers_foundTwoFundraisers() throws ParseException {
         DateFormat formatter;
         formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
@@ -316,5 +316,109 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
         Assert.assertThat(fundraiserDAO.loadAll(), is(notNullValue()));
         Assert.assertThat(fundraiserDAO.findRange(range), is(not(empty())));
         Assert.assertThat(fundraiserDAO.findRange(range), is(hasSize(2)));
+    }
+
+    @Test
+    public void getByEntityParameter_newValidFundraisers_foundOneFundraiserByEmail() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Fundraiser fundraiser1 = new Fundraiser();
+        fundraiser1.setFundraiserFirstName("Xilibix");
+        fundraiser1.setFundraiserLastName("Tibilic");
+        fundraiser1.setFundraiserEmail("Xilibix@tibilxx.com");
+        fundraiser1.setFundraiserPassword("pass");
+        fundraiser1.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser1.setFundraiserCountry("UA");
+        fundraiser1.setFundraiserCity("KI");
+        fundraiser1.setFundraiserIndex("9713");
+        fundraiser1.setFundraiserStreet("Street");
+        fundraiser1.setFundraiserIsAdmin(false);
+        fundraiser1.setFundraiserWallet(1200.00);
+        fundraiserDAO.createFundraiser(fundraiser1);
+
+        Fundraiser fundraiser2 = new Fundraiser();
+        fundraiser2.setFundraiserFirstName("Xilicix");
+        fundraiser2.setFundraiserLastName("Tibilic");
+        fundraiser2.setFundraiserEmail("Xilibix@coml.com");
+        fundraiser2.setFundraiserPassword("pass");
+        fundraiser2.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser2.setFundraiserCountry("UA");
+        fundraiser2.setFundraiserCity("KI");
+        fundraiser2.setFundraiserIndex("9713");
+        fundraiser2.setFundraiserStreet("Street");
+        fundraiser2.setFundraiserIsAdmin(false);
+        fundraiser2.setFundraiserWallet(1400.00);
+        fundraiserDAO.createFundraiser(fundraiser2);
+
+        Assert.assertThat(fundraiserDAO.loadAll(), is(notNullValue()));
+        Assert.assertThat(fundraiserDAO.getByEntityParameter("Email", "Xilibix@coml.com"), is(notNullValue()));
+        Assert.assertThat(fundraiserDAO.getByEntityParameter("Email", "Xilibix@coml.com"), is(hasSize(1)));
+    }
+
+    @Test
+    public void getAllByEntityExcludeParameter_newValidFundraisers_foundTwoOfThreeFundraisersByEmail() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Fundraiser fundraiser1 = new Fundraiser();
+        fundraiser1.setFundraiserFirstName("Xilibix");
+        fundraiser1.setFundraiserLastName("Tibilic");
+        fundraiser1.setFundraiserEmail("Xilibix@tibilxx.com");
+        fundraiser1.setFundraiserPassword("pass");
+        fundraiser1.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser1.setFundraiserCountry("UA");
+        fundraiser1.setFundraiserCity("KI");
+        fundraiser1.setFundraiserIndex("9713");
+        fundraiser1.setFundraiserStreet("Street");
+        fundraiser1.setFundraiserIsAdmin(false);
+        fundraiser1.setFundraiserWallet(1200.00);
+        fundraiserDAO.createFundraiser(fundraiser1);
+
+        Fundraiser fundraiser2 = new Fundraiser();
+        fundraiser2.setFundraiserFirstName("Xilicix");
+        fundraiser2.setFundraiserLastName("Tibilic");
+        fundraiser2.setFundraiserEmail("Xilibix@coml.com");
+        fundraiser2.setFundraiserPassword("pass");
+        fundraiser2.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser2.setFundraiserCountry("UA");
+        fundraiser2.setFundraiserCity("KI");
+        fundraiser2.setFundraiserIndex("9713");
+        fundraiser2.setFundraiserStreet("Street");
+        fundraiser2.setFundraiserIsAdmin(false);
+        fundraiser2.setFundraiserWallet(1400.00);
+        fundraiserDAO.createFundraiser(fundraiser2);
+
+        Assert.assertThat(fundraiserDAO.loadAll(), is(notNullValue()));
+        Assert.assertThat(fundraiserDAO.getAllByEntityExcludeParameter("Email", "Xilibix@coml.com"), is(notNullValue()));
+        Assert.assertThat(fundraiserDAO.getAllByEntityExcludeParameter("Email", "Xilibix@coml.com"), is(hasSize(2)));
     }
 }

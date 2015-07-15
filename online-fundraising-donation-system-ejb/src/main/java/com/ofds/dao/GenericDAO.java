@@ -53,12 +53,12 @@ public interface GenericDAO<T, PK extends Serializable> {
      * The method is to get the list of entities by Entity Parameter.
      * @return - the list of the objects.
      */
-    List<T> getByEntityParameter(String entityParameter);
+    List<T> getByEntityParameter(String entityParameter, String parameterValue);
 
     /**
      * The method is to get the list of entities exclude parameter values.
      * @param entityParameter - the parameter to exclude.
      * @return - the list of the entities.
      */
-    List<T> getAllByEntityExcludeParameter(String entityParameter);
+    List<T> getAllByEntityExcludeParameter(String entityParameter, String parameterValue);
 }

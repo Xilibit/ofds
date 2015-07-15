@@ -1,5 +1,7 @@
 package com.ofds.dao;
 
+import com.sun.deploy.util.StringUtils;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
@@ -109,37 +111,36 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
 
     /**
      * The method is to get entities by parameter.
-     * @param entityParameter - the parameter.
+     * @param entityParameter - the parameter. Example: column name - fundraiserEmail, entityParameter will be Email.
      * @return - the list of the entities.
      */
     @Override
-    public List<T> getByEntityParameter(String entityParameter) {
+    public List<T> getByEntityParameter(String entityParameter, String parameterValue) {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root<T> rootEntry = criteriaQuery.from(entityClass);
-        criteriaQuery.select(rootEntry);
+        Predicate predicate = criteriaBuilder.equal(rootEntry.get(entityClass.getSimpleName().toLowerCase()
+                + entityParameter), parameterValue);
+        criteriaQuery.where(predicate);
         TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
-        typedQuery.setParameter(entityParameter, entityClass);
         return typedQuery.getResultList();
     }
 
     /**
      * The method is to get the list of entities exclude parameter values.
      * @param entityParameter - the parameter to exclude.
+     *                        Example: column name - fundraiserEmail, entityParameter will be Email.
      * @return - the list of the entities.
      */
     @Override
-    public List<T> getAllByEntityExcludeParameter(String entityParameter) {
-        List<Predicate> criteria = new ArrayList<Predicate>();
+    public List<T> getAllByEntityExcludeParameter(String entityParameter, String parameterValue) {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root<T> rootEntry = criteriaQuery.from(entityClass);
-        criteriaQuery.select(rootEntry);
-        ParameterExpression<String> parameterExpression = criteriaBuilder.parameter(String.class, entityParameter);
-        criteria.add(criteriaBuilder.notEqual(rootEntry.get(entityParameter), parameterExpression));
-        criteriaQuery.where(criteriaBuilder.and(criteria.get(0)));
+        Predicate predicate = criteriaBuilder.notEqual(rootEntry.get(entityClass.getSimpleName().toLowerCase()
+                + entityParameter), parameterValue);
+        criteriaQuery.where(predicate);
         TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
-        typedQuery.setParameter(entityParameter, entityClass);
         return typedQuery.getResultList();
     }
 }

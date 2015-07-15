@@ -24,7 +24,7 @@ public class ActivityDAOImpl extends GenericDAOImpl<Activity, String> implements
 
     @Override
     public List<Activity> getFundraiserActivitiesForDonation(String fundraisingEmail) {
-        return getAllByEntityExcludeParameter(fundraisingEmail);
+        return getAllByEntityExcludeParameter("Email", fundraisingEmail);
     }
 
 }
