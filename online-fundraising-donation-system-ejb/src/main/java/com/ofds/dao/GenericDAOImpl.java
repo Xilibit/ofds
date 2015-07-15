@@ -85,7 +85,9 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
     public List<T> findRange(int[] range) {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
-        TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
+        Root<T> rootEntry = criteriaQuery.from(entityClass);
+        CriteriaQuery<T> all = criteriaQuery.select(rootEntry);
+        TypedQuery<T> typedQuery = getEntityManager().createQuery(all);
         typedQuery.setMaxResults(range[1] - range[0] + 1);
         typedQuery.setFirstResult(range[0]);
         return typedQuery.getResultList();
@@ -114,6 +116,8 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
     public List<T> getByEntityParameter(String entityParameter) {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
+        Root<T> rootEntry = criteriaQuery.from(entityClass);
+        criteriaQuery.select(rootEntry);
         TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
         typedQuery.setParameter(entityParameter, entityClass);
         return typedQuery.getResultList();
