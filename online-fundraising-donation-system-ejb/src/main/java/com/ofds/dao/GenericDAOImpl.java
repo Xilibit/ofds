@@ -1,12 +1,9 @@
 package com.ofds.dao;
 
-import com.sun.deploy.util.StringUtils;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T, PK> {
