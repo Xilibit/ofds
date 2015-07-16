@@ -29,6 +29,15 @@ public class CharityDAOImpl extends GenericDAOImpl<Charity, String> implements C
     }
 
     /**
+     * The method is to create Charity.
+     * @param charity - The Charity to create.
+     */
+    @Override
+    public void createDonation(Charity charity) {
+        save(charity);
+    }
+
+    /**
      * The method is to get Charity by Charity Email.
      * @param charityEmail - the Charity Email.
      * @return - the found Charity.

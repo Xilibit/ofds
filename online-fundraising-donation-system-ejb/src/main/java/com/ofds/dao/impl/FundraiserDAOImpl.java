@@ -41,7 +41,6 @@ public class FundraiserDAOImpl extends GenericDAOImpl<Fundraiser, String> implem
     /**
      * The method is to create new Fundraiser.
      * @param fundraiser - new Fundraiser object.
-     * @return - TRUE - if the new Fundraiser created successfully.
      */
     @Override
     public void createFundraiser(Fundraiser fundraiser) {

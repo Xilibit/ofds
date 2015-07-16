@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class DonationDAOImpl extends GenericDAOImpl<Donation, String> implements DonationDAO {
+public class DonationDAOImpl extends GenericDAOImpl<Donation, Integer> implements DonationDAO {
 
     @PersistenceContext
     private EntityManager em;
@@ -31,6 +31,15 @@ public class DonationDAOImpl extends GenericDAOImpl<Donation, String> implements
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+
+    /**
+     * The method is to create Donation.
+     * @param donation - The Donation to create.
+     */
+    @Override
+    public void createDonation(Donation donation) {
+        save(donation);
     }
 
     /**

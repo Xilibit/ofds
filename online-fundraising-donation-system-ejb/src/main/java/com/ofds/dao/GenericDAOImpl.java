@@ -25,20 +25,6 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
     protected abstract EntityManager getEntityManager();
 
     /**
-     * The method is to load all entities.
-     * @return - List of the entities.
-     */
-    @Override
-    public List<T> loadAll() {
-        CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
-        Root<T> rootEntry = criteriaQuery.from(entityClass);
-        CriteriaQuery<T> all = criteriaQuery.select(rootEntry);
-        TypedQuery<T> allQuery = getEntityManager().createQuery(all);
-        return allQuery.getResultList();
-    }
-
-    /**
      * The method is to save the entity.
      * @param entity - entity to save.
      */
@@ -73,6 +59,20 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
     @Override
     public T find(PK id) {
         return getEntityManager().find(entityClass, id);
+    }
+
+    /**
+     * The method is to load all entities.
+     * @return - List of the entities.
+     */
+    @Override
+    public List<T> loadAll() {
+        CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
+        Root<T> rootEntry = criteriaQuery.from(entityClass);
+        CriteriaQuery<T> all = criteriaQuery.select(rootEntry);
+        TypedQuery<T> allQuery = getEntityManager().createQuery(all);
+        return allQuery.getResultList();
     }
 
     /**
