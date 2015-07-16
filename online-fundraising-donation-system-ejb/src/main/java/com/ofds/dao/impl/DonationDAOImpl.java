@@ -17,6 +17,8 @@ public class DonationDAOImpl extends GenericDAOImpl<Donation, Integer> implement
     @PersistenceContext
     private EntityManager em;
 
+    private static final String FUNDRAISER_EMAIL = "fundraiserFundraiserEmail";
+
     /**
      * Default constructor.
      */
@@ -49,6 +51,6 @@ public class DonationDAOImpl extends GenericDAOImpl<Donation, Integer> implement
      */
     @Override
     public List<Donation> getDonationsByFundraiserEmail(String fundraiserEmail) {
-        return getByEntityParameter("Email", fundraiserEmail);
+        return getByLinkedEntityParameter(FUNDRAISER_EMAIL, fundraiserEmail);
     }
 }

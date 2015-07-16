@@ -61,4 +61,44 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         Assert.assertThat(donationDAO.loadAll(), is(not(empty())));
         Assert.assertThat(donationDAO.loadAll(), is(is(hasSize(1))));
     }
+
+    @Test
+    public void getDonationsByFundraiserEmail_newValidDonations_successTwoDonations() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilix");
+        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
+        fundraiser.setFundraiserWallet(1000.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Donation donation = new Donation();
+        donation.setFundraiserFundraiserEmail(fundraiser);
+        donation.setDonationAmount(100.00);
+        donation.setDonationDate(formatter.parse("2015-12-12"));
+        donation.setDonationIsAnonym(Boolean.FALSE);
+
+        donationDAO.createDonation(donation);
+
+        Donation donation1 = new Donation();
+        donation.setFundraiserFundraiserEmail(fundraiser);
+        donation.setDonationAmount(200.00);
+        donation.setDonationDate(formatter.parse("2015-10-10"));
+        donation.setDonationIsAnonym(Boolean.FALSE);
+
+        donationDAO.createDonation(donation1);
+
+//        Assert.assertThat(donationDAO.getDonationsByFundraiserEmail("Xilibit@tibilix.com"), is(not(nullValue())));
+//        Assert.assertThat(donationDAO.getDonationsByFundraiserEmail("Xilibit@tibilix.com"), is(not(empty())));
+//        Assert.assertThat(donationDAO.getDonationsByFundraiserEmail("Xilibit@tibilix.com"), is(is(hasSize(2))));
+    }
 }
