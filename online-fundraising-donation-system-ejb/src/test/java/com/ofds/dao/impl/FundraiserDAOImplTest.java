@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Locale;
 
 @RunWith(Arquillian.class)
@@ -23,7 +22,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
     private FundraiserDAOImpl fundraiserDAO;
 
     @Test
-    public void getFundraiserByFundraiserEmail_existentEntityManager_notNullEntityManager() {
+    public void getEntityManager_existentEntityManager_notNullEntityManager() {
         Assert.assertThat(fundraiserDAO, is(notNullValue()));
         Assert.assertThat(fundraiserDAO.getEntityManager(), is(notNullValue()));
     }
