@@ -1,5 +1,7 @@
 package com.ofds.entity;
 
+import com.ofds.entity.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -29,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Groups.findByGroupId", query = "SELECT g FROM Groups g WHERE g.groupId = :groupId"),
     @NamedQuery(name = "Groups.findByGroupUserId", query = "SELECT g FROM Groups g " +
             "WHERE g.groupUserId = :groupUserId")})
-public class Groups implements Serializable {
+public class Groups extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

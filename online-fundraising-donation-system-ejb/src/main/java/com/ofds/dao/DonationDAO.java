@@ -1,6 +1,7 @@
 package com.ofds.dao;
 
 import com.ofds.entity.Donation;
+import com.ofds.entity.Fundraiser;
 
 import java.util.List;
 
@@ -14,8 +15,8 @@ public interface DonationDAO extends GenericDAO<Donation, Integer> {
 
     /**
      * The method is to get Donations by Fundraiser Email.
-     * @param fundraiserEmail - the Fundraiser Email.
+     * @param fundraiser - the Fundraiser.
      * @return - The list of the Donations.
      */
-    List<Donation> getDonationsByFundraiserEmail(String fundraiserEmail);
+    List<Donation> getDonationsByFundraiser(Fundraiser fundraiser);
 }

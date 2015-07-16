@@ -1,5 +1,7 @@
 package com.ofds.dao;
 
+import com.ofds.entity.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -71,4 +73,12 @@ public interface GenericDAO<T, PK extends Serializable> {
      * @return - the list of the objects.
      */
     List<T> getByLinkedEntityParameter(String linkedEntityParameter, String parameterValue);
+
+    /**
+     * The method is to get the linked entity list of entities by Entity Parameter.
+     * @param linkedEntityParameter - the linked entity parameter.
+     * @param baseEntity - the parameter value.
+     * @return - the list of the objects.
+     */
+    List<T> getByLinkedEntityParameter(String linkedEntityParameter, BaseEntity baseEntity);
 }

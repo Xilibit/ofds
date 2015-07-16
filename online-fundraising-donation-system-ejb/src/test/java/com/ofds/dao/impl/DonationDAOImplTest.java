@@ -59,7 +59,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
         Assert.assertThat(donationDAO.loadAll(), is(not(nullValue())));
         Assert.assertThat(donationDAO.loadAll(), is(not(empty())));
-        Assert.assertThat(donationDAO.loadAll(), is(is(hasSize(1))));
+        Assert.assertThat(donationDAO.loadAll(), is(hasSize(1)));
     }
 
     @Test
@@ -79,7 +79,9 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiser.setFundraiserStreet("Street");
         fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
         fundraiser.setFundraiserWallet(1000.00);
+
         fundraiserDAO.createFundraiser(fundraiser);
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
 
         Donation donation = new Donation();
         donation.setFundraiserFundraiserEmail(fundraiser);
@@ -90,15 +92,15 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         donationDAO.createDonation(donation);
 
         Donation donation1 = new Donation();
-        donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(200.00);
-        donation.setDonationDate(formatter.parse("2015-10-10"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
+        donation1.setFundraiserFundraiserEmail(fundraiser);
+        donation1.setDonationAmount(200.00);
+        donation1.setDonationDate(formatter.parse("2015-10-10"));
+        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
 
-//        Assert.assertThat(donationDAO.getDonationsByFundraiserEmail("Xilibit@tibilix.com"), is(not(nullValue())));
-//        Assert.assertThat(donationDAO.getDonationsByFundraiserEmail("Xilibit@tibilix.com"), is(not(empty())));
-//        Assert.assertThat(donationDAO.getDonationsByFundraiserEmail("Xilibit@tibilix.com"), is(is(hasSize(2))));
+        Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(not(nullValue())));
+        Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(not(empty())));
+        Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(hasSize(2)));
     }
 }

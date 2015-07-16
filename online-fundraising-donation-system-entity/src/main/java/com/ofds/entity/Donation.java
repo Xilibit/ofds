@@ -1,5 +1,7 @@
 package com.ofds.entity;
 
+import com.ofds.entity.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -35,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
             "WHERE d.donationDate = :donationDate"),
     @NamedQuery(name = "Donation.findByFundraiserEmail", query = "SELECT d FROM Donation d " +
             "WHERE d.fundraiserFundraiserEmail.fundraiserEmail = :fundraiserEmail")})
-public class Donation implements Serializable {
+public class Donation extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,7 +58,7 @@ public class Donation implements Serializable {
     @ManyToMany(mappedBy = "donationCollection")
     private Collection<Cause> causeCollection;
     @JoinColumn(name = "FUNDRAISER_FUNDRAISER_EMAIL", referencedColumnName = "FUNDRAISER_EMAIL")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Fundraiser fundraiserFundraiserEmail;
 
     public Donation() {

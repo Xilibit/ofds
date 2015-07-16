@@ -1,5 +1,7 @@
 package com.ofds.entity;
 
+import com.ofds.entity.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -52,7 +54,7 @@ import javax.xml.bind.annotation.XmlTransient;
             "WHERE c.charityStreet = :charityStreet"),
     @NamedQuery(name = "Charity.findByCharityIndex", query = "SELECT c FROM Charity c " +
             "WHERE c.charityIndex = :charityIndex")})
-public class Charity implements Serializable {
+public class Charity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id    
     @Basic(optional = false)

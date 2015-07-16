@@ -1,5 +1,7 @@
 package com.ofds.entity;
 
+import com.ofds.entity.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -39,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Activity.findByActivityTerminationDate", query = "SELECT a FROM Activity a " +
             "WHERE a.activityTerminationDate = :activityTerminationDate")})
 
-public class Activity implements Serializable {
+public class Activity extends BaseEntity implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

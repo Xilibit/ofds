@@ -1,5 +1,7 @@
 package com.ofds.entity;
 
+import com.ofds.entity.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -40,7 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
             "WHERE c.causeInsertTs = :causeInsertTs"),
     @NamedQuery(name = "Cause.findByCauseTerminationDate", query = "SELECT c FROM Cause c " +
             "WHERE c.causeTerminationDate = :causeTerminationDate")})
-public class Cause implements Serializable {
+public class Cause extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

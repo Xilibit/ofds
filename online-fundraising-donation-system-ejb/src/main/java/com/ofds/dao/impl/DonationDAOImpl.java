@@ -3,6 +3,7 @@ package com.ofds.dao.impl;
 import com.ofds.dao.DonationDAO;
 import com.ofds.dao.GenericDAOImpl;
 import com.ofds.entity.Donation;
+import com.ofds.entity.Fundraiser;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -46,11 +47,11 @@ public class DonationDAOImpl extends GenericDAOImpl<Donation, Integer> implement
 
     /**
      * The method is to get all donations for Fundraiser by fundraiser Email.
-     * @param fundraiserEmail - Fundraiser Email.
+     * @param fundraiser - Fundraiser.
      * @return - list of the objects.
      */
     @Override
-    public List<Donation> getDonationsByFundraiserEmail(String fundraiserEmail) {
-        return getByLinkedEntityParameter(FUNDRAISER_EMAIL, fundraiserEmail);
+    public List<Donation> getDonationsByFundraiser(Fundraiser fundraiser) {
+        return getByLinkedEntityParameter(FUNDRAISER_EMAIL, fundraiser);
     }
 }

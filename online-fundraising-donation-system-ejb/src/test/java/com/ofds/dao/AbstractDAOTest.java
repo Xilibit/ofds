@@ -5,6 +5,7 @@ import com.ofds.entity.Activity;
 import com.ofds.entity.Donation;
 import com.ofds.entity.Fundraiser;
 import com.ofds.entity.Groups;
+import com.ofds.entity.base.BaseEntity;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ArchivePaths;
@@ -24,6 +25,7 @@ public class AbstractDAOTest {
                 .addPackage(FundraiserDAOImpl.class.getPackage())
                 .addPackage(FundraiserDAO.class.getPackage())
                 .addPackage(Fundraiser.class.getPackage())
+                .addPackage(BaseEntity.class.getPackage())
                 .addAsManifestResource("persistence.xml", "persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }

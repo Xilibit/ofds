@@ -1,5 +1,7 @@
 package com.ofds.dao;
 
+import com.ofds.entity.base.BaseEntity;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
@@ -153,6 +155,17 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root<T> rootEntry = criteriaQuery.from(entityClass);
         Predicate predicate = criteriaBuilder.equal(rootEntry.get(linkedEntityParameter), parameterValue);
+        criteriaQuery.where(predicate);
+        TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
+        return typedQuery.getResultList();
+    }
+
+    @Override
+    public List<T> getByLinkedEntityParameter(String linkedEntityParameter, BaseEntity baseEntity) {
+        CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
+        Root<T> rootEntry = criteriaQuery.from(entityClass);
+        Predicate predicate = criteriaBuilder.equal(rootEntry.get(linkedEntityParameter), baseEntity);
         criteriaQuery.where(predicate);
         TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getResultList();
