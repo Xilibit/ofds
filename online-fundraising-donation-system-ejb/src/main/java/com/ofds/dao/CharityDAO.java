@@ -8,7 +8,7 @@ public interface CharityDAO extends GenericDAO<Charity, String> {
      * The method is to create Charity.
      * @param charity - The Charity to create.
      */
-    void createDonation(Charity charity);
+    void createCharity(Charity charity);
 
     /**
      * The method is to get Charity by Charity Email.

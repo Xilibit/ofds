@@ -33,7 +33,7 @@ public class CharityDAOImpl extends GenericDAOImpl<Charity, String> implements C
      * @param charity - The Charity to create.
      */
     @Override
-    public void createDonation(Charity charity) {
+    public void createCharity(Charity charity) {
         save(charity);
     }
 
