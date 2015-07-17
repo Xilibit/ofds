@@ -444,7 +444,8 @@ public class DonationDAOImplTest extends AbstractDAOTest {
     }
 
     @Test
-    public void getAllByEntityExcludeParameter_newValidDonations_successDonationExcludeByParameter() throws ParseException {
+    public void getAllByEntityExcludeParameter_newValidDonations_successDonationExcludeByParameter()
+            throws ParseException {
         DateFormat formatter;
         formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
