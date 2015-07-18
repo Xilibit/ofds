@@ -6,6 +6,8 @@
     <container qualifier="JBOSS_AS_MANAGED_7.X">
         <configuration>
             <property name="jbossHome">target/jboss-as-7.1.1.Final</property>
+            <property name="javaVmArguments">-XX:MaxPermSize=256m -Djboss.socket.binding.port-offset=100 -Djboss.management.native.port=9054</property>
+            <property name="managementPort">9154</property>
         </configuration>
     </container>
 </arquillian>
