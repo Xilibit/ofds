@@ -160,12 +160,34 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
         return typedQuery.getResultList();
     }
 
+    /**
+     * The method is to get the linked entity list of entities by Entity.
+     * @param linkedEntityParameter - the linked entity parameter.
+     * @param baseEntity - the entity to compare.
+     * @return - the list of the objects.
+     */
     @Override
     public List<T> getByLinkedEntityParameter(String linkedEntityParameter, BaseEntity baseEntity) {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root<T> rootEntry = criteriaQuery.from(entityClass);
         Predicate predicate = criteriaBuilder.equal(rootEntry.get(linkedEntityParameter), baseEntity);
+        criteriaQuery.where(predicate);
+        TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
+        return typedQuery.getResultList();
+    }
+
+    /**
+     * The method is to get the linked entity list of entities by Entity Parameter that do not match this parameter.
+     * @param linkedEntityParameter - the linked entity parameter.
+     * @param baseEntity - the parameter value.
+     * @return - the list of the entities.
+     */
+    public List<T> getAllByLinkedEntityExcludeParameter(String linkedEntityParameter, BaseEntity baseEntity) {
+        CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
+        Root<T> rootEntry = criteriaQuery.from(entityClass);
+        Predicate predicate = criteriaBuilder.notEqual(rootEntry.get(linkedEntityParameter), baseEntity);
         criteriaQuery.where(predicate);
         TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
         return typedQuery.getResultList();

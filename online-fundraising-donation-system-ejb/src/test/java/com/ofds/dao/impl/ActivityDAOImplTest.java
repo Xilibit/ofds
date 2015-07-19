@@ -2,18 +2,28 @@ package com.ofds.dao.impl;
 
 import static org.hamcrest.Matchers.*;
 import com.ofds.dao.AbstractDAOTest;
+import com.ofds.entity.Activity;
+import com.ofds.entity.Fundraiser;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 @RunWith(Arquillian.class)
 public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Inject
     private ActivityDAOImpl activityDAO;
+
+    @Inject
+    private FundraiserDAOImpl fundraiserDAO;
 
     @Test
     public void getEntityManager_existentEntityManager_notNullEntityManager() {
@@ -22,38 +32,546 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
     }
 
     @Test
-    public void createActivity_newValidActivity_successActivity() {}
+    public void createActivity_newValidActivity_successActivity() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Assert.assertThat(activityDAO.loadAll(), is(not(nullValue())));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(1)));
+    }
 
     @Test
-    public void getFundraiserActivitiesForDonation_newValidActivities_successActivitiesForDonation() {}
+    public void getFundraiserActivitiesForDonation_newValidActivities_successActivitiesForDonation() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Fundraiser fundraiser1 = new Fundraiser();
+        fundraiser1.setFundraiserFirstName("Xilibit");
+        fundraiser1.setFundraiserLastName("Tibilic");
+        fundraiser1.setFundraiserEmail("Xilibit@tibilsx.com");
+        fundraiser1.setFundraiserPassword("pass");
+        fundraiser1.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser1.setFundraiserCountry("UA");
+        fundraiser1.setFundraiserCity("KI");
+        fundraiser1.setFundraiserIndex("9713");
+        fundraiser1.setFundraiserStreet("Street");
+        fundraiser1.setFundraiserIsAdmin(false);
+        fundraiser1.setFundraiserWallet(2010.00);
+        fundraiserDAO.createFundraiser(fundraiser1);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activity2 = new Activity();
+        activity2.setActivityName("Activity Name1");
+        activity2.setActivityShortDescription("Activity Short Description1");
+        activity2.setActivityInsertTs(new Date());
+        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity2.setFundraiserFundraiserEmail(fundraiser1);
+
+        activityDAO.createActivity(activity2);
+
+        Assert.assertThat(activityDAO.loadAll(), is(not(nullValue())));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(3)));
+        Assert.assertThat(activityDAO.getFundraiserActivitiesForDonation(fundraiser1), is(hasSize(2)));
+    }
 
     @Test
-    public void edit_newValidActivities_successActivityEdit() {}
+    public void edit_newValidActivities_successActivityEdit() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activityToEdit = activityDAO.loadAll().get(0);
+        activityToEdit.setActivityShortDescription("New Description");
+
+        activityDAO.edit(activityToEdit);
+
+        Assert.assertThat(activityDAO.loadAll(), is(not(nullValue())));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(1)));
+        Assert.assertThat(activityDAO.loadAll().get(0).getActivityShortDescription(), is("New Description"));
+    }
 
     @Test
-    public void remove_newValidActivities_successActivityRemove() {}
+    public void remove_newValidActivities_successActivityRemove() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activityToRemove = activityDAO.loadAll().get(0);
+
+        activityDAO.remove(activityToRemove);
+
+        Assert.assertThat(activityDAO.loadAll(), is(not(nullValue())));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(1)));
+    }
 
     @Test
-    public void find_newValidActivities_successActivityFind() {}
+    public void find_newValidActivities_successActivityFind() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activityToFind = activityDAO.loadAll().get(0);
+
+        Assert.assertThat(activityDAO.loadAll(), is(not(nullValue())));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(2)));
+        Assert.assertThat(activityDAO.find(activityToFind.getIdACTIVITY()), is(activityToFind));
+    }
 
     @Test
-    public void loadAll_newValidActivities_successActivityLoad() {}
+    public void loadAll_newValidActivities_successActivityLoad() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Assert.assertThat(activityDAO.loadAll(), is(not(nullValue())));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(2)));
+    }
 
     @Test
-    public void findRange_newValidActivities_successActivityRange() {}
+    public void findRange_newValidActivities_successActivityRange() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activity2 = new Activity();
+        activity2.setActivityName("Activity Name1");
+        activity2.setActivityShortDescription("Activity Short Description1");
+        activity2.setActivityInsertTs(new Date());
+        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity2.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity2);
+
+        int[] range = new int[2];
+        range[0] = 1;
+        range[1] = 2;
+
+        Assert.assertThat(activityDAO.loadAll(), is(notNullValue()));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(3)));
+        Assert.assertThat(activityDAO.findRange(range), is(not(empty())));
+        Assert.assertThat(activityDAO.findRange(range), is(hasSize(2)));
+    }
 
     @Test
-    public void count_newValidActivities_successActivityCount() {}
+    public void count_newValidActivities_successActivityCount() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activity2 = new Activity();
+        activity2.setActivityName("Activity Name1");
+        activity2.setActivityShortDescription("Activity Short Description1");
+        activity2.setActivityInsertTs(new Date());
+        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity2.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity2);
+
+        Assert.assertThat(activityDAO.loadAll(), is(notNullValue()));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(3)));
+        Assert.assertThat(activityDAO.count(), is(3));
+    }
 
     @Test
-    public void getByEntityParameter_newValidActivities_successActivityByParameter() {}
+    public void getByEntityParameter_newValidActivities_successActivityByParameter() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activity2 = new Activity();
+        activity2.setActivityName("Activity Name2");
+        activity2.setActivityShortDescription("Activity Short Description1");
+        activity2.setActivityInsertTs(new Date());
+        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity2.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity2);
+
+        Assert.assertThat(activityDAO.loadAll(), is(notNullValue()));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(3)));
+        Assert.assertThat(activityDAO.getByEntityParameter("Name", "Activity Name1"), is(notNullValue()));
+        Assert.assertThat(activityDAO.getByEntityParameter("Name", "Activity Name1"), is(not(empty())));
+        Assert.assertThat(activityDAO.getByEntityParameter("Name", "Activity Name1"), is(hasSize(1)));
+    }
 
     @Test
-    public void getAllByEntityExcludeParameter_newValidActivities_successActivityByExcludeParameter() {}
+    public void getAllByEntityExcludeParameter_newValidActivities_successActivityByExcludeParameter() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activity2 = new Activity();
+        activity2.setActivityName("Activity Name2");
+        activity2.setActivityShortDescription("Activity Short Description1");
+        activity2.setActivityInsertTs(new Date());
+        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity2.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity2);
+
+        Assert.assertThat(activityDAO.loadAll(), is(notNullValue()));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(3)));
+        Assert.assertThat(activityDAO.getAllByEntityExcludeParameter("Name", "Activity Name1"), is(notNullValue()));
+        Assert.assertThat(activityDAO.getAllByEntityExcludeParameter("Name", "Activity Name1"), is(not(empty())));
+        Assert.assertThat(activityDAO.getAllByEntityExcludeParameter("Name", "Activity Name1"), is(hasSize(2)));
+    }
 
     @Test
-    public void getByLinkedEntityParameter_newValidActivities_successActivityByLinkedParameter() {}
+    public void getByLinkedEntityParameter_newValidActivities_successActivityByLinkedParameter() throws ParseException {
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
-    @Test
-    public void getByLinkedEntityParameter_newValidActivities_successActivityByLinkedParameterOverloaded() {}
+        Fundraiser fundraiser = new Fundraiser();
+        fundraiser.setFundraiserFirstName("Xilibit");
+        fundraiser.setFundraiserLastName("Tibilic");
+        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserPassword("pass");
+        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
+        fundraiser.setFundraiserCountry("UA");
+        fundraiser.setFundraiserCity("KI");
+        fundraiser.setFundraiserIndex("9713");
+        fundraiser.setFundraiserStreet("Street");
+        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserWallet(1010.00);
+        fundraiserDAO.createFundraiser(fundraiser);
+
+        Activity activity = new Activity();
+        activity.setActivityName("Activity Name");
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity);
+
+        Activity activity1 = new Activity();
+        activity1.setActivityName("Activity Name1");
+        activity1.setActivityShortDescription("Activity Short Description1");
+        activity1.setActivityInsertTs(new Date());
+        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity1.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity1);
+
+        Activity activity2 = new Activity();
+        activity2.setActivityName("Activity Name2");
+        activity2.setActivityShortDescription("Activity Short Description1");
+        activity2.setActivityInsertTs(new Date());
+        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        activity2.setFundraiserFundraiserEmail(fundraiser);
+
+        activityDAO.createActivity(activity2);
+
+        Assert.assertThat(activityDAO.loadAll(), is(notNullValue()));
+        Assert.assertThat(activityDAO.loadAll(), is(not(empty())));
+        Assert.assertThat(activityDAO.loadAll(), is(hasSize(3)));
+        Assert.assertThat(activityDAO.getByLinkedEntityParameter("fundraiserFundraiserEmail", fundraiser),
+                is(notNullValue()));
+        Assert.assertThat(activityDAO.getByLinkedEntityParameter("fundraiserFundraiserEmail", fundraiser),
+                is(not(empty())));
+        Assert.assertThat(activityDAO.getByLinkedEntityParameter("fundraiserFundraiserEmail", fundraiser),
+                is(hasSize(3)));
+    }
 }

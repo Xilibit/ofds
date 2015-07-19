@@ -432,10 +432,4 @@ public class CharityDAOImplTest extends AbstractDAOTest {
         Assert.assertThat(charityDAO.getAllByEntityExcludeParameter("Email", "newCharityName2@new.com"),
                 is(hasSize(2)));
     }
-
-    @Test
-    public void getByLinkedEntityParameter_newValidCharities_successCharityByLinkedParameter() {}
-
-    @Test
-    public void getByLinkedEntityParameter_newValidCharities_successCharityByLinkedParameterOverloaded() {}
 }

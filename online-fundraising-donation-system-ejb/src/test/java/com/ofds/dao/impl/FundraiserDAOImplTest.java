@@ -44,6 +44,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
         fundraiser.setFundraiserIsAdmin(false);
         fundraiser.setFundraiserWallet(1000.00);
         fundraiserDAO.createFundraiser(fundraiser);
+
         Assert.assertThat(fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com"), is(notNullValue()));
     }
 
