@@ -5,12 +5,7 @@ import javax.ejb.Local;
 /**
  * Manage the Charity
  */
+
 @Local
-public interface CharityService {
-
-    void registerTheCharity();
-
-    void registerTheCauseForDonation();
-
-    void checkAccount();
+public interface CharityService extends UserService {
 }
