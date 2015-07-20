@@ -10,15 +10,25 @@ import com.ofds.services.UserService;
 
 public class AdminServiceImpl extends RoleDecoratorService implements AdminService {
 
+    /**
+     * The default constructor.
+     * @param decoratedUserService - the decorated User service.
+     */
     public AdminServiceImpl(UserService decoratedUserService) {
         super(decoratedUserService);
     }
 
+    /**
+     * Register the specific Admin.
+     */
     @Override
     public void register() {
 
     }
 
+    /**
+     * Check the account of the specific Admin.
+     */
     @Override
     public void checkAccount() {
 
