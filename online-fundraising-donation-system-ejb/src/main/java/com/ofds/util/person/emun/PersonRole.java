@@ -5,18 +5,23 @@ package com.ofds.util.person.emun;
  */
 public enum PersonRole {
 
-    ADMIN("admin"),
-    FUNDRAISER("fundraiser"),
-    CHARITY("charity");
+    FUNDRAISER(1, "fundraiser"),
+    ADMIN(2, "admin"),
+    CHARITY(3, "charity");
 
+    private int id;
     private String value;
 
-    private PersonRole(String value) {
+    private PersonRole(int id, String value) {
+        this.id = id;
         this.value = value;
     }
 
     public String getValue() {
         return value;
+    }
+    public int getId() {
+        return id;
     }
 
     public static PersonRole getPersonRoleValue(String value) {

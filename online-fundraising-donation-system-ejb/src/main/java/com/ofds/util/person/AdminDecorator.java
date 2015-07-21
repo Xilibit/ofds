@@ -1,5 +1,11 @@
 package com.ofds.util.person;
 
+import com.ofds.util.person.dto.GroupsDTO;
+import com.ofds.util.person.emun.PersonRole;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Manage the Admin.
  */
@@ -20,6 +26,28 @@ public class AdminDecorator extends PersonRoleDecorator {
      */
     @Override
     public Person getPerson() {
+        setAdminGroupsDTOCollection(createAdminGroupsDTOCollection());
         return decoratedPerson;
+    }
+
+    /**
+     * Method is to set the relevant Group.
+     * @param groupsDTOCollection - the collection of Group.
+     */
+    private void setAdminGroupsDTOCollection(Collection<GroupsDTO> groupsDTOCollection) {
+        decoratedPerson.setGroupsDTOCollection(groupsDTOCollection);
+    }
+
+    /**
+     * The method is to create Group collection for Admin.
+     * @return  - the created collection of Groups.
+     */
+    private Collection<GroupsDTO> createAdminGroupsDTOCollection() {
+        GroupsDTO groupsDTO = new GroupsDTO();
+        Collection<GroupsDTO> groupsDTOCollection = new ArrayList<>();
+        groupsDTO.setGroupId(PersonRole.ADMIN.getId());
+        groupsDTO.setGroupUserId(PersonRole.ADMIN.getValue());
+        groupsDTOCollection.add(groupsDTO);
+        return groupsDTOCollection;
     }
 }

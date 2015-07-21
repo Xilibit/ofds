@@ -1,5 +1,9 @@
 package com.ofds.util.person;
 
+import com.ofds.util.person.dto.GroupsDTO;
+
+import java.util.Collection;
+
 /**
  * Manage the decorated Person.
  */
@@ -19,7 +23,17 @@ public abstract class PersonRoleDecorator implements Person {
      * The method is to return the Person.
      * @return - the decorated Person.
      */
+    @Override
     public Person getPerson() {
         return decoratedPerson;
+    }
+
+    /**
+     * Method is to set the relevant Group.
+     * @param groupsDTOCollection - the collection of Group.
+     */
+    @Override
+    public void setGroupsDTOCollection(Collection<GroupsDTO> groupsDTOCollection) {
+        decoratedPerson.setGroupsDTOCollection(groupsDTOCollection);
     }
 }
