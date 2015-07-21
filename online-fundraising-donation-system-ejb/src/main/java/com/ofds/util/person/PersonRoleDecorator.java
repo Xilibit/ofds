@@ -15,6 +15,10 @@ public abstract class PersonRoleDecorator implements Person {
         this.decoratedPerson = decoratedPerson;
     }
 
+    /**
+     * The method is to return the Person.
+     * @return - the decorated Person.
+     */
     public Person getPerson() {
         return decoratedPerson;
     }
