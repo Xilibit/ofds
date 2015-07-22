@@ -4,7 +4,7 @@ import com.ofds.util.person.dto.GroupsDTO;
 import com.ofds.util.person.emun.PersonRole;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Manage the Charity.
@@ -34,7 +34,7 @@ public class CharityDecorator extends PersonRoleDecorator {
      * Method is to set the relevant Group.
      * @param groupsDTOCollection - the collection of Group.
      */
-    private void setCharityGroupsDTOCollection(List<GroupsDTO> groupsDTOCollection) {
+    private void setCharityGroupsDTOCollection(Collection<GroupsDTO> groupsDTOCollection) {
         decoratedPerson.setGroupsDTOCollection(groupsDTOCollection);
     }
 
@@ -42,9 +42,9 @@ public class CharityDecorator extends PersonRoleDecorator {
      * The method is to create Group collection for Charity.
      * @return  - the created collection of Groups.
      */
-    private List<GroupsDTO> createCharityGroupsDTOCollection() {
+    private Collection<GroupsDTO> createCharityGroupsDTOCollection() {
         GroupsDTO groupsDTO = new GroupsDTO();
-        List<GroupsDTO> groupsDTOCollection = new ArrayList<>();
+        Collection<GroupsDTO> groupsDTOCollection = new ArrayList<>();
         groupsDTO.setGroupId(PersonRole.CHARITY.getId());
         groupsDTO.setGroupUserId(PersonRole.CHARITY.getValue());
         groupsDTOCollection.add(groupsDTO);

@@ -1,6 +1,6 @@
 package com.ofds.util.person.dto;
 
-import java.util.List;
+import java.util.Collection;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -14,8 +14,8 @@ public class GroupsDTO {
     @NotNull
     private String groupUserId;
 
-    private List<CharityDTO> charityDTOCollection;
-    private List<FundraiserDTO> fundraiserDTOCollection;
+    private Collection<CharityDTO> charityDTOCollection;
+    private Collection<FundraiserDTO> fundraiserDTOCollection;
 
     public Integer getGroupId() {
         return groupId;
@@ -33,19 +33,19 @@ public class GroupsDTO {
         this.groupUserId = groupUserId;
     }
 
-    public List<CharityDTO> getCharityDTOCollection() {
+    public Collection<CharityDTO> getCharityDTOCollection() {
         return charityDTOCollection;
     }
 
-    public void setCharityDTOCollection(List<CharityDTO> charityDTOCollection) {
+    public void setCharityDTOCollection(Collection<CharityDTO> charityDTOCollection) {
         this.charityDTOCollection = charityDTOCollection;
     }
 
-    public List<FundraiserDTO> getFundraiserDTOCollection() {
+    public Collection<FundraiserDTO> getFundraiserDTOCollection() {
         return fundraiserDTOCollection;
     }
 
-    public void setFundraiserDTOCollection(List<FundraiserDTO> fundraiserDTOCollection) {
+    public void setFundraiserDTOCollection(Collection<FundraiserDTO> fundraiserDTOCollection) {
         this.fundraiserDTOCollection = fundraiserDTOCollection;
     }
 }

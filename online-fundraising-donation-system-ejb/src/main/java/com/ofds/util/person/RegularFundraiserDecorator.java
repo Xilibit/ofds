@@ -4,7 +4,7 @@ import com.ofds.util.person.dto.GroupsDTO;
 import com.ofds.util.person.emun.PersonRole;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Manage the Fundraiser.
@@ -34,7 +34,7 @@ public class RegularFundraiserDecorator extends PersonRoleDecorator {
      * Method is to set the relevant Group.
      * @param groupsDTOCollection - the collection of Group.
      */
-    private void setRegularGroupsDTOCollection(List<GroupsDTO> groupsDTOCollection) {
+    private void setRegularGroupsDTOCollection(Collection<GroupsDTO> groupsDTOCollection) {
         decoratedPerson.setGroupsDTOCollection(groupsDTOCollection);
     }
 
@@ -42,9 +42,9 @@ public class RegularFundraiserDecorator extends PersonRoleDecorator {
      * The method is to create Group collection for Regular Fundraiser.
      * @return  - the created collection of Groups.
      */
-    private List<GroupsDTO> createRegularGroupsDTOCollection() {
+    private Collection<GroupsDTO> createRegularGroupsDTOCollection() {
         GroupsDTO groupsDTO = new GroupsDTO();
-        List<GroupsDTO> groupsDTOCollection = new ArrayList<>();
+        Collection<GroupsDTO> groupsDTOCollection = new ArrayList<>();
         groupsDTO.setGroupId(PersonRole.FUNDRAISER.getId());
         groupsDTO.setGroupUserId(PersonRole.FUNDRAISER.getValue());
         groupsDTOCollection.add(groupsDTO);

@@ -1,6 +1,6 @@
 package com.ofds.util.person.dto;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Future;
@@ -26,9 +26,9 @@ public class ActivityDTO {
     @Future
     private Date activityTerminationDate;
 
-    private List<DonationDTO> donationDTOCollection;
+    private Collection<DonationDTO> donationDTOCollection;
 
-    private List<CauseDTO> causeDTOCollection;
+    private Collection<CauseDTO> causeDTOCollection;
 
     @NotNull
     private FundraiserDTO fundraiserFundraiserEmail;
@@ -73,19 +73,19 @@ public class ActivityDTO {
         this.activityTerminationDate = activityTerminationDate;
     }
 
-    public List<DonationDTO> getDonationDTOCollection() {
+    public Collection<DonationDTO> getDonationDTOCollection() {
         return donationDTOCollection;
     }
 
-    public void setDonationDTOCollection(List<DonationDTO> donationDTOCollection) {
+    public void setDonationDTOCollection(Collection<DonationDTO> donationDTOCollection) {
         this.donationDTOCollection = donationDTOCollection;
     }
 
-    public List<CauseDTO> getCauseDTOCollection() {
+    public Collection<CauseDTO> getCauseDTOCollection() {
         return causeDTOCollection;
     }
 
-    public void setCauseDTOCollection(List<CauseDTO> causeDTOCollection) {
+    public void setCauseDTOCollection(Collection<CauseDTO> causeDTOCollection) {
         this.causeDTOCollection = causeDTOCollection;
     }
 

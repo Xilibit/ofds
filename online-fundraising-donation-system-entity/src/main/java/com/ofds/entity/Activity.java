@@ -3,7 +3,7 @@ package com.ofds.entity;
 import com.ofds.entity.base.BaseEntity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -70,12 +70,12 @@ public class Activity extends BaseEntity implements Serializable{
         @JoinColumn(name = "ACTIVITY_idACTIVITY", referencedColumnName = "idACTIVITY")}, inverseJoinColumns = {
         @JoinColumn(name = "DONATION_idDONATION", referencedColumnName = "idDONATION")})
     @ManyToMany
-    private List<Donation> donationCollection;
+    private Collection<Donation> donationCollection;
     @JoinTable(name = "activity_has_cause", joinColumns = {
         @JoinColumn(name = "ACTIVITY_idACTIVITY", referencedColumnName = "idACTIVITY")}, inverseJoinColumns = {
         @JoinColumn(name = "CAUSE_idCAUSE", referencedColumnName = "idCAUSE")})
     @ManyToMany
-    private List<Cause> causeCollection;
+    private Collection<Cause> causeCollection;
     @JoinColumn(name = "FUNDRAISER_FUNDRAISER_EMAIL", referencedColumnName = "FUNDRAISER_EMAIL")
     @ManyToOne(optional = false)
     private Fundraiser fundraiserFundraiserEmail;
@@ -135,20 +135,20 @@ public class Activity extends BaseEntity implements Serializable{
     }
 
     @XmlTransient
-    public List<Donation> getDonationCollection() {
+    public Collection<Donation> getDonationCollection() {
         return donationCollection;
     }
 
-    public void setDonationCollection(List<Donation> donationCollection) {
+    public void setDonationCollection(Collection<Donation> donationCollection) {
         this.donationCollection = donationCollection;
     }
 
     @XmlTransient
-    public List<Cause> getCauseCollection() {
+    public Collection<Cause> getCauseCollection() {
         return causeCollection;
     }
 
-    public void setCauseCollection(List<Cause> causeCollection) {
+    public void setCauseCollection(Collection<Cause> causeCollection) {
         this.causeCollection = causeCollection;
     }
 

@@ -3,7 +3,7 @@ package com.ofds.entity;
 import com.ofds.entity.base.BaseEntity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -73,9 +73,9 @@ public class Cause extends BaseEntity implements Serializable {
         @JoinColumn(name = "CAUSE_idCAUSE", referencedColumnName = "idCAUSE")}, inverseJoinColumns = {
         @JoinColumn(name = "DONATION_idDONATION", referencedColumnName = "idDONATION")})
     @ManyToMany
-    private List<Donation> donationCollection;
+    private Collection<Donation> donationCollection;
     @ManyToMany(mappedBy = "causeCollection", cascade = CascadeType.PERSIST)
-    private List<Activity> activityCollection;
+    private Collection<Activity> activityCollection;
     @JoinColumn(name = "CHARITY_CHARITY_EMAIL", referencedColumnName = "CHARITY_EMAIL")
     @ManyToOne(cascade = CascadeType.PERSIST, optional = false)
     private Charity charityCharityEmail;
@@ -135,20 +135,20 @@ public class Cause extends BaseEntity implements Serializable {
     }
 
     @XmlTransient
-    public List<Donation> getDonationCollection() {
+    public Collection<Donation> getDonationCollection() {
         return donationCollection;
     }
 
-    public void setDonationCollection(List<Donation> donationCollection) {
+    public void setDonationCollection(Collection<Donation> donationCollection) {
         this.donationCollection = donationCollection;
     }
 
     @XmlTransient
-    public List<Activity> getActivityCollection() {
+    public Collection<Activity> getActivityCollection() {
         return activityCollection;
     }
 
-    public void setActivityCollection(List<Activity> activityCollection) {
+    public void setActivityCollection(Collection<Activity> activityCollection) {
         this.activityCollection = activityCollection;
     }
 

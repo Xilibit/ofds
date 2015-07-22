@@ -3,7 +3,7 @@ package com.ofds.entity;
 import com.ofds.entity.base.BaseEntity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -54,9 +54,9 @@ public class Donation extends BaseEntity implements Serializable {
     @Column(name = "DONATION_IS_ANONYM")
     private Boolean donationIsAnonym;
     @ManyToMany(mappedBy = "donationCollection")
-    private List<Activity> activityCollection;
+    private Collection<Activity> activityCollection;
     @ManyToMany(mappedBy = "donationCollection")
-    private List<Cause> causeCollection;
+    private Collection<Cause> causeCollection;
     @JoinColumn(name = "FUNDRAISER_FUNDRAISER_EMAIL", referencedColumnName = "FUNDRAISER_EMAIL")
     @ManyToOne(optional = true)
     private Fundraiser fundraiserFundraiserEmail;
@@ -98,20 +98,20 @@ public class Donation extends BaseEntity implements Serializable {
     }
 
     @XmlTransient
-    public List<Activity> getActivityCollection() {
+    public Collection<Activity> getActivityCollection() {
         return activityCollection;
     }
 
-    public void setActivityCollection(List<Activity> activityCollection) {
+    public void setActivityCollection(Collection<Activity> activityCollection) {
         this.activityCollection = activityCollection;
     }
 
     @XmlTransient
-    public List<Cause> getCauseCollection() {
+    public Collection<Cause> getCauseCollection() {
         return causeCollection;
     }
 
-    public void setCauseCollection(List<Cause> causeCollection) {
+    public void setCauseCollection(Collection<Cause> causeCollection) {
         this.causeCollection = causeCollection;
     }
 

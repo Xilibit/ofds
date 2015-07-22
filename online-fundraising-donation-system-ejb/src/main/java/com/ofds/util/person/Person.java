@@ -2,7 +2,7 @@ package com.ofds.util.person;
 
 import com.ofds.util.person.dto.GroupsDTO;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Manage the person.
@@ -19,6 +19,6 @@ public interface Person {
      * Method is to set the relevant Group.
      * @param groupsDTOCollection - the collection of Group.
      */
-    void setGroupsDTOCollection(List<GroupsDTO> groupsDTOCollection);
+    void setGroupsDTOCollection(Collection<GroupsDTO> groupsDTOCollection);
 
 }

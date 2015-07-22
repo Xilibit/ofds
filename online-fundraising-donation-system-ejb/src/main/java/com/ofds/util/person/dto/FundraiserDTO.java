@@ -2,7 +2,7 @@ package com.ofds.util.person.dto;
 
 import com.ofds.util.person.Person;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 
@@ -45,10 +45,10 @@ public class FundraiserDTO implements Person {
     private String fundraiserWallet;
 
     @NotNull
-    private List<GroupsDTO> groupsDTOCollection;
+    private Collection<GroupsDTO> groupsDTOCollection;
 
-    private List<DonationDTO> donationDTOCollection;
-    private List<ActivityDTO> activityDTOCollection;
+    private Collection<DonationDTO> donationDTOCollection;
+    private Collection<ActivityDTO> activityDTOCollection;
 
     public String getFundraiserEmail() {
         return fundraiserEmail;
@@ -138,27 +138,27 @@ public class FundraiserDTO implements Person {
         this.fundraiserWallet = fundraiserWallet;
     }
 
-    public List<GroupsDTO> getGroupsDTOCollection() {
+    public Collection<GroupsDTO> getGroupsDTOCollection() {
         return groupsDTOCollection;
     }
 
-    public void setGroupsDTOCollection(List<GroupsDTO> groupsDTOCollection) {
+    public void setGroupsDTOCollection(Collection<GroupsDTO> groupsDTOCollection) {
         this.groupsDTOCollection = groupsDTOCollection;
     }
 
-    public List<DonationDTO> getDonationDTOCollection() {
+    public Collection<DonationDTO> getDonationDTOCollection() {
         return donationDTOCollection;
     }
 
-    public void setDonationDTOCollection(List<DonationDTO> donationDTOCollection) {
+    public void setDonationDTOCollection(Collection<DonationDTO> donationDTOCollection) {
         this.donationDTOCollection = donationDTOCollection;
     }
 
-    public List<ActivityDTO> getActivityDTOCollection() {
+    public Collection<ActivityDTO> getActivityDTOCollection() {
         return activityDTOCollection;
     }
 
-    public void setActivityDTOCollection(List<ActivityDTO> activityDTOCollection) {
+    public void setActivityDTOCollection(Collection<ActivityDTO> activityDTOCollection) {
         this.activityDTOCollection = activityDTOCollection;
     }
 
