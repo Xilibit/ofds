@@ -1,5 +1,6 @@
 package com.ofds.util.person.dto;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
@@ -8,7 +9,7 @@ import javax.validation.constraints.Future;
 /**
  * Manage the Activity.
  */
-public class ActivityDTO {
+public class ActivityDTO implements Serializable {
 
     @NotNull
     private Integer activityId;

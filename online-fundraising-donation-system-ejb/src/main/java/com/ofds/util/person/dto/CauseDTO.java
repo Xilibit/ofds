@@ -1,5 +1,6 @@
 package com.ofds.util.person.dto;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
@@ -8,7 +9,7 @@ import javax.validation.constraints.Future;
 /**
  * Manage the Cause.
  */
-public class CauseDTO {
+public class CauseDTO implements Serializable {
 
     @NotNull
     private Integer causeId;

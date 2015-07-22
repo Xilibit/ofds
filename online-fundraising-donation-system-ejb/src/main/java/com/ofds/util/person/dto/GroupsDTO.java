@@ -1,12 +1,13 @@
 package com.ofds.util.person.dto;
 
+import java.io.Serializable;
 import java.util.Collection;
 import javax.validation.constraints.NotNull;
 
 /**
  * Manage the Groups.
  */
-public class GroupsDTO {
+public class GroupsDTO implements Serializable {
 
     @NotNull
     private Integer groupId;

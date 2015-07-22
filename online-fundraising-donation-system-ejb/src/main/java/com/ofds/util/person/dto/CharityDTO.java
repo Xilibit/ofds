@@ -2,6 +2,7 @@ package com.ofds.util.person.dto;
 
 import com.ofds.util.person.Person;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Past;
 /**
  * Manage the Charity.
  */
-public class CharityDTO implements Person {
+public class CharityDTO implements Person, Serializable {
 
     @NotNull
     private String charityEmail;

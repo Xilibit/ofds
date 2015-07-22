@@ -1,5 +1,6 @@
 package com.ofds.util.person.dto;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
@@ -7,7 +8,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Manage the Donation.
  */
-public class DonationDTO {
+public class DonationDTO implements Serializable {
 
     @NotNull
     private Integer donationId;
