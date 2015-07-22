@@ -3,7 +3,7 @@ package com.ofds.entity;
 import com.ofds.entity.base.BaseEntity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -100,11 +100,11 @@ public class Fundraiser extends BaseEntity implements Serializable {
             inverseJoinColumns = {
         @JoinColumn(name = "GROUPS_GROUP_ID", referencedColumnName = "GROUP_ID")})
     @ManyToMany
-    private Collection<Groups> groupsCollection;
+    private List<Groups> groupsCollection;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "fundraiserFundraiserEmail")
-    private Collection<Donation> donationCollection;
+    private List<Donation> donationCollection;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "fundraiserFundraiserEmail")
-    private Collection<Activity> activityCollection;
+    private List<Activity> activityCollection;
 
     public Fundraiser() {
     }
@@ -212,29 +212,29 @@ public class Fundraiser extends BaseEntity implements Serializable {
     }    
     
     @XmlTransient
-    public Collection<Groups> getGroupsCollection() {
+    public List<Groups> getGroupsCollection() {
         return groupsCollection;
     }
 
-    public void setGroupsCollection(Collection<Groups> groupsCollection) {
+    public void setGroupsCollection(List<Groups> groupsCollection) {
         this.groupsCollection = groupsCollection;
     }
 
     @XmlTransient
-    public Collection<Donation> getDonationCollection() {
+    public List<Donation> getDonationCollection() {
         return donationCollection;
     }
 
-    public void setDonationCollection(Collection<Donation> donationCollection) {
+    public void setDonationCollection(List<Donation> donationCollection) {
         this.donationCollection = donationCollection;
     }
 
     @XmlTransient
-    public Collection<Activity> getActivityCollection() {
+    public List<Activity> getActivityCollection() {
         return activityCollection;
     }
 
-    public void setActivityCollection(Collection<Activity> activityCollection) {
+    public void setActivityCollection(List<Activity> activityCollection) {
         this.activityCollection = activityCollection;
     }
 

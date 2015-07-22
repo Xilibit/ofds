@@ -3,7 +3,7 @@ package com.ofds.entity;
 import com.ofds.entity.base.BaseEntity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,9 +46,9 @@ public class Groups extends BaseEntity implements Serializable {
     @XmlAttribute(required=true)
     private String groupUserId;
     @ManyToMany(mappedBy = "groupsCollection")    
-    private Collection<Charity> charityCollection;
+    private List<Charity> charityCollection;
     @ManyToMany(mappedBy = "groupsCollection")
-    private Collection<Fundraiser> fundraiserCollection;
+    private List<Fundraiser> fundraiserCollection;
 
     public Groups() {
     }
@@ -79,20 +79,20 @@ public class Groups extends BaseEntity implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Charity> getCharityCollection() {
+    public List<Charity> getCharityCollection() {
         return charityCollection;
     }
 
-    public void setCharityCollection(Collection<Charity> charityCollection) {
+    public void setCharityCollection(List<Charity> charityCollection) {
         this.charityCollection = charityCollection;
     }
 
     @XmlTransient
-    public Collection<Fundraiser> getFundraiserCollection() {
+    public List<Fundraiser> getFundraiserCollection() {
         return fundraiserCollection;
     }
 
-    public void setFundraiserCollection(Collection<Fundraiser> fundraiserCollection) {
+    public void setFundraiserCollection(List<Fundraiser> fundraiserCollection) {
         this.fundraiserCollection = fundraiserCollection;
     }
 
