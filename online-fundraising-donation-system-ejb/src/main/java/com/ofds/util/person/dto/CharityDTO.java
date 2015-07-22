@@ -2,7 +2,7 @@ package com.ofds.util.person.dto;
 
 import com.ofds.util.person.Person;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -43,8 +43,8 @@ public class CharityDTO implements Person {
     @NotNull
     private String charityIndex;
 
-    private Collection<GroupsDTO> groupsDTOCollection;
-    private Collection<CauseDTO> causeDTOCollection;
+    private List<GroupsDTO> groupsDTOCollection;
+    private List<CauseDTO> causeDTOCollection;
 
     public String getCharityEmail() {
         return charityEmail;
@@ -126,19 +126,19 @@ public class CharityDTO implements Person {
         this.charityIndex = charityIndex;
     }
 
-    public Collection<GroupsDTO> getGroupsDTOCollection() {
+    public List<GroupsDTO> getGroupsDTOCollection() {
         return groupsDTOCollection;
     }
 
-    public void setGroupsDTOCollection(Collection<GroupsDTO> groupsDTOCollection) {
+    public void setGroupsDTOCollection(List<GroupsDTO> groupsDTOCollection) {
         this.groupsDTOCollection = groupsDTOCollection;
     }
 
-    public Collection<CauseDTO> getCauseDTOCollection() {
+    public List<CauseDTO> getCauseDTOCollection() {
         return causeDTOCollection;
     }
 
-    public void setCauseDTOCollection(Collection<CauseDTO> causeDTOCollection) {
+    public void setCauseDTOCollection(List<CauseDTO> causeDTOCollection) {
         this.causeDTOCollection = causeDTOCollection;
     }
 
