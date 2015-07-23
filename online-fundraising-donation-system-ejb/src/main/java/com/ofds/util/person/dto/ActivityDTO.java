@@ -97,4 +97,18 @@ public class ActivityDTO implements Serializable {
     public void setFundraiserFundraiserEmail(FundraiserDTO fundraiserFundraiserEmail) {
         this.fundraiserFundraiserEmail = fundraiserFundraiserEmail;
     }
+
+    @Override
+    public String toString() {
+        return "ActivityDTO{" +
+                "activityId=" + activityId +
+                ", activityName='" + activityName + '\'' +
+                ", activityShortDescription='" + activityShortDescription + '\'' +
+                ", activityInsertTs=" + activityInsertTs +
+                ", activityTerminationDate=" + activityTerminationDate +
+                ", donationDTOCollection=" + donationDTOCollection +
+                ", causeDTOCollection=" + causeDTOCollection +
+                ", fundraiserFundraiserEmail=" + fundraiserFundraiserEmail +
+                '}';
+    }
 }
