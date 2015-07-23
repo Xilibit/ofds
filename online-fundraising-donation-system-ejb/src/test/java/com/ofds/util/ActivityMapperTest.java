@@ -29,6 +29,7 @@ public class ActivityMapperTest extends AbstractMapperTest {
     public void getActivityMapper_existentActivityMapper_notNullMapperFactory() {
         Assert.assertThat(activityMapper, is(notNullValue()));
         Assert.assertThat(activityMapper.getMapperFactory(), is(notNullValue()));
+        Assert.assertThat(activityMapper.getMapperFactory(), is(notNullValue()));
     }
 
     @Test
@@ -93,10 +94,10 @@ public class ActivityMapperTest extends AbstractMapperTest {
         activity.setDonationCollection(donations);
 
         ActivityDTO activityDTO = new ActivityDTO();
-        activityDTO = activityMapper.fromEntityToDTO(activity, activityDTO);
+        ActivityDTO activityDTO1 = activityMapper.fromEntityToDTO(activity, activityDTO);
 
-        Assert.assertThat(activityDTO, is(notNullValue()));
-        System.out.println(activityDTO.toString());
+        Assert.assertThat(activityDTO1, is(notNullValue()));
+        System.out.println(activityDTO1.toString());
     }
 
 }

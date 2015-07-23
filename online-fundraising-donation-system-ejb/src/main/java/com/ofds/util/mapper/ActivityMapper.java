@@ -23,11 +23,11 @@ public class ActivityMapper implements Mapper<Activity, ActivityDTO> {
 
     @Override
     public ActivityDTO fromEntityToDTO(Activity activity, ActivityDTO activityDTO) {
-        return getMapperFactory().getMapperFacade().map(Activity.class, ActivityDTO.class);
+        return getMapperFactory().getMapperFacade().map(activity, ActivityDTO.class);
     }
 
     @Override
     public Activity fromDTOToEntity(ActivityDTO activityDTO, Activity activity) {
-        return getMapperFactory().getMapperFacade().map(ActivityDTO.class, Activity.class);
+        return getMapperFactory().getMapperFacade().map(activityDTO, Activity.class);
     }
 }
