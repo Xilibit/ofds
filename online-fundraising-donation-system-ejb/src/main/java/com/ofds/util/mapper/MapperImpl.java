@@ -24,21 +24,22 @@ public abstract class MapperImpl<T extends Serializable, D extends Serializable>
         this.entityClass = entityClass;
         this.dtoClass = dtoClass;
         this.decoratedMapper = decoratedMapper;
+        this.mapperFactory = new DefaultMapperFactory.Builder().build();
     }
 
     /**
      * The method is to get MapperFactory
      * @return - the MapperFactory object.
      */
-    protected static MapperFactory getMapperFactory() {
-        return new DefaultMapperFactory.Builder().build();
+    @Override
+    public MapperFactory getMapperFactory() {
+        return mapperFactory;
     }
 
     /**
      * The method is to get Mapper.
      * @return - the Mapper object.
      */
-    @Override
     public Mapper<T, D> getMapper() {
         return decoratedMapper;
     }

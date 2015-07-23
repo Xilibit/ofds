@@ -10,10 +10,10 @@ import java.io.Serializable;
 public interface Mapper<T extends Serializable, D extends Serializable> {
 
     /**
-     * Method is to get the Mapper.
-     * @return - the Mapper.
+     * Method is to get the MapperFactory.
+     * @return - the MapperFactory.
      */
-    Mapper<T, D> getMapper();
+    MapperFactory getMapperFactory();
 
     /**
      * The method is to convert an Entity to the DTO.
