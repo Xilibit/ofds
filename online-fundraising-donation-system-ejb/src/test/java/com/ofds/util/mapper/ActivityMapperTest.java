@@ -1,8 +1,9 @@
-package com.ofds.util;
+package com.ofds.util.mapper;
 
 import static org.hamcrest.Matchers.*;
 
 import com.ofds.entity.*;
+import com.ofds.util.AbstractMapperTest;
 import com.ofds.util.mapper.ActivityMapper;
 import com.ofds.util.person.dto.ActivityDTO;
 import org.jboss.arquillian.junit.Arquillian;
@@ -93,6 +94,7 @@ public class ActivityMapperTest extends AbstractMapperTest {
         activity.setDonationCollection(donations);
 
         ActivityDTO activityDTO = new ActivityDTO();
+        activityMapper.customize(activity, ActivityDTO.class);
         activityDTO = activityMapper.fromEntityToDTO(activity, activityDTO);
 
         Assert.assertThat(activityDTO, is(notNullValue()));

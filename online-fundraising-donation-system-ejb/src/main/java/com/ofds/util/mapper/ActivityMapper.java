@@ -10,20 +10,39 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
  */
 public class ActivityMapper implements Mapper<Activity, ActivityDTO> {
 
+    private MapperFactory mapperFactory;
+
     /**
      * The default Constructor.
      */
     public ActivityMapper() {
+        this.mapperFactory = new DefaultMapperFactory.Builder().build();
     }
 
     @Override
     public MapperFactory getMapperFactory() {
-        return new DefaultMapperFactory.Builder().build();
+        return mapperFactory;
+    }
+
+    @Override
+    public void customize(Activity activity, Class<ActivityDTO> activityDTOClass) {
+        getMapperFactory().classMap(activity.getClass(), activityDTOClass)
+                .mapNulls(false).mapNullsInReverse(false)
+                .fieldMap("idACTIVITY", "activityId").mapNulls(false).mapNullsInReverse(false).add()
+                .field("donationCollection", "donationDTOCollection")
+                .field("causeCollection", "causeDTOCollection")
+                .byDefault()
+                .register();
+    }
+
+    @Override
+    public void customize(ActivityDTO activityDTO, Activity activity) {
+
     }
 
     @Override
     public ActivityDTO fromEntityToDTO(Activity activity, ActivityDTO activityDTO) {
-        return getMapperFactory().getMapperFacade().map(Activity.class, ActivityDTO.class);
+        return getMapperFactory().getMapperFacade().map(activity, ActivityDTO.class);
     }
 
     @Override
