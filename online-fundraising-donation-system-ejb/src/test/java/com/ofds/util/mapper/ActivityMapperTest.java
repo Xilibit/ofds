@@ -98,7 +98,11 @@ public class ActivityMapperTest extends AbstractMapperTest {
         activityDTO = activityMapper.fromEntityToDTO(activity, activityDTO);
 
         Assert.assertThat(activityDTO, is(notNullValue()));
-        System.out.println(activityDTO.toString());
+        Assert.assertThat(activityDTO.getActivityId(), is(activity.getIdACTIVITY()));
+        Assert.assertThat(activityDTO.getCauseDTOCollection().size(), is(1));
+        Assert.assertThat(activityDTO.getDonationDTOCollection().size(), is(1));
+        Assert.assertThat(activityDTO.getFundraiserFundraiserEmail().getFundraiserCity(),
+                is(activity.getFundraiserFundraiserEmail().getFundraiserCity()));
     }
 
 }
