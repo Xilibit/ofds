@@ -43,6 +43,10 @@ public abstract class MapperImpl<T extends Serializable, D extends Serializable>
      */
     @Override
     public void customize(T t, Class<D> d) {
+        getMapperFactory().classMap(t.getClass(), d)
+                .mapNulls(false).mapNullsInReverse(false)
+                .byDefault()
+                .register();
     }
 
     /**
@@ -52,6 +56,10 @@ public abstract class MapperImpl<T extends Serializable, D extends Serializable>
      */
     @Override
     public void customize(D d, T t) {
+        getMapperFactory().classMap(d.getClass(), t.getClass())
+                .mapNulls(false).mapNullsInReverse(false)
+                .byDefault()
+                .register();
     }
 
     /**

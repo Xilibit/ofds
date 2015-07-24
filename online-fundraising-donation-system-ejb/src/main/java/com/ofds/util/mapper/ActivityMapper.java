@@ -37,7 +37,13 @@ public class ActivityMapper implements Mapper<Activity, ActivityDTO> {
 
     @Override
     public void customize(ActivityDTO activityDTO, Activity activity) {
-
+        getMapperFactory().classMap(activityDTO.getClass(), activity.getClass())
+                .mapNulls(false).mapNullsInReverse(false)
+                .fieldMap("activityId", "idACTIVITY").mapNulls(false).mapNullsInReverse(false).add()
+                .field("donationDTOCollection", "donationCollection")
+                .field("causeDTOCollection", "causeCollection")
+                .byDefault()
+                .register();
     }
 
     @Override

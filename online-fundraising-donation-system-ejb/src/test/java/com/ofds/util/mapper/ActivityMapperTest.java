@@ -47,7 +47,7 @@ public class ActivityMapperTest extends AbstractMapperTest {
         fundraiser.setFundraiserCity("KI");
         fundraiser.setFundraiserIndex("9713");
         fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserIsAdmin(true);
         fundraiser.setFundraiserWallet(1010.00);
 
         Charity charity = new Charity();
