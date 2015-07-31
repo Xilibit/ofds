@@ -16,6 +16,21 @@ public interface Mapper<T extends Serializable, D extends Serializable> {
     MapperFactory getMapperFactory();
 
     /**
+     * Method is to get the customized MapperFactory for the mapping from an Entity to the DTO.
+     * @param t - an Entity.
+     * @param d - the DTO.
+     */
+    void customize(T t, Class<D> d);
+
+    /**
+     * Method is to get the customized MapperFactory for the mapping from the DTO to an Entity.
+     * @param t - an Entity.
+     * @param d - the DTO.
+     */
+    void customize(D d, T t);
+
+
+    /**
      * The method is to convert an Entity to the DTO.
      * @param t - an Entity.
      * @param d - the DTO.

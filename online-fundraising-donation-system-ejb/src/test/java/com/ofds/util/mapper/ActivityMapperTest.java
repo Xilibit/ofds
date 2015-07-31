@@ -1,8 +1,9 @@
-package com.ofds.util;
+package com.ofds.util.mapper;
 
 import static org.hamcrest.Matchers.*;
 
 import com.ofds.entity.*;
+import com.ofds.util.AbstractMapperTest;
 import com.ofds.util.mapper.ActivityMapper;
 import com.ofds.util.person.dto.ActivityDTO;
 import org.jboss.arquillian.junit.Arquillian;
@@ -29,7 +30,6 @@ public class ActivityMapperTest extends AbstractMapperTest {
     public void getActivityMapper_existentActivityMapper_notNullMapperFactory() {
         Assert.assertThat(activityMapper, is(notNullValue()));
         Assert.assertThat(activityMapper.getMapperFactory(), is(notNullValue()));
-        Assert.assertThat(activityMapper.getMapperFactory(), is(notNullValue()));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ActivityMapperTest extends AbstractMapperTest {
         fundraiser.setFundraiserCity("KI");
         fundraiser.setFundraiserIndex("9713");
         fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
+        fundraiser.setFundraiserIsAdmin(true);
         fundraiser.setFundraiserWallet(1010.00);
 
         Charity charity = new Charity();
@@ -94,10 +94,15 @@ public class ActivityMapperTest extends AbstractMapperTest {
         activity.setDonationCollection(donations);
 
         ActivityDTO activityDTO = new ActivityDTO();
-        ActivityDTO activityDTO1 = activityMapper.fromEntityToDTO(activity, activityDTO);
+        activityMapper.customize(activity, ActivityDTO.class);
+        activityDTO = activityMapper.fromEntityToDTO(activity, activityDTO);
 
-        Assert.assertThat(activityDTO1, is(notNullValue()));
-        System.out.println(activityDTO1.toString());
+        Assert.assertThat(activityDTO, is(notNullValue()));
+        Assert.assertThat(activityDTO.getActivityId(), is(activity.getIdACTIVITY()));
+        Assert.assertThat(activityDTO.getCauseDTOCollection().size(), is(1));
+        Assert.assertThat(activityDTO.getDonationDTOCollection().size(), is(1));
+        Assert.assertThat(activityDTO.getFundraiserFundraiserEmail().getFundraiserCity(),
+                is(activity.getFundraiserFundraiserEmail().getFundraiserCity()));
     }
 
 }

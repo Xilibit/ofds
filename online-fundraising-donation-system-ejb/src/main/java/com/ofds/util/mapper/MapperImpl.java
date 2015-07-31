@@ -37,6 +37,32 @@ public abstract class MapperImpl<T extends Serializable, D extends Serializable>
     }
 
     /**
+     * Method is to get the customized MapperFactory for the mapping from an Entity to the DTO.
+     * @param t - an Entity.
+     * @param d - the DTO.
+     */
+    @Override
+    public void customize(T t, Class<D> d) {
+        getMapperFactory().classMap(t.getClass(), d)
+                .mapNulls(false).mapNullsInReverse(false)
+                .byDefault()
+                .register();
+    }
+
+    /**
+     * Method is to get the customized MapperFactory for the mapping from the DTO to an Entity.
+     * @param t - an Entity.
+     * @param d - the DTO.
+     */
+    @Override
+    public void customize(D d, T t) {
+        getMapperFactory().classMap(d.getClass(), t.getClass())
+                .mapNulls(false).mapNullsInReverse(false)
+                .byDefault()
+                .register();
+    }
+
+    /**
      * The method is to get Mapper.
      * @return - the Mapper object.
      */
