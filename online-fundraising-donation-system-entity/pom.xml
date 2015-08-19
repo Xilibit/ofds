@@ -12,8 +12,8 @@
     <artifactId>online-fundraising-donation-system-entity</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <glassfish.home.prefix>c:/Program Files</glassfish.home.prefix>
         <glassfish.executables.suffix>.bat</glassfish.executables.suffix>
         <glassfish.home>${glassfish.home.prefix}/glassfish4</glassfish.home>
@@ -58,7 +58,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>1.4.0</version>
                 <executions>
                     <execution>
                         <id>GlassfishResources</id>
