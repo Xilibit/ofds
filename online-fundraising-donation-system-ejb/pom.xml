@@ -124,16 +124,6 @@
 
         <dependency>
             <groupId>org.jboss.shrinkwrap.descriptors</groupId>
-            <artifactId>shrinkwrap-descriptors-api-javaee</artifactId>
-            <version>${shrinkwrapapi.descriptors.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
-            <artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
-            <version>${shrinkwrapapi.descriptors.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
             <artifactId>shrinkwrap-descriptors-api-jboss</artifactId>
             <version>${shrinkwrap.descriptors.version}</version>
         </dependency>
