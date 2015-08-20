@@ -46,6 +46,7 @@ public class AbstractMapperTest {
                 .addPackages(true, "ma.glasnost")
                 .addPackages(true, "com.thoughtworks")
                 .addPackages(true, "com.googlecode")
+                .addPackages(true, "javassist")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
