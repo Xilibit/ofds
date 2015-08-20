@@ -13,8 +13,36 @@
     <packaging>ejb</packaging>
 
     <properties>
+        <!-- Version of WildFly containers to use and download -->
+        <version.wildfly9-0>9.0.1.Final</version.wildfly9-0>
+        <!-- Arquillian versions -->
+        <arquillian.bom.version>1.1.8.Final</arquillian.bom.version>
+        <arquillian.wildfly.container>1.0.0.Alpha2</arquillian.wildfly.container>
+        <!-- WildFly Home -->
+        <wildfly9-0Home>${project.build.directory}/wildfly-${version.wildfly9-0}</wildfly9-0Home>
+        <!-- Shrinkwrap versions -->
+        <shrinkwrap.descriptors.version>2.0.0-alpha-6</shrinkwrap.descriptors.version>
+        <shrinkwrapapi.descriptors.version>2.0.0-alpha-6</shrinkwrapapi.descriptors.version>
+        <!-- orm and db versions -->
+        <!-- Following will be set as system properties -->
+        <statelessViews>false</statelessViews>
+        <jboss.socket.binding.port-offset>150</jboss.socket.binding.port-offset>
+        <jboss.management.native.port>9090</jboss.management.native.port>
+        <jvm.args.ip>-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv6Addresses=true</jvm.args.ip>
+        <arquillian.container.all.jvm.args>-Xms1024m -Xmx1024m -XX:MaxPermSize=512m -DstatelessViews=${statelessViews}</arquillian.container.all.jvm.args>
+        <arquillian.container.all.jvm.args.withIP>${arquillian.container.all.jvm.args} ${jvm.args.ip}</arquillian.container.all.jvm.args.withIP>
+        <arquillian.container.wildfly.9.0.1.Final.node0>127.0.0.1</arquillian.container.wildfly.9.0.1.Final.node0>
+        <arquillian.container.jbossas.9.0.1.Final.jvm.args>${arquillian.container.all.jvm.args.withIP}
+            -Djboss.bind.address=${arquillian.container.wildfly.9.0.1.Final.node0}
+            -Djboss.bind.address.management=${arquillian.container.wildfly.9.0.1.Final.node0}
+            -Djboss.bind.address.unsecure=${arquillian.container.wildfly.9.0.1.Final.node0}</arquillian.container.jbossas.9.0.1.Final.jvm.args>
+
         <hibernate-core-version>5.0.0.CR1</hibernate-core-version>
         <postgresql-jdbc-driver-version>9.4-1200-jdbc41</postgresql-jdbc-driver-version>
+
+        <!-- enable WS on EAP -->
+        <eap.ws.enabled>true</eap.ws.enabled>
+
     </properties>
 
     <dependencyManagement>
@@ -22,7 +50,7 @@
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
-                <version>1.1.8.Final</version>
+                <version>${arquillian.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -92,6 +120,57 @@
             <artifactId>validation-api</artifactId>
             <version>1.1.0.Final</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-api-javaee</artifactId>
+            <version>${shrinkwrapapi.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
+            <version>${shrinkwrapapi.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-api-jboss</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-impl-jboss</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-api-javaee</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-api-base</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-impl-base</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-gen</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-spi</artifactId>
+            <version>${shrinkwrap.descriptors.version}</version>
         </dependency>
 
         <!--Test dependencies-->
@@ -266,55 +345,22 @@
             </properties>
             <dependencies>
                 <dependency>
-                    <groupId>io.undertow</groupId>
-                    <artifactId>undertow-websockets-jsr</artifactId>
-                    <version>1.2.10.Final</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-client</artifactId>
-                    <version>3.0.11.Final</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-jaxb-provider</artifactId>
-                    <version>3.0.11.Final</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-json-p-provider</artifactId>
-                    <version>3.0.11.Final</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.spec</groupId>
-                    <artifactId>jboss-javaee-6.0</artifactId>
-                    <version>1.0.0.Final</version>
-                    <type>pom</type>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
                     <groupId>org.wildfly.arquillian</groupId>
                     <artifactId>wildfly-arquillian-container-managed</artifactId>
                     <version>1.0.1.Final</version>
                     <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.arquillian.protocol</groupId>
-                    <artifactId>arquillian-protocol-servlet</artifactId>
-                    <scope>test</scope>
+                    <!--<exclusions>
+                        <exclusion>
+                            <groupId>org.jboss.slf4j</groupId>
+                            <artifactId>slf4j-jboss-logmanager</artifactId>
+                        </exclusion>
+                    </exclusions>-->
                 </dependency>
             </dependencies>
-            <!-- This optional build configuration downloads and extracts JBoss AS automatically -->
-            <!-- Remove it if you want to use an existing installation defined by the JBOSS_HOME environment variable -->
             <build>
                 <plugins>
                     <plugin>
                         <artifactId>maven-dependency-plugin</artifactId>
-                        <version>2.10</version>
                         <executions>
                             <execution>
                                 <id>unpack</id>
@@ -327,15 +373,24 @@
                                         <artifactItem>
                                             <groupId>org.wildfly</groupId>
                                             <artifactId>wildfly-dist</artifactId>
-                                            <version>9.0.1.Final</version>
+                                            <version>${version.wildfly9-0}</version>
                                             <type>zip</type>
                                             <overWrite>false</overWrite>
-                                            <outputDirectory>target</outputDirectory>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.18.1</version>
+                        <configuration>
+                            <environmentVariables>
+                                <JBOSS_HOME>${wildfly9-0Home}</JBOSS_HOME>
+                            </environmentVariables>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -367,9 +422,16 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
                 <configuration>
-                    <environmentVariables>
-                        <JBOSS_HOME>${project.build.directory}/wildfly-9.0.1.Final</JBOSS_HOME>
-                    </environmentVariables>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <systemPropertyVariables>
+                        <project.build.directory>${project.build.directory}</project.build.directory>
+                        <arquillian.container.wildfly.9.0.1.Final.node0>${arquillian.container.wildfly.9.0.1.Final.node0}</arquillian.container.wildfly.9.0.1.Final.node0>
+                        <arquillian.container.jbossas.9.0.1.Final.jvm.args>${arquillian.container.jbossas.9.0.1.Final.jvm.args}</arquillian.container.jbossas.9.0.1.Final.jvm.args>
+                        <arquillian.container.all.jvm.args>${arquillian.container.all.jvm.args}</arquillian.container.all.jvm.args>
+                        <logging.props.dir>${project.basedir}/src/test/resources</logging.props.dir>
+                        <project.build.directory>${project.build.directory}</project.build.directory>
+                        <eap.ws.enabled>${eap.ws.enabled}</eap.ws.enabled>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
             <plugin>
