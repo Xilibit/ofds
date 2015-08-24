@@ -2,6 +2,9 @@ package com.ofds.entity;
 
 import com.ofds.entity.base.BaseEntity;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -37,8 +40,11 @@ import javax.xml.bind.annotation.XmlTransient;
             "WHERE d.donationDate = :donationDate"),
     @NamedQuery(name = "Donation.findByFundraiserEmail", query = "SELECT d FROM Donation d " +
             "WHERE d.fundraiserFundraiserEmail.fundraiserEmail = :fundraiserEmail")})
+
 public class Donation extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
@@ -129,29 +135,58 @@ public class Donation extends BaseEntity implements Serializable {
 
     public void setDonationIsAnonym(Boolean donationIsAnonym) {
         this.donationIsAnonym = donationIsAnonym;
-    }   
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idDONATION != null ? idDONATION.hashCode() : 0);
-        return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Donation)) {
-            return false;
-        }
-        Donation other = (Donation) object;
-        return !((this.idDONATION == null && other.idDONATION != null) || (this.idDONATION != null
-                && !this.idDONATION.equals(other.idDONATION)));
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Donation donation = (Donation) o;
+
+        return getIdDONATION().equals(donation.getIdDONATION())
+                && getFundraiserFundraiserEmail().equals(donation.getFundraiserFundraiserEmail());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getIdDONATION().hashCode();
+        result = 31 * result + getFundraiserFundraiserEmail().hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.ofds.entity.Donation[ idDONATION=" + idDONATION + " ]";
+        return "Donation{" +
+                "idDONATION=" + idDONATION +
+                ", donationAmount=" + donationAmount +
+                ", donationDate=" + donationDate +
+                ", donationIsAnonym=" + donationIsAnonym +
+                ", activityCollection=" + activityCollection +
+                ", causeCollection=" + causeCollection +
+                ", fundraiserFundraiserEmail=" + fundraiserFundraiserEmail +
+                '}';
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to write.
+     * @throws IOException
+     */
+    private void writeObject(ObjectOutputStream stream)
+            throws IOException {
+        stream.defaultWriteObject();
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to read.
+     * @throws IOException
+     */
+    private void readObject(ObjectInputStream stream)
+            throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
     }
     
 }

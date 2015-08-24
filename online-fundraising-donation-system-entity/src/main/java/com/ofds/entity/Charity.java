@@ -2,6 +2,9 @@ package com.ofds.entity;
 
 import com.ofds.entity.base.BaseEntity;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -54,8 +57,11 @@ import javax.xml.bind.annotation.XmlTransient;
             "WHERE c.charityStreet = :charityStreet"),
     @NamedQuery(name = "Charity.findByCharityIndex", query = "SELECT c FROM Charity c " +
             "WHERE c.charityIndex = :charityIndex")})
+
 public class Charity extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Id    
     @Basic(optional = false)
     @NotNull
@@ -233,26 +239,61 @@ public class Charity extends BaseEntity implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (charityEmail != null ? charityEmail.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Charity charity = (Charity) o;
+
+        return getCharityEmail().equals(charity.getCharityEmail())
+                && getCharityName().equals(charity.getCharityName())
+                && getCharityRegistryName().equals(charity.getCharityRegistryName());
+
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Charity)) {
-            return false;
-        }
-        Charity other = (Charity) object;
-        return !((this.charityEmail == null && other.charityEmail != null)
-                || (this.charityEmail != null && !this.charityEmail.equals(other.charityEmail)));
+    public int hashCode() {
+        int result = getCharityEmail().hashCode();
+        result = 31 * result + getCharityName().hashCode();
+        result = 31 * result + getCharityRegistryName().hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.ofds.entity.Charity[ charityEmail=" + charityEmail + " ]";
+        return "Charity{" +
+                "charityEmail='" + charityEmail + '\'' +
+                ", charityName='" + charityName + '\'' +
+                ", charityRegistryName='" + charityRegistryName + '\'' +
+                ", charityDateOfEstablishment=" + charityDateOfEstablishment +
+                ", charityShortDescription='" + charityShortDescription + '\'' +
+                ", charityCountry='" + charityCountry + '\'' +
+                ", charityCity='" + charityCity + '\'' +
+                ", charityStreet='" + charityStreet + '\'' +
+                ", charityIndex='" + charityIndex + '\'' +
+                ", groupsCollection=" + groupsCollection +
+                ", causeCollection=" + causeCollection +
+                '}';
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to write.
+     * @throws IOException
+     */
+    private void writeObject(ObjectOutputStream stream)
+            throws IOException {
+        stream.defaultWriteObject();
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to read.
+     * @throws IOException
+     */
+    private void readObject(ObjectInputStream stream)
+            throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
     }
     
 }

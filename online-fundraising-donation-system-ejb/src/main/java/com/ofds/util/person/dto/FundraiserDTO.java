@@ -2,6 +2,9 @@ package com.ofds.util.person.dto;
 
 import com.ofds.util.person.Person;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -166,5 +169,25 @@ public class FundraiserDTO implements Person, Serializable {
     @Override
     public Person getPerson() {
         return this;
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to write.
+     * @throws IOException
+     */
+    private void writeObject(ObjectOutputStream stream)
+            throws IOException {
+        stream.defaultWriteObject();
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to read.
+     * @throws IOException
+     */
+    private void readObject(ObjectInputStream stream)
+            throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
     }
 }

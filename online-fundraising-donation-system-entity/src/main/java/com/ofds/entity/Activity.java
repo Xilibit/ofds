@@ -2,6 +2,9 @@ package com.ofds.entity;
 
 import com.ofds.entity.base.BaseEntity;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -161,26 +164,56 @@ public class Activity extends BaseEntity implements Serializable{
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idACTIVITY != null ? idACTIVITY.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Activity activity = (Activity) o;
+
+        return getIdACTIVITY().equals(activity.getIdACTIVITY())
+                && getActivityName().equals(activity.getActivityName());
+
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Activity)) {
-            return false;
-        }
-        Activity other = (Activity) object;
-        return !((this.idACTIVITY == null && other.idACTIVITY != null)
-                || (this.idACTIVITY != null && !this.idACTIVITY.equals(other.idACTIVITY)));
+    public int hashCode() {
+        int result = getIdACTIVITY().hashCode();
+        result = 31 * result + getActivityName().hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.ofds.entity.Activity[ idACTIVITY=" + idACTIVITY + " ]";
+        return "Activity{" +
+                "idACTIVITY=" + idACTIVITY +
+                ", activityName='" + activityName + '\'' +
+                ", activityShortDescription='" + activityShortDescription + '\'' +
+                ", activityInsertTs=" + activityInsertTs +
+                ", activityTerminationDate=" + activityTerminationDate +
+                ", donationCollection=" + donationCollection +
+                ", causeCollection=" + causeCollection +
+                ", fundraiserFundraiserEmail=" + fundraiserFundraiserEmail +
+                '}';
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to write.
+     * @throws IOException
+     */
+    private void writeObject(ObjectOutputStream stream)
+            throws IOException {
+        stream.defaultWriteObject();
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to read.
+     * @throws IOException
+     */
+    private void readObject(ObjectInputStream stream)
+            throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
     }
     
 }

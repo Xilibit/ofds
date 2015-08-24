@@ -2,6 +2,9 @@ package com.ofds.entity;
 
 import com.ofds.entity.base.BaseEntity;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -49,8 +52,11 @@ import javax.xml.bind.annotation.XmlTransient;
             "WHERE f.fundraiserStreet = :fundraiserStreet"),
     @NamedQuery(name = "Fundraiser.findByFundraiserIndex", query = "SELECT f FROM Fundraiser f " +
             "WHERE f.fundraiserIndex = :fundraiserIndex")})
+
 public class Fundraiser extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
     @NotNull
@@ -239,26 +245,65 @@ public class Fundraiser extends BaseEntity implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (fundraiserEmail != null ? fundraiserEmail.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Fundraiser that = (Fundraiser) o;
+
+        return getFundraiserEmail().equals(that.getFundraiserEmail())
+                && !(getFundraiserFirstName() != null ? !getFundraiserFirstName().equals(that.getFundraiserFirstName())
+                : that.getFundraiserFirstName() != null)
+                && !(getFundraiserLastName() != null ? !getFundraiserLastName().equals(that.getFundraiserLastName())
+                : that.getFundraiserLastName() != null);
+
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Fundraiser)) {
-            return false;
-        }
-        Fundraiser other = (Fundraiser) object;
-        return !((this.fundraiserEmail == null && other.fundraiserEmail != null)
-                || (this.fundraiserEmail != null && !this.fundraiserEmail.equals(other.fundraiserEmail)));
+    public int hashCode() {
+        int result = getFundraiserEmail().hashCode();
+        result = 31 * result + (getFundraiserFirstName() != null ? getFundraiserFirstName().hashCode() : 0);
+        result = 31 * result + (getFundraiserLastName() != null ? getFundraiserLastName().hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.ofds.entity.Fundraiser[ fundraiserEmail=" + fundraiserEmail + " ]";
+        return "Fundraiser{" +
+                "fundraiserEmail='" + fundraiserEmail + '\'' +
+                ", fundraiserFirstName='" + fundraiserFirstName + '\'' +
+                ", fundraiserLastName='" + fundraiserLastName + '\'' +
+                ", fundraiserDateOfBirth=" + fundraiserDateOfBirth +
+                ", fundraiserIsAdmin=" + fundraiserIsAdmin +
+                ", fundraiserCountry='" + fundraiserCountry + '\'' +
+                ", fundraiserCity='" + fundraiserCity + '\'' +
+                ", fundraiserStreet='" + fundraiserStreet + '\'' +
+                ", fundraiserIndex='" + fundraiserIndex + '\'' +
+                ", fundraiserWallet=" + fundraiserWallet +
+                ", groupsCollection=" + groupsCollection +
+                ", donationCollection=" + donationCollection +
+                ", activityCollection=" + activityCollection +
+                '}';
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to write.
+     * @throws IOException
+     */
+    private void writeObject(ObjectOutputStream stream)
+            throws IOException {
+        stream.defaultWriteObject();
+    }
+
+    /**
+     * Avoid the critical issue reported by Sonar.
+     * @param stream - the stream to read.
+     * @throws IOException
+     */
+    private void readObject(ObjectInputStream stream)
+            throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
     }
     
 }
