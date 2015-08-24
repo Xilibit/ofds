@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Groups extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 955555123123124823L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,19 +45,21 @@ public class Groups extends BaseEntity implements Serializable {
     @Column(name = "GROUP_ID")
     @XmlAttribute(required=true)
     private Integer groupId;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "GROUP_USER_ID")
     @XmlAttribute(required=true)
     private String groupUserId;
+
     @ManyToMany(mappedBy = "groupsCollection")    
     private Collection<Charity> charityCollection;
+
     @ManyToMany(mappedBy = "groupsCollection")
     private Collection<Fundraiser> fundraiserCollection;
 
     public Groups() {
-
     }
 
     public Groups(Integer groupId) {

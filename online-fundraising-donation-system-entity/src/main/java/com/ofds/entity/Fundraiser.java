@@ -55,7 +55,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Fundraiser extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 9123123123123124823L;
 
     @Id
     @Basic(optional = false)
@@ -63,52 +63,65 @@ public class Fundraiser extends BaseEntity implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "FUNDRAISER_EMAIL")
     private String fundraiserEmail;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "FUNDRAISER_FIRST_NAME")
     private String fundraiserFirstName;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "FUNDRAISER_LAST_NAME")
     private String fundraiserLastName;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FUNDRAISER_DATE_OF_BIRTH")
     @Temporal(TemporalType.DATE)
     private Date fundraiserDateOfBirth;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "FUNDRAISER_IS_ADMIN")
     private boolean fundraiserIsAdmin;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "FUNDRAISER_PASSWORD")
     private String fundraiserPassword;
+
     @Size(max = 100)
     @Column(name = "FUNDRAISER_COUNTRY")
     private String fundraiserCountry;
+
     @Size(max = 100)
     @Column(name = "FUNDRAISER_CITY")
     private String fundraiserCity;
+
     @Size(max = 100)
     @Column(name = "FUNDRAISER_STREET")
     private String fundraiserStreet;
+
     @Size(max = 10)
     @Column(name = "FUNDRAISER_INDEX")
     private String fundraiserIndex;
+
     @Column(name = "FUNDRAISER_WALLET")
     private Double fundraiserWallet;
+
     @JoinTable(name = "fundraiser_has_groups", joinColumns = {
         @JoinColumn(name = "FUNDRAISER_FUNDRAISER_EMAIL", referencedColumnName = "FUNDRAISER_EMAIL")},
             inverseJoinColumns = {
         @JoinColumn(name = "GROUPS_GROUP_ID", referencedColumnName = "GROUP_ID")})
     @ManyToMany
     private Collection<Groups> groupsCollection;
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "fundraiserFundraiserEmail")
     private Collection<Donation> donationCollection;
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "fundraiserFundraiserEmail")
     private Collection<Activity> activityCollection;
 

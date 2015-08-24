@@ -14,6 +14,8 @@ import javax.validation.constraints.Future;
  */
 public class ActivityDTO implements Serializable {
 
+    private static final long serialVersionUID = 6654333665566133231L;
+
     @NotNull
     private Integer activityId;
 

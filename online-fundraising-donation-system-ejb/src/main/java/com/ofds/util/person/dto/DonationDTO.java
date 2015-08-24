@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
  */
 public class DonationDTO implements Serializable {
 
+    private static final long serialVersionUID = 8877105556600177727L;
+
     @NotNull
     private Integer donationId;
 

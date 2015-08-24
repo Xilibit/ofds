@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
  */
 public class GroupsDTO implements Serializable {
 
+    private static final long serialVersionUID = 9177100123000124727L;
+
     @NotNull
     private Integer groupId;
 
@@ -19,6 +21,7 @@ public class GroupsDTO implements Serializable {
     private String groupUserId;
 
     private Collection<CharityDTO> charityDTOCollection;
+
     private Collection<FundraiserDTO> fundraiserDTOCollection;
 
     public Integer getGroupId() {

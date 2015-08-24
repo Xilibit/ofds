@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
  */
 public class FundraiserDTO implements Person, Serializable {
 
+    private static final long serialVersionUID = 8877100666600177727L;
+
     @NotNull
     private String fundraiserEmail;
 

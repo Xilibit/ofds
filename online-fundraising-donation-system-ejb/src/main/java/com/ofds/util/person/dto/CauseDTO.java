@@ -14,6 +14,8 @@ import javax.validation.constraints.Future;
  */
 public class CauseDTO implements Serializable {
 
+    private static final long serialVersionUID = 7677333664500133327L;
+
     @NotNull
     private Integer causeId;
 

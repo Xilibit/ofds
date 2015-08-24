@@ -60,7 +60,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Charity extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 9155523123123155823L;
 
     @Id    
     @Basic(optional = false)
@@ -69,57 +69,68 @@ public class Charity extends BaseEntity implements Serializable {
     @Column(name = "CHARITY_EMAIL")
     @XmlAttribute(required=true)
     private String charityEmail;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "CHARITY_NAME")
     @XmlElement(required=true)
     private String charityName;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "CHARITY_REGISTRY_NAME")
     @XmlElement(required=true)
     private String charityRegistryName;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "CHARITY_DATE_OF_ESTABLISHMENT")
     @Temporal(TemporalType.DATE)
     @XmlElement(required=true)
     private Date charityDateOfEstablishment;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1000)
     @Column(name = "CHARITY_SHORT_DESCRIPTION")
     @XmlElement(required=true)
     private String charityShortDescription;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "CHARITY_PASSWORD")
     @XmlElement(required=true)
     private String charityPassword;
+
     @Size(max = 100)
     @Column(name = "CHARITY_COUNTRY")
     @XmlElement(required=true)
     private String charityCountry;
+
     @Size(max = 100)
     @Column(name = "CHARITY_CITY")
     @XmlElement(required=true)
     private String charityCity;
+
     @Size(max = 100)
     @Column(name = "CHARITY_STREET")
     @XmlElement(required=true)
     private String charityStreet;
+
     @Size(max = 10)
     @Column(name = "CHARITY_INDEX")
     @XmlElement(required=true)
     private String charityIndex;
+
     @JoinTable(name = "charity_has_groups", joinColumns = {
         @JoinColumn(name = "CHARITY_CHARITY_EMAIL", referencedColumnName = "CHARITY_EMAIL")}, inverseJoinColumns = {
         @JoinColumn(name = "GROUPS_GROUP_ID", referencedColumnName = "GROUP_ID")})
     @ManyToMany
     private Collection<Groups> groupsCollection;
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "charityCharityEmail")    
     private Collection<Cause> causeCollection;
 

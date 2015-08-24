@@ -16,6 +16,8 @@ import javax.validation.constraints.Past;
  */
 public class CharityDTO implements Person, Serializable {
 
+    private static final long serialVersionUID = 8277100222200122227L;
+
     @NotNull
     private String charityEmail;
 

@@ -48,40 +48,48 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Cause extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 9113123123333124223L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "idCAUSE")
     private Integer idCAUSE;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "CAUSE_NAME")
     private String causeName;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1000)
     @Column(name = "CAUSE_SHORT_DESCRIPTION")
     private String causeShortDescription;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "CAUSE_INSERT_TS")
     @Temporal(TemporalType.DATE)
     private Date causeInsertTs;
+
     @Column(name = "CAUSE_TERMINATION_DATE")
     @Temporal(TemporalType.DATE)
     private Date causeTerminationDate;
+
     @Column(name = "CAUSE_PERCENTAGE")
     private String causePercentage;
+
     @JoinTable(name = "cause_has_donation", joinColumns = {
         @JoinColumn(name = "CAUSE_idCAUSE", referencedColumnName = "idCAUSE")}, inverseJoinColumns = {
         @JoinColumn(name = "DONATION_idDONATION", referencedColumnName = "idDONATION")})
     @ManyToMany
     private Collection<Donation> donationCollection;
+
     @ManyToMany(mappedBy = "causeCollection", cascade = CascadeType.PERSIST)
     private Collection<Activity> activityCollection;
+
     @JoinColumn(name = "CHARITY_CHARITY_EMAIL", referencedColumnName = "CHARITY_EMAIL")
     @ManyToOne(cascade = CascadeType.PERSIST, optional = false)
     private Charity charityCharityEmail;

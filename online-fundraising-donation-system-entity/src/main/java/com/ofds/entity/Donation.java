@@ -43,26 +43,32 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Donation extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 9123123123666624823L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "idDONATION")
     private Integer idDONATION;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "DONATION_AMOUNT")
     private double donationAmount;
+
     @Column(name = "DONATION_DATE")
     @Temporal(TemporalType.DATE)
     private Date donationDate;
+
     @Column(name = "DONATION_IS_ANONYM")
     private Boolean donationIsAnonym;
+
     @ManyToMany(mappedBy = "donationCollection")
     private Collection<Activity> activityCollection;
+
     @ManyToMany(mappedBy = "donationCollection")
     private Collection<Cause> causeCollection;
+
     @JoinColumn(name = "FUNDRAISER_FUNDRAISER_EMAIL", referencedColumnName = "FUNDRAISER_EMAIL")
     @ManyToOne(optional = true)
     private Fundraiser fundraiserFundraiserEmail;

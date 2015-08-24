@@ -44,41 +44,50 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Activity.findByActivityTerminationDate", query = "SELECT a FROM Activity a " +
             "WHERE a.activityTerminationDate = :activityTerminationDate")})
 
-public class Activity extends BaseEntity implements Serializable{
-    private static final long serialVersionUID = 1L;
+public class Activity extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = 9177123123133124777L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "idACTIVITY")
     private Integer idACTIVITY;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "ACTIVITY_NAME")
     private String activityName;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1000)
     @Column(name = "ACTIVITY_SHORT_DESCRIPTION")
     private String activityShortDescription;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "ACTIVITY_INSERT_TS")
     @Temporal(TemporalType.DATE)
     private Date activityInsertTs;
+
     @Column(name = "ACTIVITY_TERMINATION_DATE")
     @Temporal(TemporalType.DATE)
     private Date activityTerminationDate;
+
     @JoinTable(name = "activity_has_donation", joinColumns = {
         @JoinColumn(name = "ACTIVITY_idACTIVITY", referencedColumnName = "idACTIVITY")}, inverseJoinColumns = {
         @JoinColumn(name = "DONATION_idDONATION", referencedColumnName = "idDONATION")})
     @ManyToMany
     private Collection<Donation> donationCollection;
+
     @JoinTable(name = "activity_has_cause", joinColumns = {
         @JoinColumn(name = "ACTIVITY_idACTIVITY", referencedColumnName = "idACTIVITY")}, inverseJoinColumns = {
         @JoinColumn(name = "CAUSE_idCAUSE", referencedColumnName = "idCAUSE")})
     @ManyToMany
     private Collection<Cause> causeCollection;
+
     @JoinColumn(name = "FUNDRAISER_FUNDRAISER_EMAIL", referencedColumnName = "FUNDRAISER_EMAIL")
     @ManyToOne(optional = false)
     private Fundraiser fundraiserFundraiserEmail;
