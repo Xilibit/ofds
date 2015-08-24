@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Groups.findByGroupUserId", query = "SELECT g FROM Groups g " +
             "WHERE g.groupUserId = :groupUserId")})
 
-public class Groups extends BaseEntity implements Serializable {
+public class Groups implements BaseEntity, Serializable {
 
     private static final long serialVersionUID = 955555123123124823L;
 

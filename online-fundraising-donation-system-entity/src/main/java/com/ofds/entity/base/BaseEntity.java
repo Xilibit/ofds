@@ -1,4 +1,4 @@
 package com.ofds.entity.base;
 
-public class BaseEntity {
+public interface BaseEntity {
 }

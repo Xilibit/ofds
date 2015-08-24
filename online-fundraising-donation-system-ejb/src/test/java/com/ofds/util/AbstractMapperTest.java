@@ -20,8 +20,22 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.After;
+import org.junit.Before;
+
+import javax.inject.Inject;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 public class AbstractMapperTest {
+
+    public AbstractMapperTest() {
+        super();
+    }
+
+    @Inject
+    protected UserTransaction userTransaction;
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -48,6 +62,16 @@ public class AbstractMapperTest {
                 .addPackages(true, "com.googlecode")
                 .addPackages(true, "javassist")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+    }
+
+    @Before
+    public void setUp() throws NotSupportedException, SystemException {
+        this.userTransaction.begin();
+    }
+
+    @After
+    public void tearDown() throws IllegalStateException, SecurityException, SystemException {
+        this.userTransaction.rollback();
     }
 
 }

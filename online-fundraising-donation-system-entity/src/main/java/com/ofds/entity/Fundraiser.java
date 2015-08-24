@@ -53,7 +53,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Fundraiser.findByFundraiserIndex", query = "SELECT f FROM Fundraiser f " +
             "WHERE f.fundraiserIndex = :fundraiserIndex")})
 
-public class Fundraiser extends BaseEntity implements Serializable {
+public class Fundraiser implements BaseEntity, Serializable {
 
     private static final long serialVersionUID = 9123123123123124823L;
 
@@ -120,10 +120,10 @@ public class Fundraiser extends BaseEntity implements Serializable {
     private Collection<Groups> groupsCollection;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "fundraiserFundraiserEmail")
-    private Collection<Donation> donationCollection;
+    private Collection<Donation> fundraisersDonationCollection;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "fundraiserFundraiserEmail")
-    private Collection<Activity> activityCollection;
+    private Collection<Activity> fundraisersActivityCollection;
 
     public Fundraiser() {
     }
@@ -240,36 +240,35 @@ public class Fundraiser extends BaseEntity implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Donation> getDonationCollection() {
-        return donationCollection;
+    public Collection<Donation> getFundraisersDonationCollection() {
+        return fundraisersDonationCollection;
     }
 
-    public void setDonationCollection(Collection<Donation> donationCollection) {
-        this.donationCollection = donationCollection;
+    public void setFundraisersDonationCollection(Collection<Donation> donationCollection) {
+        this.fundraisersDonationCollection = donationCollection;
     }
 
     @XmlTransient
-    public Collection<Activity> getActivityCollection() {
-        return activityCollection;
+    public Collection<Activity> getFundraisersActivityCollection() {
+        return fundraisersActivityCollection;
     }
 
-    public void setActivityCollection(Collection<Activity> activityCollection) {
-        this.activityCollection = activityCollection;
+    public void setFundraisersActivityCollection(Collection<Activity> activityCollection) {
+        this.fundraisersActivityCollection = activityCollection;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Fundraiser that = (Fundraiser) o;
 
         return getFundraiserEmail().equals(that.getFundraiserEmail())
                 && !(getFundraiserFirstName() != null ? !getFundraiserFirstName().equals(that.getFundraiserFirstName())
-                : that.getFundraiserFirstName() != null)
-                && !(getFundraiserLastName() != null ? !getFundraiserLastName().equals(that.getFundraiserLastName())
-                : that.getFundraiserLastName() != null);
-
+                : that.getFundraiserFirstName() != null);
     }
 
     @Override
@@ -294,8 +293,8 @@ public class Fundraiser extends BaseEntity implements Serializable {
                 ", fundraiserIndex='" + fundraiserIndex + '\'' +
                 ", fundraiserWallet=" + fundraiserWallet +
                 ", groupsCollection=" + groupsCollection +
-                ", donationCollection=" + donationCollection +
-                ", activityCollection=" + activityCollection +
+                ", donationCollection=" + fundraisersDonationCollection +
+                ", activityCollection=" + fundraisersActivityCollection +
                 '}';
     }
 

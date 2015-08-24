@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Activity.findByActivityTerminationDate", query = "SELECT a FROM Activity a " +
             "WHERE a.activityTerminationDate = :activityTerminationDate")})
 
-public class Activity extends BaseEntity implements Serializable {
+public class Activity implements BaseEntity, Serializable {
 
     private static final long serialVersionUID = 9177123123133124777L;
 

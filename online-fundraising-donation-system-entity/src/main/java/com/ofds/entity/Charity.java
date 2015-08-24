@@ -58,7 +58,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Charity.findByCharityIndex", query = "SELECT c FROM Charity c " +
             "WHERE c.charityIndex = :charityIndex")})
 
-public class Charity extends BaseEntity implements Serializable {
+public class Charity implements BaseEntity, Serializable {
 
     private static final long serialVersionUID = 9155523123123155823L;
 

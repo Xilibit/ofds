@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Donation.findByFundraiserEmail", query = "SELECT d FROM Donation d " +
             "WHERE d.fundraiserFundraiserEmail.fundraiserEmail = :fundraiserEmail")})
 
-public class Donation extends BaseEntity implements Serializable {
+public class Donation implements BaseEntity, Serializable {
 
     private static final long serialVersionUID = 9123123123666624823L;
 

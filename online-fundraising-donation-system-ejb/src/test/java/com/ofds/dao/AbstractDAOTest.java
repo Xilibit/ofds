@@ -1,14 +1,9 @@
 package com.ofds.dao;
 
 import com.ofds.dao.impl.FundraiserDAOImpl;
-import com.ofds.entity.Activity;
-import com.ofds.entity.Donation;
 import com.ofds.entity.Fundraiser;
-import com.ofds.entity.Groups;
 import com.ofds.entity.base.BaseEntity;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -16,6 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 
 import javax.inject.Inject;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 public class AbstractDAOTest {
@@ -38,16 +35,12 @@ public class AbstractDAOTest {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws NotSupportedException, SystemException {
         this.userTransaction.begin();
     }
 
     @After
-    public void tearDown() throws Exception {
-        try {
-            this.userTransaction.rollback();
-        } catch (Exception e) {
-            throw new Exception(e);
-        }
+    public void tearDown() throws IllegalStateException, SecurityException, SystemException {
+        this.userTransaction.rollback();
     }
 }
