@@ -45,8 +45,8 @@ public class RegularFundraiserDecorator extends PersonRoleDecorator {
     private Collection<GroupsDTO> createRegularGroupsDTOCollection() {
         GroupsDTO groupsDTO = new GroupsDTO();
         Collection<GroupsDTO> groupsDTOCollection = new ArrayList<>();
-        groupsDTO.setGroupId(PersonRole.FUNDRAISER.getId());
-        groupsDTO.setGroupUserId(PersonRole.FUNDRAISER.getValue());
+        groupsDTO.setGroupDTOId(PersonRole.FUNDRAISER.getId());
+        groupsDTO.setGroupDTOUserId(PersonRole.FUNDRAISER.getValue());
         groupsDTOCollection.add(groupsDTO);
         return groupsDTOCollection;
     }

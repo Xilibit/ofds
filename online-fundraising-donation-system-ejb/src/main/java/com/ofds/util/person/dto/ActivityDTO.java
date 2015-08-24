@@ -20,17 +20,17 @@ public class ActivityDTO implements Serializable {
     private Integer activityId;
 
     @NotNull
-    private String activityName;
+    private String activityDTOName;
 
     @NotNull
-    private String activityShortDescription;
+    private String activityDTOShortDescription;
 
     @NotNull
-    private Date activityInsertTs;
+    private Date activityDTOInsertTs;
 
     @NotNull
     @Future
-    private Date activityTerminationDate;
+    private Date activityDTOTerminationDate;
 
     private Collection<DonationDTO> donationDTOCollection;
 
@@ -47,36 +47,36 @@ public class ActivityDTO implements Serializable {
         this.activityId = activityId;
     }
 
-    public String getActivityName() {
-        return activityName;
+    public String getActivityDTOName() {
+        return activityDTOName;
     }
 
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
+    public void setActivityDTOName(String activityDTOName) {
+        this.activityDTOName = activityDTOName;
     }
 
-    public String getActivityShortDescription() {
-        return activityShortDescription;
+    public String getActivityDTOShortDescription() {
+        return activityDTOShortDescription;
     }
 
-    public void setActivityShortDescription(String activityShortDescription) {
-        this.activityShortDescription = activityShortDescription;
+    public void setActivityDTOShortDescription(String activityDTOShortDescription) {
+        this.activityDTOShortDescription = activityDTOShortDescription;
     }
 
-    public Date getActivityInsertTs() {
-        return activityInsertTs;
+    public Date getActivityDTOInsertTs() {
+        return activityDTOInsertTs;
     }
 
-    public void setActivityInsertTs(Date activityInsertTs) {
-        this.activityInsertTs = activityInsertTs;
+    public void setActivityDTOInsertTs(Date activityDTOInsertTs) {
+        this.activityDTOInsertTs = activityDTOInsertTs;
     }
 
-    public Date getActivityTerminationDate() {
-        return activityTerminationDate;
+    public Date getActivityDTOTerminationDate() {
+        return activityDTOTerminationDate;
     }
 
-    public void setActivityTerminationDate(Date activityTerminationDate) {
-        this.activityTerminationDate = activityTerminationDate;
+    public void setActivityDTOTerminationDate(Date activityDTOTerminationDate) {
+        this.activityDTOTerminationDate = activityDTOTerminationDate;
     }
 
     public Collection<DonationDTO> getDonationDTOCollection() {
@@ -107,10 +107,10 @@ public class ActivityDTO implements Serializable {
     public String toString() {
         return "ActivityDTO{" +
                 "activityId=" + activityId +
-                ", activityName='" + activityName + '\'' +
-                ", activityShortDescription='" + activityShortDescription + '\'' +
-                ", activityInsertTs=" + activityInsertTs +
-                ", activityTerminationDate=" + activityTerminationDate +
+                ", activityDTOName='" + activityDTOName + '\'' +
+                ", activityDTOShortDescription='" + activityDTOShortDescription + '\'' +
+                ", activityDTOInsertTs=" + activityDTOInsertTs +
+                ", activityDTOTerminationDate=" + activityDTOTerminationDate +
                 ", donationDTOCollection=" + donationDTOCollection +
                 ", causeDTOCollection=" + causeDTOCollection +
                 ", fundraiserFundraiserEmail=" + fundraiserFundraiserEmail +

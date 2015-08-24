@@ -18,130 +18,131 @@ public class FundraiserDTO implements Person, Serializable {
     private static final long serialVersionUID = 8877100666600177727L;
 
     @NotNull
-    private String fundraiserEmail;
+    private String fundraiserDTOEmail;
 
     @NotNull
-    private String fundraiserFirstName;
+    private String fundraiserDTOFirstName;
 
     @NotNull
-    private String fundraiserLastName;
+    private String fundraiserDTOLastName;
 
     @NotNull
-    private Date fundraiserDateOfBirth;
+    private Date fundraiserDTODateOfBirth;
 
     @NotNull
-    private String fundraiserIsAdmin;
+    private String fundraiserDTOIsAdmin;
 
     @NotNull
-    private String fundraiserPassword;
+    private String fundraiserDTOPassword;
 
     @NotNull
-    private String fundraiserCountry;
+    private String fundraiserDTOCountry;
 
     @NotNull
-    private String fundraiserCity;
+    private String fundraiserDTOCity;
 
     @NotNull
-    private String fundraiserStreet;
+    private String fundraiserDTOStreet;
 
     @NotNull
-    private String fundraiserIndex;
+    private String fundraiserDTOIndex;
 
     @NotNull
-    private String fundraiserWallet;
+    private String fundraiserDTOWallet;
 
     @NotNull
     private Collection<GroupsDTO> groupsDTOCollection;
 
     private Collection<DonationDTO> donationDTOCollection;
+    
     private Collection<ActivityDTO> activityDTOCollection;
 
-    public String getFundraiserEmail() {
-        return fundraiserEmail;
+    public String getFundraiserDTOEmail() {
+        return fundraiserDTOEmail;
     }
 
-    public void setFundraiserEmail(String fundraiserEmail) {
-        this.fundraiserEmail = fundraiserEmail;
+    public void setFundraiserDTOEmail(String fundraiserDTOEmail) {
+        this.fundraiserDTOEmail = fundraiserDTOEmail;
     }
 
-    public String getFundraiserFirstName() {
-        return fundraiserFirstName;
+    public String getFundraiserDTOFirstName() {
+        return fundraiserDTOFirstName;
     }
 
-    public void setFundraiserFirstName(String fundraiserFirstName) {
-        this.fundraiserFirstName = fundraiserFirstName;
+    public void setFundraiserDTOFirstName(String fundraiserDTOFirstName) {
+        this.fundraiserDTOFirstName = fundraiserDTOFirstName;
     }
 
-    public String getFundraiserLastName() {
-        return fundraiserLastName;
+    public String getFundraiserDTOLastName() {
+        return fundraiserDTOLastName;
     }
 
-    public void setFundraiserLastName(String fundraiserLastName) {
-        this.fundraiserLastName = fundraiserLastName;
+    public void setFundraiserDTOLastName(String fundraiserDTOLastName) {
+        this.fundraiserDTOLastName = fundraiserDTOLastName;
     }
 
-    public Date getFundraiserDateOfBirth() {
-        return fundraiserDateOfBirth;
+    public Date getFundraiserDTODateOfBirth() {
+        return fundraiserDTODateOfBirth;
     }
 
-    public void setFundraiserDateOfBirth(Date fundraiserDateOfBirth) {
-        this.fundraiserDateOfBirth = fundraiserDateOfBirth;
+    public void setFundraiserDTODateOfBirth(Date fundraiserDTODateOfBirth) {
+        this.fundraiserDTODateOfBirth = fundraiserDTODateOfBirth;
     }
 
-    public String getFundraiserIsAdmin() {
-        return fundraiserIsAdmin;
+    public String getFundraiserDTOIsAdmin() {
+        return fundraiserDTOIsAdmin;
     }
 
-    public void setFundraiserIsAdmin(String fundraiserIsAdmin) {
-        this.fundraiserIsAdmin = fundraiserIsAdmin;
+    public void setFundraiserDTOIsAdmin(String fundraiserDTOIsAdmin) {
+        this.fundraiserDTOIsAdmin = fundraiserDTOIsAdmin;
     }
 
-    public String getFundraiserPassword() {
-        return fundraiserPassword;
+    public String getFundraiserDTOPassword() {
+        return fundraiserDTOPassword;
     }
 
-    public void setFundraiserPassword(String fundraiserPassword) {
-        this.fundraiserPassword = fundraiserPassword;
+    public void setFundraiserDTOPassword(String fundraiserDTOPassword) {
+        this.fundraiserDTOPassword = fundraiserDTOPassword;
     }
 
-    public String getFundraiserCountry() {
-        return fundraiserCountry;
+    public String getFundraiserDTOCountry() {
+        return fundraiserDTOCountry;
     }
 
-    public void setFundraiserCountry(String fundraiserCountry) {
-        this.fundraiserCountry = fundraiserCountry;
+    public void setFundraiserDTOCountry(String fundraiserDTOCountry) {
+        this.fundraiserDTOCountry = fundraiserDTOCountry;
     }
 
-    public String getFundraiserCity() {
-        return fundraiserCity;
+    public String getFundraiserDTOCity() {
+        return fundraiserDTOCity;
     }
 
-    public void setFundraiserCity(String fundraiserCity) {
-        this.fundraiserCity = fundraiserCity;
+    public void setFundraiserDTOCity(String fundraiserDTOCity) {
+        this.fundraiserDTOCity = fundraiserDTOCity;
     }
 
-    public String getFundraiserStreet() {
-        return fundraiserStreet;
+    public String getFundraiserDTOStreet() {
+        return fundraiserDTOStreet;
     }
 
-    public void setFundraiserStreet(String fundraiserStreet) {
-        this.fundraiserStreet = fundraiserStreet;
+    public void setFundraiserDTOStreet(String fundraiserDTOStreet) {
+        this.fundraiserDTOStreet = fundraiserDTOStreet;
     }
 
-    public String getFundraiserIndex() {
-        return fundraiserIndex;
+    public String getFundraiserDTOIndex() {
+        return fundraiserDTOIndex;
     }
 
-    public void setFundraiserIndex(String fundraiserIndex) {
-        this.fundraiserIndex = fundraiserIndex;
+    public void setFundraiserDTOIndex(String fundraiserDTOIndex) {
+        this.fundraiserDTOIndex = fundraiserDTOIndex;
     }
 
-    public String getFundraiserWallet() {
-        return fundraiserWallet;
+    public String getFundraiserDTOWallet() {
+        return fundraiserDTOWallet;
     }
 
-    public void setFundraiserWallet(String fundraiserWallet) {
-        this.fundraiserWallet = fundraiserWallet;
+    public void setFundraiserDTOWallet(String fundraiserDTOWallet) {
+        this.fundraiserDTOWallet = fundraiserDTOWallet;
     }
 
     public Collection<GroupsDTO> getGroupsDTOCollection() {

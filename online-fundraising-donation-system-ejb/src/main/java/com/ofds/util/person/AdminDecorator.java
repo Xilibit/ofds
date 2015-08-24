@@ -45,8 +45,8 @@ public class AdminDecorator extends PersonRoleDecorator {
     private Collection<GroupsDTO> createAdminGroupsDTOCollection() {
         GroupsDTO groupsDTO = new GroupsDTO();
         Collection<GroupsDTO> groupsDTOCollection = new ArrayList<>();
-        groupsDTO.setGroupId(PersonRole.ADMIN.getId());
-        groupsDTO.setGroupUserId(PersonRole.ADMIN.getValue());
+        groupsDTO.setGroupDTOId(PersonRole.ADMIN.getId());
+        groupsDTO.setGroupDTOUserId(PersonRole.ADMIN.getValue());
         groupsDTOCollection.add(groupsDTO);
         return groupsDTOCollection;
     }

@@ -4,7 +4,6 @@ import static org.hamcrest.Matchers.*;
 
 import com.ofds.entity.*;
 import com.ofds.util.AbstractMapperTest;
-import com.ofds.util.mapper.ActivityMapper;
 import com.ofds.util.person.dto.ActivityDTO;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;
@@ -101,8 +100,6 @@ public class ActivityMapperTest extends AbstractMapperTest {
         Assert.assertThat(activityDTO.getActivityId(), is(activity.getIdACTIVITY()));
         Assert.assertThat(activityDTO.getCauseDTOCollection().size(), is(1));
         Assert.assertThat(activityDTO.getDonationDTOCollection().size(), is(1));
-        Assert.assertThat(activityDTO.getFundraiserFundraiserEmail().getFundraiserCity(),
-                is(activity.getFundraiserFundraiserEmail().getFundraiserCity()));
     }
 
 }

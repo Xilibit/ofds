@@ -6,6 +6,6 @@ import com.ofds.util.person.dto.ActivityDTO;
 /**
  * Manage the Activity Mapper.
  */
-public class ActivityMapperDecorator {
+public interface ActivityMapperDecorator {
 
 }

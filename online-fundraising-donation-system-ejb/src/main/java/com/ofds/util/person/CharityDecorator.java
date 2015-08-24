@@ -45,8 +45,8 @@ public class CharityDecorator extends PersonRoleDecorator {
     private Collection<GroupsDTO> createCharityGroupsDTOCollection() {
         GroupsDTO groupsDTO = new GroupsDTO();
         Collection<GroupsDTO> groupsDTOCollection = new ArrayList<>();
-        groupsDTO.setGroupId(PersonRole.CHARITY.getId());
-        groupsDTO.setGroupUserId(PersonRole.CHARITY.getValue());
+        groupsDTO.setGroupDTOId(PersonRole.CHARITY.getId());
+        groupsDTO.setGroupDTOUserId(PersonRole.CHARITY.getValue());
         groupsDTOCollection.add(groupsDTO);
         return groupsDTOCollection;
     }

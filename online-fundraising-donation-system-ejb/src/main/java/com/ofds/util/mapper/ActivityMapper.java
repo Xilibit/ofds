@@ -27,8 +27,14 @@ public class ActivityMapper implements Mapper<Activity, ActivityDTO> {
     @Override
     public void customize(Activity activity, Class<ActivityDTO> activityDTOClass) {
         getMapperFactory().classMap(activity.getClass(), activityDTOClass)
-                .mapNulls(false).mapNullsInReverse(false)
-                .fieldMap("idACTIVITY", "activityId").mapNulls(false).mapNullsInReverse(false).add()
+                .mapNulls(true).mapNullsInReverse(true)
+                .fieldMap("idACTIVITY", "activityId").mapNulls(true).mapNullsInReverse(true).add()
+                .fieldMap("activityName", "activityDTOName").mapNulls(true).mapNullsInReverse(true).add()
+                .fieldMap("activityShortDescription", "activityDTOShortDescription").mapNulls(true)
+                .mapNullsInReverse(true).add()
+                .fieldMap("activityInsertTs", "activityDTOInsertTs").mapNulls(true).mapNullsInReverse(true).add()
+                .fieldMap("activityTerminationDate", "activityDTOTerminationDate").mapNulls(true)
+                .mapNullsInReverse(true).add()
                 .field("donationCollection", "donationDTOCollection")
                 .field("causeCollection", "causeDTOCollection")
                 .byDefault()
@@ -38,8 +44,14 @@ public class ActivityMapper implements Mapper<Activity, ActivityDTO> {
     @Override
     public void customize(ActivityDTO activityDTO, Activity activity) {
         getMapperFactory().classMap(activityDTO.getClass(), activity.getClass())
-                .mapNulls(false).mapNullsInReverse(false)
-                .fieldMap("activityId", "idACTIVITY").mapNulls(false).mapNullsInReverse(false).add()
+                .mapNulls(true).mapNullsInReverse(true)
+                .fieldMap("activityId", "idACTIVITY").mapNulls(true).mapNullsInReverse(true).add()
+                .fieldMap("activityDTOName", "activityName").mapNulls(false).mapNullsInReverse(true).add()
+                .fieldMap("activityDTOShortDescription", "activityShortDescription").mapNulls(true)
+                .mapNullsInReverse(true).add()
+                .fieldMap("activityDTOInsertTs", "activityInsertTs").mapNulls(true).mapNullsInReverse(true).add()
+                .fieldMap("activityDTOTerminationDate", "activityTerminationDate").mapNulls(true)
+                .mapNullsInReverse(true).add()
                 .field("donationDTOCollection", "donationCollection")
                 .field("causeDTOCollection", "causeCollection")
                 .byDefault()

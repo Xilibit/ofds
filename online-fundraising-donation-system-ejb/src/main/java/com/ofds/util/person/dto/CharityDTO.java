@@ -19,117 +19,118 @@ public class CharityDTO implements Person, Serializable {
     private static final long serialVersionUID = 8277100222200122227L;
 
     @NotNull
-    private String charityEmail;
+    private String charityDTOEmail;
 
     @NotNull
-    private String charityName;
+    private String charityDTOName;
 
     @NotNull
-    private String charityRegistryName;
+    private String charityDTORegistryName;
 
     @NotNull
     @Past
-    private Date charityDateOfEstablishment;
+    private Date charityDTODateOfEstablishment;
 
     @NotNull
-    private String charityShortDescription;
+    private String charityDTOShortDescription;
 
     @NotNull
-    private String charityPassword;
+    private String charityDTOPassword;
 
     @NotNull
-    private String charityCountry;
+    private String charityDTOCountry;
 
     @NotNull
-    private String charityCity;
+    private String charityDTOCity;
 
     @NotNull
-    private String charityStreet;
+    private String charityDTOStreet;
 
     @NotNull
-    private String charityIndex;
+    private String charityDTOIndex;
 
     private Collection<GroupsDTO> groupsDTOCollection;
+    
     private Collection<CauseDTO> causeDTOCollection;
 
-    public String getCharityEmail() {
-        return charityEmail;
+    public String getCharityDTOEmail() {
+        return charityDTOEmail;
     }
 
-    public void setCharityEmail(String charityEmail) {
-        this.charityEmail = charityEmail;
+    public void setCharityDTOEmail(String charityDTOEmail) {
+        this.charityDTOEmail = charityDTOEmail;
     }
 
-    public String getCharityName() {
-        return charityName;
+    public String getCharityDTOName() {
+        return charityDTOName;
     }
 
-    public void setCharityName(String charityName) {
-        this.charityName = charityName;
+    public void setCharityDTOName(String charityDTOName) {
+        this.charityDTOName = charityDTOName;
     }
 
-    public String getCharityRegistryName() {
-        return charityRegistryName;
+    public String getCharityDTORegistryName() {
+        return charityDTORegistryName;
     }
 
-    public void setCharityRegistryName(String charityRegistryName) {
-        this.charityRegistryName = charityRegistryName;
+    public void setCharityDTORegistryName(String charityDTORegistryName) {
+        this.charityDTORegistryName = charityDTORegistryName;
     }
 
-    public Date getCharityDateOfEstablishment() {
-        return charityDateOfEstablishment;
+    public Date getCharityDTODateOfEstablishment() {
+        return charityDTODateOfEstablishment;
     }
 
-    public void setCharityDateOfEstablishment(Date charityDateOfEstablishment) {
-        this.charityDateOfEstablishment = charityDateOfEstablishment;
+    public void setCharityDTODateOfEstablishment(Date charityDTODateOfEstablishment) {
+        this.charityDTODateOfEstablishment = charityDTODateOfEstablishment;
     }
 
-    public String getCharityShortDescription() {
-        return charityShortDescription;
+    public String getCharityDTOShortDescription() {
+        return charityDTOShortDescription;
     }
 
-    public void setCharityShortDescription(String charityShortDescription) {
-        this.charityShortDescription = charityShortDescription;
+    public void setCharityDTOShortDescription(String charityDTOShortDescription) {
+        this.charityDTOShortDescription = charityDTOShortDescription;
     }
 
-    public String getCharityPassword() {
-        return charityPassword;
+    public String getCharityDTOPassword() {
+        return charityDTOPassword;
     }
 
-    public void setCharityPassword(String charityPassword) {
-        this.charityPassword = charityPassword;
+    public void setCharityDTOPassword(String charityDTOPassword) {
+        this.charityDTOPassword = charityDTOPassword;
     }
 
-    public String getCharityCountry() {
-        return charityCountry;
+    public String getCharityDTOCountry() {
+        return charityDTOCountry;
     }
 
-    public void setCharityCountry(String charityCountry) {
-        this.charityCountry = charityCountry;
+    public void setCharityDTOCountry(String charityDTOCountry) {
+        this.charityDTOCountry = charityDTOCountry;
     }
 
-    public String getCharityCity() {
-        return charityCity;
+    public String getCharityDTOCity() {
+        return charityDTOCity;
     }
 
-    public void setCharityCity(String charityCity) {
-        this.charityCity = charityCity;
+    public void setCharityDTOCity(String charityDTOCity) {
+        this.charityDTOCity = charityDTOCity;
     }
 
-    public String getCharityStreet() {
-        return charityStreet;
+    public String getCharityDTOStreet() {
+        return charityDTOStreet;
     }
 
-    public void setCharityStreet(String charityStreet) {
-        this.charityStreet = charityStreet;
+    public void setCharityDTOStreet(String charityDTOStreet) {
+        this.charityDTOStreet = charityDTOStreet;
     }
 
-    public String getCharityIndex() {
-        return charityIndex;
+    public String getCharityDTOIndex() {
+        return charityDTOIndex;
     }
 
-    public void setCharityIndex(String charityIndex) {
-        this.charityIndex = charityIndex;
+    public void setCharityDTOIndex(String charityDTOIndex) {
+        this.charityDTOIndex = charityDTOIndex;
     }
 
     public Collection<GroupsDTO> getGroupsDTOCollection() {

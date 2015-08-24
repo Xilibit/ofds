@@ -16,53 +16,54 @@ public class DonationDTO implements Serializable {
     private static final long serialVersionUID = 8877105556600177727L;
 
     @NotNull
-    private Integer donationId;
+    private Integer donationDTOId;
 
     @NotNull
-    private double donationAmount;
+    private double donationDTOAmount;
 
     @NotNull
-    private Date donationDate;
+    private Date donationDTODate;
 
     @NotNull
-    private Boolean donationIsAnonym;
+    private Boolean donationDTOIsAnonym;
 
     private Collection<ActivityDTO> activityDTOCollection;
+    
     private Collection<CauseDTO> causeDTOCollection;
 
     @NotNull
     private FundraiserDTO fundraiserFundraiserDTOEmail;
 
-    public Integer getDonationId() {
-        return donationId;
+    public Integer getDonationDTOId() {
+        return donationDTOId;
     }
 
-    public void setDonationId(Integer donationId) {
-        this.donationId = donationId;
+    public void setDonationDTOId(Integer donationDTOId) {
+        this.donationDTOId = donationDTOId;
     }
 
-    public double getDonationAmount() {
-        return donationAmount;
+    public double getDonationDTOAmount() {
+        return donationDTOAmount;
     }
 
-    public void setDonationAmount(double donationAmount) {
-        this.donationAmount = donationAmount;
+    public void setDonationDTOAmount(double donationDTOAmount) {
+        this.donationDTOAmount = donationDTOAmount;
     }
 
-    public Date getDonationDate() {
-        return donationDate;
+    public Date getDonationDTODate() {
+        return donationDTODate;
     }
 
-    public void setDonationDate(Date donationDate) {
-        this.donationDate = donationDate;
+    public void setDonationDTODate(Date donationDTODate) {
+        this.donationDTODate = donationDTODate;
     }
 
-    public Boolean getDonationIsAnonym() {
-        return donationIsAnonym;
+    public Boolean getDonationDTOIsAnonym() {
+        return donationDTOIsAnonym;
     }
 
-    public void setDonationIsAnonym(Boolean donationIsAnonym) {
-        this.donationIsAnonym = donationIsAnonym;
+    public void setDonationDTOIsAnonym(Boolean donationDTOIsAnonym) {
+        this.donationDTOIsAnonym = donationDTOIsAnonym;
     }
 
     public Collection<ActivityDTO> getActivityDTOCollection() {

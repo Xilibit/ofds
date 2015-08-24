@@ -20,21 +20,23 @@ public class CauseDTO implements Serializable {
     private Integer causeId;
 
     @NotNull
-    private String causeName;
+    private String causeDTOName;
 
     @NotNull
-    private String causeShortDescription;
+    private String causeDTOShortDescription;
 
     @NotNull
-    private Date causeInsertTs;
+    private Date causeDTOInsertTs;
 
     @NotNull
     @Future
-    private Date causeTerminationDate;
+    private Date causeDTOTerminationDate;
 
     @NotNull
-    private String causePercentage;
+    private String causeDTOPercentage;
+
     private Collection<DonationDTO> donationDTOCollection;
+
     private Collection<ActivityDTO> activityDTOCollection;
 
     @NotNull
@@ -48,44 +50,44 @@ public class CauseDTO implements Serializable {
         this.causeId = causeId;
     }
 
-    public String getCauseName() {
-        return causeName;
+    public String getCauseDTOName() {
+        return causeDTOName;
     }
 
-    public void setCauseName(String causeName) {
-        this.causeName = causeName;
+    public void setCauseDTOName(String causeDTOName) {
+        this.causeDTOName = causeDTOName;
     }
 
-    public String getCauseShortDescription() {
-        return causeShortDescription;
+    public String getCauseDTOShortDescription() {
+        return causeDTOShortDescription;
     }
 
-    public void setCauseShortDescription(String causeShortDescription) {
-        this.causeShortDescription = causeShortDescription;
+    public void setCauseDTOShortDescription(String causeDTOShortDescription) {
+        this.causeDTOShortDescription = causeDTOShortDescription;
     }
 
-    public Date getCauseInsertTs() {
-        return causeInsertTs;
+    public Date getCauseDTOInsertTs() {
+        return causeDTOInsertTs;
     }
 
-    public void setCauseInsertTs(Date causeInsertTs) {
-        this.causeInsertTs = causeInsertTs;
+    public void setCauseDTOInsertTs(Date causeDTOInsertTs) {
+        this.causeDTOInsertTs = causeDTOInsertTs;
     }
 
-    public Date getCauseTerminationDate() {
-        return causeTerminationDate;
+    public Date getCauseDTOTerminationDate() {
+        return causeDTOTerminationDate;
     }
 
-    public void setCauseTerminationDate(Date causeTerminationDate) {
-        this.causeTerminationDate = causeTerminationDate;
+    public void setCauseDTOTerminationDate(Date causeDTOTerminationDate) {
+        this.causeDTOTerminationDate = causeDTOTerminationDate;
     }
 
-    public String getCausePercentage() {
-        return causePercentage;
+    public String getCauseDTOPercentage() {
+        return causeDTOPercentage;
     }
 
-    public void setCausePercentage(String causePercentage) {
-        this.causePercentage = causePercentage;
+    public void setCauseDTOPercentage(String causeDTOPercentage) {
+        this.causeDTOPercentage = causeDTOPercentage;
     }
 
     public Collection<DonationDTO> getDonationDTOCollection() {

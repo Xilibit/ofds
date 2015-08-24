@@ -15,29 +15,29 @@ public class GroupsDTO implements Serializable {
     private static final long serialVersionUID = 9177100123000124727L;
 
     @NotNull
-    private Integer groupId;
+    private Integer groupDTOId;
 
     @NotNull
-    private String groupUserId;
+    private String groupDTOUserId;
 
     private Collection<CharityDTO> charityDTOCollection;
 
     private Collection<FundraiserDTO> fundraiserDTOCollection;
 
-    public Integer getGroupId() {
-        return groupId;
+    public Integer getGroupDTOId() {
+        return groupDTOId;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setGroupDTOId(Integer groupDTOId) {
+        this.groupDTOId = groupDTOId;
     }
 
-    public String getGroupUserId() {
-        return groupUserId;
+    public String getGroupDTOUserId() {
+        return groupDTOUserId;
     }
 
-    public void setGroupUserId(String groupUserId) {
-        this.groupUserId = groupUserId;
+    public void setGroupDTOUserId(String groupDTOUserId) {
+        this.groupDTOUserId = groupDTOUserId;
     }
 
     public Collection<CharityDTO> getCharityDTOCollection() {
