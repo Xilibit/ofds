@@ -1,5 +1,6 @@
 package com.ofds.dao;
 
+import com.ofds.TestsUtil;
 import com.ofds.dao.impl.FundraiserDAOImpl;
 import com.ofds.entity.Fundraiser;
 import com.ofds.entity.base.BaseEntity;
@@ -23,6 +24,7 @@ public class AbstractDAOTest {
                 .addPackage(FundraiserDAO.class.getPackage())
                 .addPackage(Fundraiser.class.getPackage())
                 .addPackage(BaseEntity.class.getPackage())
+                .addPackage(TestsUtil.class.getPackage())
                 .addAsManifestResource("persistence.xml", "persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }

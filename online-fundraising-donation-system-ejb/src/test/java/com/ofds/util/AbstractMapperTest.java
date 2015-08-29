@@ -1,5 +1,6 @@
 package com.ofds.util;
 
+import com.ofds.TestsUtil;
 import com.ofds.util.person.Person;
 import com.ofds.entity.Activity;
 import com.ofds.entity.Fundraiser;
@@ -57,6 +58,7 @@ public class AbstractMapperTest {
                 .addPackage(Groups.class.getPackage())
                 .addPackage(BaseEntity.class.getPackage())
                 .addPackage(Person.class.getPackage())
+                .addPackage(TestsUtil.class.getPackage())
                 .addPackages(true, "ma.glasnost")
                 .addPackages(true, "com.thoughtworks")
                 .addPackages(true, "com.googlecode")

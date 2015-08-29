@@ -70,7 +70,7 @@ public class Donation implements BaseEntity, Serializable {
     private Collection<Cause> causeCollection;
 
     @JoinColumn(name = "FUNDRAISER_FUNDRAISER_EMAIL", referencedColumnName = "FUNDRAISER_EMAIL")
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = false)
     private Fundraiser fundraiserFundraiserEmail;
 
     public Donation() {
@@ -157,8 +157,8 @@ public class Donation implements BaseEntity, Serializable {
 
     @Override
     public int hashCode() {
-        int result = getIdDONATION().hashCode();
-        result = 31 * result + getFundraiserFundraiserEmail().hashCode();
+        int result = getDonationDate().hashCode();
+        result = 31 * result + getDonationDate().hashCode();
         return result;
     }
 

@@ -1,6 +1,8 @@
 package com.ofds.dao.impl;
 
 import static org.hamcrest.Matchers.*;
+
+import com.ofds.TestsUtil;
 import com.ofds.dao.AbstractDAOTest;
 import com.ofds.entity.Donation;
 import com.ofds.entity.Fundraiser;
@@ -32,28 +34,11 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createDonation_newValidDonation_successDonation() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
@@ -64,38 +49,19 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getDonationsByFundraiserEmail_newValidDonations_successTwoDonations() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
+
 
         donationDAO.createDonation(donation1);
 
@@ -106,38 +72,18 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void edit_newValidDonation_successDonationEdit() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
         Donation donationToEdit = donationDAO.loadAll().get(0);
@@ -152,38 +98,18 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidDonation_successDonationRemove() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
         Donation donationToRemove = donationDAO.loadAll().get(0);
@@ -198,38 +124,18 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidDonation_successDonationFind() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
         Donation donationToFind = donationDAO.loadAll().get(0);
@@ -243,38 +149,18 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidDonation_successDonationLoad() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
 
@@ -286,46 +172,23 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidDonations_successDonationFindRange() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = new Donation();
+        Donation donation2 = TestsUtil.getDonationSecForTest();
         donation2.setFundraiserFundraiserEmail(fundraiser);
-        donation2.setDonationAmount(500.00);
-        donation2.setDonationDate(formatter.parse("2015-10-10"));
-        donation2.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation2);
 
@@ -342,46 +205,23 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidDonations_successDonationCount() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = new Donation();
+        Donation donation2 = TestsUtil.getDonationSecForTest();
         donation2.setFundraiserFundraiserEmail(fundraiser);
-        donation2.setDonationAmount(500.00);
-        donation2.setDonationDate(formatter.parse("2015-10-10"));
-        donation2.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation2);
 
@@ -394,149 +234,80 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidDonations_successDonationByParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = new Donation();
+        Donation donation2 = TestsUtil.getDonationSecForTest();
         donation2.setFundraiserFundraiserEmail(fundraiser);
-        donation2.setDonationAmount(500.00);
-        donation2.setDonationDate(formatter.parse("2015-10-10"));
-        donation2.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation2);
 
         Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(not(nullValue())));
         Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(not(empty())));
         Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(hasSize(3)));
-        Assert.assertThat(donationDAO.getByEntityParameter("Amount", "500.00"), is(hasSize(1)));
+        Assert.assertThat(donationDAO.getByEntityParameter("Amount", "200.00"), is(hasSize(1)));
     }
 
     @Test
     public void getAllByEntityExcludeParameter_newValidDonations_successDonationExcludeByParameter()
             throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = new Donation();
+        Donation donation2 = TestsUtil.getDonationSecForTest();
         donation2.setFundraiserFundraiserEmail(fundraiser);
-        donation2.setDonationAmount(500.00);
-        donation2.setDonationDate(formatter.parse("2015-10-10"));
-        donation2.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation2);
 
         Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(not(nullValue())));
         Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(not(empty())));
         Assert.assertThat(donationDAO.getDonationsByFundraiser(fundraiser), is(hasSize(3)));
-        Assert.assertThat(donationDAO.getAllByEntityExcludeParameter("Amount", "500.00"), is(hasSize(2)));
+        Assert.assertThat(donationDAO.getAllByEntityExcludeParameter("Amount", "100.00"), is(hasSize(2)));
     }
 
     @Test
     public void getByLinkedEntityParameterOverloaded_newValidDonations_successDonation() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilix");
-        fundraiser.setFundraiserEmail("Xilibit@tibilix.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(Boolean.FALSE);
-        fundraiser.setFundraiserWallet(1000.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
 
         fundraiserDAO.createFundraiser(fundraiser);
-        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilix.com");
+        fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = new Donation();
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = new Donation();
+        Donation donation1 = TestsUtil.getDonationSecForTest();
         donation1.setFundraiserFundraiserEmail(fundraiser);
-        donation1.setDonationAmount(200.00);
-        donation1.setDonationDate(formatter.parse("2015-10-10"));
-        donation1.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = new Donation();
+        Donation donation2 = TestsUtil.getDonationSecForTest();
         donation2.setFundraiserFundraiserEmail(fundraiser);
-        donation2.setDonationAmount(500.00);
-        donation2.setDonationDate(formatter.parse("2015-10-10"));
-        donation2.setDonationIsAnonym(Boolean.FALSE);
 
         donationDAO.createDonation(donation2);
 

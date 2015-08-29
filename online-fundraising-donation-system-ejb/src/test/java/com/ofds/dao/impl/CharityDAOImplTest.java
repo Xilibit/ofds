@@ -1,6 +1,8 @@
 package com.ofds.dao.impl;
 
 import static org.hamcrest.Matchers.*;
+
+import com.ofds.TestsUtil;
 import com.ofds.dao.AbstractDAOTest;
 import com.ofds.entity.Charity;
 import org.jboss.arquillian.junit.Arquillian;
@@ -28,20 +30,7 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createCharity_newValidCharity_successCharity() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
@@ -52,20 +41,7 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getCharityByCharityEmail_newValidCharity_successCharity() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
@@ -74,20 +50,7 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void edit_newValidCharities_successCharityEdit() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
@@ -103,34 +66,11 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidCharities_successCharityRemove() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = new Charity();
-        charity1.setCharityName("New Charity Name");
-        charity1.setCharityRegistryName("NC");
-        charity1.setCharityPassword("123");
-        charity1.setCharityEmail("newCharityName@new.com");
-        charity1.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity1.setCharityCountry("IT");
-        charity1.setCharityCity("MI");
-        charity1.setCharityStreet("Street");
-        charity1.setCharityIndex("021222");
-        charity1.setCharityShortDescription("The new Charity Description");
+        Charity charity1 = TestsUtil.getCharitySecForTest();
 
         charityDAO.createCharity(charity1);
 
@@ -143,34 +83,11 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidCharities_successCharityFind() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = new Charity();
-        charity1.setCharityName("New Charity Name");
-        charity1.setCharityRegistryName("NC");
-        charity1.setCharityPassword("123");
-        charity1.setCharityEmail("newCharityName@new.com");
-        charity1.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity1.setCharityCountry("IT");
-        charity1.setCharityCity("MI");
-        charity1.setCharityStreet("Street");
-        charity1.setCharityIndex("021222");
-        charity1.setCharityShortDescription("The new Charity Description");
+        Charity charity1 = TestsUtil.getCharitySecForTest();
 
         charityDAO.createCharity(charity1);
 
@@ -183,34 +100,11 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidCharities_successCharityLoad() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = new Charity();
-        charity1.setCharityName("New Charity Name");
-        charity1.setCharityRegistryName("NC");
-        charity1.setCharityPassword("123");
-        charity1.setCharityEmail("newCharityName@new.com");
-        charity1.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity1.setCharityCountry("IT");
-        charity1.setCharityCity("MI");
-        charity1.setCharityStreet("Street");
-        charity1.setCharityIndex("021222");
-        charity1.setCharityShortDescription("The new Charity Description");
+        Charity charity1 = TestsUtil.getCharitySecForTest();
 
         charityDAO.createCharity(charity1);
 
@@ -221,48 +115,16 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidCharities_successCharityRange() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = new Charity();
-        charity1.setCharityName("New Charity Name");
-        charity1.setCharityRegistryName("NC");
-        charity1.setCharityPassword("123");
-        charity1.setCharityEmail("newCharityName@new.com");
-        charity1.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity1.setCharityCountry("IT");
-        charity1.setCharityCity("MI");
-        charity1.setCharityStreet("Street");
-        charity1.setCharityIndex("021222");
-        charity1.setCharityShortDescription("The new Charity Description");
+        Charity charity1 = TestsUtil.getCharitySecForTest();
+        charity1.setCharityEmail("dif@dif.com");
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = new Charity();
-        charity2.setCharityName("New Charity Name2");
-        charity2.setCharityRegistryName("NC");
-        charity2.setCharityPassword("123");
-        charity2.setCharityEmail("newCharityName2@new.com");
-        charity2.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity2.setCharityCountry("IT");
-        charity2.setCharityCity("MI");
-        charity2.setCharityStreet("Street");
-        charity2.setCharityIndex("021222");
-        charity2.setCharityShortDescription("The new Charity Description");
+        Charity charity2 = TestsUtil.getCharitySecForTest();
 
         charityDAO.createCharity(charity2);
 
@@ -277,48 +139,17 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidCharities_successCharityCount() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = new Charity();
-        charity1.setCharityName("New Charity Name");
-        charity1.setCharityRegistryName("NC");
-        charity1.setCharityPassword("123");
-        charity1.setCharityEmail("newCharityName@new.com");
-        charity1.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity1.setCharityCountry("IT");
-        charity1.setCharityCity("MI");
-        charity1.setCharityStreet("Street");
-        charity1.setCharityIndex("021222");
-        charity1.setCharityShortDescription("The new Charity Description");
+        Charity charity1 = TestsUtil.getCharitySecForTest();
+        charity1.setCharityEmail("cop@cop.com");
+
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = new Charity();
-        charity2.setCharityName("New Charity Name2");
-        charity2.setCharityRegistryName("NC");
-        charity2.setCharityPassword("123");
-        charity2.setCharityEmail("newCharityName2@new.com");
-        charity2.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity2.setCharityCountry("IT");
-        charity2.setCharityCity("MI");
-        charity2.setCharityStreet("Street");
-        charity2.setCharityIndex("021222");
-        charity2.setCharityShortDescription("The new Charity Description");
+        Charity charity2 = TestsUtil.getCharitySecForTest();
 
         charityDAO.createCharity(charity2);
 
@@ -329,107 +160,43 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidCharities_successCharityByParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = new Charity();
-        charity1.setCharityName("New Charity Name");
-        charity1.setCharityRegistryName("NC");
-        charity1.setCharityPassword("123");
-        charity1.setCharityEmail("newCharityName@new.com");
-        charity1.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity1.setCharityCountry("IT");
-        charity1.setCharityCity("MI");
-        charity1.setCharityStreet("Street");
-        charity1.setCharityIndex("021222");
-        charity1.setCharityShortDescription("The new Charity Description");
+        Charity charity1 = TestsUtil.getCharitySecForTest();
+        charity1.setCharityEmail("zop@zop.com");
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = new Charity();
-        charity2.setCharityName("New Charity Name2");
-        charity2.setCharityRegistryName("NC");
-        charity2.setCharityPassword("123");
-        charity2.setCharityEmail("newCharityName2@new.com");
-        charity2.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity2.setCharityCountry("IT");
-        charity2.setCharityCity("MI");
-        charity2.setCharityStreet("Street");
-        charity2.setCharityIndex("021222");
-        charity2.setCharityShortDescription("The new Charity Description");
+        Charity charity2 = TestsUtil.getCharitySecForTest();
 
         charityDAO.createCharity(charity2);
 
         Assert.assertThat(charityDAO.loadAll(), is(hasSize(3)));
-        Assert.assertThat(charityDAO.getByEntityParameter("Email", "newCharityName2@new.com"), is(notNullValue()));
-        Assert.assertThat(charityDAO.getByEntityParameter("Email", "newCharityName2@new.com"), is(hasSize(1)));
+        Assert.assertThat(charityDAO.getByEntityParameter("Email", "newCharity@new.com"), is(notNullValue()));
+        Assert.assertThat(charityDAO.getByEntityParameter("Email", "newCharity@new.com"), is(hasSize(1)));
     }
 
     @Test
     public void getAllByEntityExcludeParameter_newValidCharities_successCharityByExcludeParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = new Charity();
-        charity1.setCharityName("New Charity Name");
-        charity1.setCharityRegistryName("NC");
-        charity1.setCharityPassword("123");
-        charity1.setCharityEmail("newCharityName@new.com");
-        charity1.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity1.setCharityCountry("IT");
-        charity1.setCharityCity("MI");
-        charity1.setCharityStreet("Street");
-        charity1.setCharityIndex("021222");
-        charity1.setCharityShortDescription("The new Charity Description");
+        Charity charity1 = TestsUtil.getCharitySecForTest();
+        charity1.setCharityEmail("qwerty@fa.com");
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = new Charity();
-        charity2.setCharityName("New Charity Name2");
-        charity2.setCharityRegistryName("NC");
-        charity2.setCharityPassword("123");
-        charity2.setCharityEmail("newCharityName2@new.com");
-        charity2.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity2.setCharityCountry("IT");
-        charity2.setCharityCity("MI");
-        charity2.setCharityStreet("Street");
-        charity2.setCharityIndex("021222");
-        charity2.setCharityShortDescription("The new Charity Description");
+        Charity charity2 = TestsUtil.getCharitySecForTest();
 
         charityDAO.createCharity(charity2);
 
         Assert.assertThat(charityDAO.loadAll(), is(hasSize(3)));
-        Assert.assertThat(charityDAO.getAllByEntityExcludeParameter("Email", "newCharityName2@new.com"),
+        Assert.assertThat(charityDAO.getAllByEntityExcludeParameter("Email", "newCharity@new.com"),
                 is(notNullValue()));
-        Assert.assertThat(charityDAO.getAllByEntityExcludeParameter("Email", "newCharityName2@new.com"),
+        Assert.assertThat(charityDAO.getAllByEntityExcludeParameter("Email", "newCharity@new.com"),
                 is(hasSize(2)));
     }
 }

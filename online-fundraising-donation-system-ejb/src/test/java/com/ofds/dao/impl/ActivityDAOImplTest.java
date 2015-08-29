@@ -1,6 +1,8 @@
 package com.ofds.dao.impl;
 
 import static org.hamcrest.Matchers.*;
+
+import com.ofds.TestsUtil;
 import com.ofds.dao.AbstractDAOTest;
 import com.ofds.entity.Activity;
 import com.ofds.entity.Fundraiser;
@@ -33,28 +35,10 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createActivity_newValidActivity_successActivity() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
@@ -66,60 +50,23 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getFundraiserActivitiesForDonation_newValidActivities_successActivitiesForDonation() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = new Fundraiser();
-        fundraiser1.setFundraiserFirstName("Xilibit");
-        fundraiser1.setFundraiserLastName("Tibilic");
-        fundraiser1.setFundraiserEmail("Xilibit@tibilsx.com");
-        fundraiser1.setFundraiserPassword("pass");
-        fundraiser1.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser1.setFundraiserCountry("UA");
-        fundraiser1.setFundraiserCity("KI");
-        fundraiser1.setFundraiserIndex("9713");
-        fundraiser1.setFundraiserStreet("Street");
-        fundraiser1.setFundraiserIsAdmin(false);
-        fundraiser1.setFundraiserWallet(2010.00);
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
         fundraiserDAO.createFundraiser(fundraiser1);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = new Activity();
-        activity2.setActivityName("Activity Name1");
-        activity2.setActivityShortDescription("Activity Short Description1");
-        activity2.setActivityInsertTs(new Date());
-        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity2 = TestsUtil.getActivitySecForTest();
         activity2.setFundraiserFundraiserEmail(fundraiser1);
 
         activityDAO.createActivity(activity2);
@@ -132,28 +79,11 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void edit_newValidActivities_successActivityEdit() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
@@ -171,37 +101,15 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidActivities_successActivityRemove() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
@@ -217,37 +125,15 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidActivities_successActivityFind() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
@@ -262,37 +148,16 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidActivities_successActivityLoad() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
@@ -304,46 +169,20 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidActivities_successActivityRange() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = new Activity();
-        activity2.setActivityName("Activity Name1");
-        activity2.setActivityShortDescription("Activity Short Description1");
-        activity2.setActivityInsertTs(new Date());
-        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity2 = TestsUtil.getActivitySecForTest();
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -360,46 +199,20 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidActivities_successActivityCount() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = new Activity();
-        activity2.setActivityName("Activity Name1");
-        activity2.setActivityShortDescription("Activity Short Description1");
-        activity2.setActivityInsertTs(new Date());
-        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity2 = TestsUtil.getActivitySecForTest();
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -412,46 +225,20 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidActivities_successActivityByParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = new Activity();
-        activity2.setActivityName("Activity Name2");
-        activity2.setActivityShortDescription("Activity Short Description1");
-        activity2.setActivityInsertTs(new Date());
-        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity2 = TestsUtil.getActivityForTest();
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -466,46 +253,20 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getAllByEntityExcludeParameter_newValidActivities_successActivityByExcludeParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = new Activity();
-        activity2.setActivityName("Activity Name2");
-        activity2.setActivityShortDescription("Activity Short Description1");
-        activity2.setActivityInsertTs(new Date());
-        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity2 = TestsUtil.getActivityForTest();
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -520,46 +281,20 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByLinkedEntityParameter_newValidActivities_successActivityByLinkedParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = new Activity();
-        activity1.setActivityName("Activity Name1");
-        activity1.setActivityShortDescription("Activity Short Description1");
-        activity1.setActivityInsertTs(new Date());
-        activity1.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity1 = TestsUtil.getActivitySecForTest();
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = new Activity();
-        activity2.setActivityName("Activity Name2");
-        activity2.setActivityShortDescription("Activity Short Description1");
-        activity2.setActivityInsertTs(new Date());
-        activity2.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity2 = TestsUtil.getActivitySecForTest();
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);

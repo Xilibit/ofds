@@ -2,6 +2,7 @@ package com.ofds.util.mapper;
 
 import static org.hamcrest.Matchers.*;
 
+import com.ofds.TestsUtil;
 import com.ofds.entity.*;
 import com.ofds.util.AbstractMapperTest;
 import com.ofds.util.person.dto.ActivityDTO;
@@ -33,59 +34,19 @@ public class ActivityMapperTest extends AbstractMapperTest {
 
     @Test
     public void fromEntityToDTO_existentEntityAndDTO_ValidDTOresult() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(true);
-        fundraiser.setFundraiserWallet(1010.00);
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Charity charity = TestsUtil.getCharityForTest();
 
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
-
-        Cause cause = new Cause();
-        cause.setIdCAUSE(200);
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
-        Donation donation = new Donation();
-        donation.setIdDONATION(400);
+        Donation donation = TestsUtil.getDonationForTest();
         donation.setFundraiserFundraiserEmail(fundraiser);
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
-
         Collection<Donation> donations = new ArrayList<Donation>();
         donations.add(donation);
 
-        Activity activity = new Activity();
-        activity.setIdACTIVITY(100);
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        Activity activity = TestsUtil.getActivityForTest();
         activity.setFundraiserFundraiserEmail(fundraiser);
         Collection<Cause> causes = new ArrayList<Cause>();
         causes.add(cause);

@@ -1,6 +1,8 @@
 package com.ofds.dao.impl;
 
 import static org.hamcrest.Matchers.*;
+
+import com.ofds.TestsUtil;
 import com.ofds.dao.AbstractDAOTest;
 import com.ofds.entity.Cause;
 import com.ofds.entity.Charity;
@@ -34,30 +36,12 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createCause_newValidCause_successCause() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
@@ -69,30 +53,12 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getCauseByCauseName_newValidCauses_successCause() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
@@ -104,30 +70,12 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void edit_newValidCauses_successCauseEdit() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
@@ -145,40 +93,17 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidCauses_successCausesRemove() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
@@ -192,40 +117,17 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidCauses_successCauseFind() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity =TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseSecForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
@@ -238,40 +140,17 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidCauses_successCausesLoad() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseSecForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
@@ -283,50 +162,22 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidCauses_successCausesRange() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseSecForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = new Cause();
-        cause2.setCauseName("Cause Name2");
-        cause2.setCauseShortDescription("Cause Short Description2");
-        cause2.setCausePercentage("25");
-        cause2.setCauseInsertTs(new Date());
-        cause2.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause2 = TestsUtil.getCauseSecForTest();
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
@@ -342,50 +193,22 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidCauses_successCausesCount() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseSecForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = new Cause();
-        cause2.setCauseName("Cause Name2");
-        cause2.setCauseShortDescription("Cause Short Description2");
-        cause2.setCausePercentage("25");
-        cause2.setCauseInsertTs(new Date());
-        cause2.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause2 = TestsUtil.getCauseSecForTest();
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
@@ -396,160 +219,76 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidCauses_successCauseByParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseSecForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = new Cause();
-        cause2.setCauseName("Cause Name2");
-        cause2.setCauseShortDescription("Cause Short Description2");
-        cause2.setCausePercentage("25");
-        cause2.setCauseInsertTs(new Date());
-        cause2.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause2 = TestsUtil.getCauseSecForTest();
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
 
         Assert.assertThat(causeDAO.loadAll(), is(hasSize(3)));
-        Assert.assertThat(causeDAO.getByEntityParameter("Percentage", "25"), is(notNullValue()));
-        Assert.assertThat(causeDAO.getByEntityParameter("Percentage", "25"), is(hasSize(1)));
+        Assert.assertThat(causeDAO.getByEntityParameter("Percentage", "10"), is(notNullValue()));
+        Assert.assertThat(causeDAO.getByEntityParameter("Percentage", "10"), is(hasSize(1)));
     }
 
     @Test
     public void getAllByEntityExcludeParameter_newValidCause_successCauseByExcludeParameter() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = new Cause();
-        cause2.setCauseName("Cause Name2");
-        cause2.setCauseShortDescription("Cause Short Description2");
-        cause2.setCausePercentage("25");
-        cause2.setCauseInsertTs(new Date());
-        cause2.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause2 = TestsUtil.getCauseSecForTest();
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
 
         Assert.assertThat(causeDAO.loadAll(), is(hasSize(3)));
-        Assert.assertThat(causeDAO.getAllByEntityExcludeParameter("Percentage", "25"), is(notNullValue()));
-        Assert.assertThat(causeDAO.getAllByEntityExcludeParameter("Percentage", "25"), is(hasSize(2)));
+        Assert.assertThat(causeDAO.getAllByEntityExcludeParameter("Percentage", "30"), is(notNullValue()));
+        Assert.assertThat(causeDAO.getAllByEntityExcludeParameter("Percentage", "30"), is(hasSize(2)));
     }
 
     @Test
     public void getByLinkedEntityParameter_newValidCauses_successCauseByLinkedParameterOverloaded() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("USA");
-        charity.setCharityCity("NY");
-        charity.setCharityStreet("Bul");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
+        Charity charity = TestsUtil.getCharityForTest();
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = new Cause();
-        cause1.setCauseName("Cause Name1");
-        cause1.setCauseShortDescription("Cause Short Description1");
-        cause1.setCausePercentage("30");
-        cause1.setCauseInsertTs(new Date());
-        cause1.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause1 = TestsUtil.getCauseSecForTest();
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = new Cause();
-        cause2.setCauseName("Cause Name2");
-        cause2.setCauseShortDescription("Cause Short Description2");
-        cause2.setCausePercentage("25");
-        cause2.setCauseInsertTs(new Date());
-        cause2.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        Cause cause2 = TestsUtil.getCauseSecForTest();
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
