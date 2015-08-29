@@ -100,6 +100,8 @@ public class ActivityMapperTest extends AbstractMapperTest {
         Assert.assertThat(activityDTO.getActivityId(), is(activity.getIdACTIVITY()));
         Assert.assertThat(activityDTO.getCauseDTOCollection().size(), is(1));
         Assert.assertThat(activityDTO.getDonationDTOCollection().size(), is(1));
+        Assert.assertThat(activityDTO.getFundraiserFundraiserEmail().getFundraiserDTOCity(),
+                is(activity.getFundraiserFundraiserEmail().getFundraiserCity()));
     }
 
 }
