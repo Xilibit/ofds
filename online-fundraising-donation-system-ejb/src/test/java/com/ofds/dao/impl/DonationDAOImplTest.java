@@ -37,7 +37,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
@@ -54,12 +54,12 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
 
@@ -77,12 +77,12 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
@@ -103,12 +103,12 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
@@ -129,12 +129,12 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
@@ -154,12 +154,12 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
@@ -177,17 +177,17 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = TestsUtil.getDonationSecForTest();
+        Donation donation2 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation2.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation2);
@@ -210,17 +210,17 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = TestsUtil.getDonationSecForTest();
+        Donation donation2 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation2.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation2);
@@ -239,17 +239,17 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = TestsUtil.getDonationSecForTest();
+        Donation donation2 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation2.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation2);
@@ -268,17 +268,17 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = TestsUtil.getDonationSecForTest();
+        Donation donation2 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation2.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation2);
@@ -296,17 +296,17 @@ public class DonationDAOImplTest extends AbstractDAOTest {
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation);
 
-        Donation donation1 = TestsUtil.getDonationSecForTest();
+        Donation donation1 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation1.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation1);
 
-        Donation donation2 = TestsUtil.getDonationSecForTest();
+        Donation donation2 = TestsUtil.getDonationForTest(TestsUtil.SECOND_DONATION_AMOUNT);
         donation2.setFundraiserFundraiserEmail(fundraiser);
 
         donationDAO.createDonation(donation2);

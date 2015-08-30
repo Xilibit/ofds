@@ -30,7 +30,7 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createCharity_newValidCharity_successCharity() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
@@ -41,7 +41,7 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getCharityByCharityEmail_newValidCharity_successCharity() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
@@ -50,7 +50,7 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void edit_newValidCharities_successCharityEdit() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
@@ -66,11 +66,11 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidCharities_successCharityRemove() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
 
         charityDAO.createCharity(charity1);
 
@@ -83,11 +83,11 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidCharities_successCharityFind() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
 
         charityDAO.createCharity(charity1);
 
@@ -100,11 +100,11 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidCharities_successCharityLoad() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
 
         charityDAO.createCharity(charity1);
 
@@ -115,16 +115,16 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidCharities_successCharityRange() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
         charity1.setCharityEmail("dif@dif.com");
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
 
         charityDAO.createCharity(charity2);
 
@@ -139,17 +139,17 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidCharities_successCharityCount() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
         charity1.setCharityEmail("cop@cop.com");
 
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
 
         charityDAO.createCharity(charity2);
 
@@ -160,16 +160,16 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidCharities_successCharityByParameter() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
         charity1.setCharityEmail("zop@zop.com");
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
 
         charityDAO.createCharity(charity2);
 
@@ -180,16 +180,16 @@ public class CharityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getAllByEntityExcludeParameter_newValidCharities_successCharityByExcludeParameter() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
 
-        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity1 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
         charity1.setCharityEmail("qwerty@fa.com");
 
         charityDAO.createCharity(charity1);
 
-        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);;
+        Charity charity2 = TestsUtil.getCharityForTest(TestsUtil.SECOND_CHARITY_EMAIL, TestsUtil.SECOND_CHARITY_NAME);
 
         charityDAO.createCharity(charity2);
 

@@ -38,15 +38,15 @@ public class ActivityMapperTest extends AbstractMapperTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
-        Donation donation = TestsUtil.getDonationForTest();
+        Donation donation = TestsUtil.getDonationForTest(TestsUtil.FIRST_DONATION_AMOUNT);
         donation.setFundraiserFundraiserEmail(fundraiser);
         Collection<Donation> donations = new ArrayList<Donation>();
         donations.add(donation);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
         Collection<Cause> causes = new ArrayList<Cause>();
         causes.add(cause);

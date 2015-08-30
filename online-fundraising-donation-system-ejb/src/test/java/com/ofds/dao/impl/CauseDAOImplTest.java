@@ -41,7 +41,7 @@ public class CauseDAOImplTest extends AbstractDAOTest {
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
@@ -53,12 +53,12 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getCauseByCauseName_newValidCauses_successCause() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
@@ -70,12 +70,12 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void edit_newValidCauses_successCauseEdit() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
@@ -93,17 +93,17 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidCauses_successCausesRemove() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
@@ -117,17 +117,17 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidCauses_successCauseFind() throws ParseException {
-        Charity charity =TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity =TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseSecForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
@@ -140,17 +140,17 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidCauses_successCausesLoad() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseSecForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
@@ -162,22 +162,22 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidCauses_successCausesRange() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseSecForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = TestsUtil.getCauseSecForTest();
+        Cause cause2 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
@@ -193,22 +193,22 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidCauses_successCausesCount() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseSecForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = TestsUtil.getCauseSecForTest();
+        Cause cause2 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
@@ -219,22 +219,22 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidCauses_successCauseByParameter() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseSecForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = TestsUtil.getCauseSecForTest();
+        Cause cause2 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
@@ -246,22 +246,22 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getAllByEntityExcludeParameter_newValidCause_successCauseByExcludeParameter() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = TestsUtil.getCauseSecForTest();
+        Cause cause2 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);
@@ -273,22 +273,22 @@ public class CauseDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByLinkedEntityParameter_newValidCauses_successCauseByLinkedParameterOverloaded() throws ParseException {
-        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);
 
         charityDAO.createCharity(charity);
         charity = charityDAO.getCharityByCharityEmail("newCharity@new.com");
 
-        Cause cause = TestsUtil.getCauseForTest();
+        Cause cause = TestsUtil.getCauseForTest(TestsUtil.FIRST_CAUSE_NAME, TestsUtil.FIRST_CAUSE_PERSENTAGE);
         cause.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause);
 
-        Cause cause1 = TestsUtil.getCauseSecForTest();
+        Cause cause1 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause1.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause1);
 
-        Cause cause2 = TestsUtil.getCauseSecForTest();
+        Cause cause2 = TestsUtil.getCauseForTest(TestsUtil.SECOND_CAUSE_NAME, TestsUtil.SECOND_CAUSE_PERSENTAGE);
         cause2.setCharityCharityEmail(charity);
 
         causeDAO.createCause(cause2);

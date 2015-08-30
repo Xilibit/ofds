@@ -38,7 +38,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
@@ -56,17 +56,17 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser1);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = TestsUtil.getActivitySecForTest();
+        Activity activity2 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity2.setFundraiserFundraiserEmail(fundraiser1);
 
         activityDAO.createActivity(activity2);
@@ -83,7 +83,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
@@ -104,12 +104,12 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
@@ -128,12 +128,12 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
@@ -152,12 +152,12 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
@@ -172,17 +172,17 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = TestsUtil.getActivitySecForTest();
+        Activity activity2 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -202,17 +202,17 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = TestsUtil.getActivitySecForTest();
+        Activity activity2 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -228,17 +228,17 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = TestsUtil.getActivityForTest();
+        Activity activity2 = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -256,17 +256,17 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = TestsUtil.getActivityForTest();
+        Activity activity2 = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);
@@ -284,17 +284,17 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
         Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Activity activity = TestsUtil.getActivityForTest();
+        Activity activity = TestsUtil.getActivityForTest(TestsUtil.FIRST_ACTIVITY_NAME);
         activity.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity);
 
-        Activity activity1 = TestsUtil.getActivitySecForTest();
+        Activity activity1 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity1.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity1);
 
-        Activity activity2 = TestsUtil.getActivitySecForTest();
+        Activity activity2 = TestsUtil.getActivityForTest(TestsUtil.SECOND_ACTIVITY_NAME);
         activity2.setFundraiserFundraiserEmail(fundraiser);
 
         activityDAO.createActivity(activity2);

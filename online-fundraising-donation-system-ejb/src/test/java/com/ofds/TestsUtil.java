@@ -18,6 +18,17 @@ public class TestsUtil {
     public static final String FIRST_CHARITY_NAME = "New Charity";
     public static final String SECOND_CHARITY_NAME = "New Charity Name";
 
+    public static final String FIRST_CAUSE_NAME = "Cause Name";
+    public static final String SECOND_CAUSE_NAME = "Cause Name1";
+    public static final String FIRST_CAUSE_PERSENTAGE = "10";
+    public static final String SECOND_CAUSE_PERSENTAGE = "30";
+
+    public static final String FIRST_ACTIVITY_NAME = "Activity Name";
+    public static final String SECOND_ACTIVITY_NAME = "Activity Name1";
+
+    public static final double FIRST_DONATION_AMOUNT = 100.00;
+    public static final double SECOND_DONATION_AMOUNT = 200.00;
+
 
     private TestsUtil() {
     }
@@ -55,6 +66,33 @@ public class TestsUtil {
         return charity;
     }
 
+    private static Donation createRegularDonation(double amount) throws ParseException {
+        Donation donation = new Donation();
+        donation.setDonationAmount(amount);
+        donation.setDonationDate(formatter.parse("2015-12-12"));
+        donation.setDonationIsAnonym(Boolean.FALSE);
+        return donation;
+    }
+
+    private static Cause createRegularCause(String causeName, String causePercentage) throws ParseException {
+        Cause cause = new Cause();
+        cause.setCauseName(causeName);
+        cause.setCauseShortDescription("Cause Short Description");
+        cause.setCausePercentage(causePercentage);
+        cause.setCauseInsertTs(new Date());
+        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
+        return cause;
+    }
+
+    private static Activity createRegularActivity(String activityName) throws ParseException {
+        Activity activity = new Activity();
+        activity.setActivityName(activityName);
+        activity.setActivityShortDescription("Activity Short Description");
+        activity.setActivityInsertTs(new Date());
+        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
+        return activity;
+    }
+
     public static Fundraiser getFundraiserForTest(String fundraiserEmail) throws ParseException {
         return createRegularFundraiser(fundraiserEmail);
     }
@@ -63,58 +101,16 @@ public class TestsUtil {
         return createRegularCharity(charityEmail, charityName);
     }
 
-    public static Donation getDonationForTest() throws ParseException {
-        Donation donation = new Donation();
-        donation.setDonationAmount(100.00);
-        donation.setDonationDate(formatter.parse("2015-12-12"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
-        return donation;
+    public static Donation getDonationForTest(double amount) throws ParseException {
+        return createRegularDonation(amount);
     }
 
-    public static Donation getDonationSecForTest() throws ParseException {
-        Donation donation = new Donation();
-        donation.setDonationAmount(200.00);
-        donation.setDonationDate(formatter.parse("2015-10-10"));
-        donation.setDonationIsAnonym(Boolean.FALSE);
-        return donation;
+    public static Cause getCauseForTest(String causeName, String causePercentage) throws ParseException {
+        return createRegularCause(causeName, causePercentage);
     }
 
-    public static Cause getCauseForTest() throws ParseException {
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name");
-        cause.setCauseShortDescription("Cause Short Description");
-        cause.setCausePercentage("10");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
-        return cause;
-    }
-
-    public static Cause getCauseSecForTest() throws ParseException {
-        Cause cause = new Cause();
-        cause.setCauseName("Cause Name1");
-        cause.setCauseShortDescription("Cause Short Description1");
-        cause.setCausePercentage("30");
-        cause.setCauseInsertTs(new Date());
-        cause.setCauseTerminationDate(formatter.parse("2016-12-12"));
-        return cause;
-    }
-
-    public static Activity getActivityForTest() throws ParseException {
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name");
-        activity.setActivityShortDescription("Activity Short Description");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
-        return activity;
-    }
-
-    public static Activity getActivitySecForTest() throws ParseException {
-        Activity activity = new Activity();
-        activity.setActivityName("Activity Name1");
-        activity.setActivityShortDescription("Activity Short Description1");
-        activity.setActivityInsertTs(new Date());
-        activity.setActivityTerminationDate(formatter.parse("2016-12-12"));
-        return activity;
+    public static Activity getActivityForTest(String activityName) throws ParseException {
+        return createRegularActivity(activityName);
     }
 
 }
