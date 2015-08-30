@@ -10,13 +10,25 @@ import java.util.Locale;
 
 public class TestsUtil {
 
+    public static final String FIRST_FUNDRAISER_EMAIL = "Xilibit@tibilic.com";
+    public static final String SECOND_FUNDRAISER_EMAIL = "Xilibit@tibilsx.com";
+
+    public static final String FIRST_CHARITY_EMAIL = "newCharity@new.com";
+    public static final String SECOND_CHARITY_EMAIL = "newCharityName@new.com";
+    public static final String FIRST_CHARITY_NAME = "New Charity";
+    public static final String SECOND_CHARITY_NAME = "New Charity Name";
+
+
+    private TestsUtil() {
+    }
+
     private static DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 
-    public static Fundraiser getFundraiserForTest() throws ParseException {
+    private static Fundraiser createRegularFundraiser(String fundraiserEmail) throws ParseException {
         Fundraiser fundraiser = new Fundraiser();
         fundraiser.setFundraiserFirstName("Xilibit");
         fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilic.com");
+        fundraiser.setFundraiserEmail(fundraiserEmail);
         fundraiser.setFundraiserPassword("pass");
         fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
         fundraiser.setFundraiserCountry("UA");
@@ -28,28 +40,12 @@ public class TestsUtil {
         return fundraiser;
     }
 
-    public static Fundraiser getFundraiserSecForTest() throws ParseException {
-        Fundraiser fundraiser = new Fundraiser();
-        fundraiser.setFundraiserFirstName("Xilibit");
-        fundraiser.setFundraiserLastName("Tibilic");
-        fundraiser.setFundraiserEmail("Xilibit@tibilsx.com");
-        fundraiser.setFundraiserPassword("pass");
-        fundraiser.setFundraiserDateOfBirth(formatter.parse("1991-12-12"));
-        fundraiser.setFundraiserCountry("UA");
-        fundraiser.setFundraiserCity("KI");
-        fundraiser.setFundraiserIndex("9713");
-        fundraiser.setFundraiserStreet("Street");
-        fundraiser.setFundraiserIsAdmin(false);
-        fundraiser.setFundraiserWallet(2010.00);
-        return fundraiser;
-    }
-
-    public static Charity getCharityForTest() throws ParseException {
+    private static Charity createRegularCharity(String charityEmail, String charityName) throws ParseException {
         Charity charity = new Charity();
-        charity.setCharityName("New Charity");
+        charity.setCharityName(charityName);
         charity.setCharityRegistryName("NC");
         charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharity@new.com");
+        charity.setCharityEmail(charityEmail);
         charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
         charity.setCharityCountry("USA");
         charity.setCharityCity("NY");
@@ -59,19 +55,12 @@ public class TestsUtil {
         return charity;
     }
 
-    public static Charity getCharitySecForTest() throws ParseException {
-        Charity charity = new Charity();
-        charity.setCharityName("New Charity Name");
-        charity.setCharityRegistryName("NC");
-        charity.setCharityPassword("123");
-        charity.setCharityEmail("newCharityName@new.com");
-        charity.setCharityDateOfEstablishment(formatter.parse("1991-12-12"));
-        charity.setCharityCountry("IT");
-        charity.setCharityCity("MI");
-        charity.setCharityStreet("Street");
-        charity.setCharityIndex("021222");
-        charity.setCharityShortDescription("The new Charity Description");
-        return charity;
+    public static Fundraiser getFundraiserForTest(String fundraiserEmail) throws ParseException {
+        return createRegularFundraiser(fundraiserEmail);
+    }
+
+    public static Charity getCharityForTest(String charityEmail, String charityName) throws ParseException {
+        return createRegularCharity(charityEmail, charityName);
     }
 
     public static Donation getDonationForTest() throws ParseException {

@@ -35,8 +35,8 @@ public class ActivityMapperTest extends AbstractMapperTest {
     @Test
     public void fromEntityToDTO_existentEntityAndDTO_ValidDTOresult() throws ParseException {
 
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
-        Charity charity = TestsUtil.getCharityForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
+        Charity charity = TestsUtil.getCharityForTest(TestsUtil.FIRST_CHARITY_EMAIL, TestsUtil.FIRST_CHARITY_NAME);;
 
         Cause cause = TestsUtil.getCauseForTest();
         cause.setCharityCharityEmail(charity);

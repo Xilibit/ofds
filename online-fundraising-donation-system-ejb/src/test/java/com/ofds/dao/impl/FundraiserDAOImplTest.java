@@ -30,7 +30,7 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createFundraiser_newValidFundraiser_successFundraiser() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Assert.assertThat(fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com"), is(notNullValue()));
@@ -38,17 +38,17 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createFundraiser_newValidFundraiser_NotFoundFundraiser() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
         Assert.assertThat(fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@xilibit.com"), is(nullValue()));
     }
 
     @Test
     public void createFewFundraisers_newValidFundraisers_foundOneFundraiser() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser1);
 
         Assert.assertThat(fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilsx.com"), is(notNullValue()));
@@ -56,10 +56,10 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void editFundraisers_newValidTwoFundraisers_oneUpdatedFundraiser() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser1);
 
         Fundraiser fundraiserToUpdate = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilsx.com");
@@ -73,10 +73,10 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidFundraisers_foundOneFundraiser() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser1);
 
         fundraiserDAO.remove(fundraiser);
@@ -88,10 +88,10 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidFundraisers_foundTwoFundraisers() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser1);
 
         Assert.assertThat(fundraiserDAO.loadAll(), is(notNullValue()));
@@ -101,10 +101,10 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidFundraisers_countTwoFundraisers() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser1);
 
         Assert.assertThat(fundraiserDAO.loadAll(), is(notNullValue()));
@@ -114,14 +114,14 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidFundraisers_foundTwoFundraisers() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiser1.setFundraiserEmail("xil@terr.com");
         fundraiserDAO.createFundraiser(fundraiser1);
 
-        Fundraiser fundraiser2 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser2 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser2);
 
         int[] range = new int[2];
@@ -135,14 +135,14 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidFundraisers_foundOneFundraiserByEmail() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiser1.setFundraiserEmail("xiasl@terar.com");
         fundraiserDAO.createFundraiser(fundraiser1);
 
-        Fundraiser fundraiser2 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser2 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser2);
 
         Assert.assertThat(fundraiserDAO.loadAll(), is(notNullValue()));
@@ -152,14 +152,14 @@ public class FundraiserDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getAllByEntityExcludeParameter_newValidFundraisers_foundTwoOfThreeFundraisersByEmail() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiser1.setFundraiserEmail("poka@hole.com");
         fundraiserDAO.createFundraiser(fundraiser1);
 
-        Fundraiser fundraiser2 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser2 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser2);
 
         Assert.assertThat(fundraiserDAO.loadAll(), is(notNullValue()));

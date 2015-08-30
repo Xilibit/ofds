@@ -35,7 +35,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createActivity_newValidActivity_successActivity() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -50,10 +50,10 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getFundraiserActivitiesForDonation_newValidActivities_successActivitiesForDonation() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
-        Fundraiser fundraiser1 = TestsUtil.getFundraiserSecForTest();
+        Fundraiser fundraiser1 = TestsUtil.getFundraiserForTest(TestsUtil.SECOND_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser1);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -80,7 +80,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
     @Test
     public void edit_newValidActivities_successActivityEdit() throws ParseException {
 
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -101,7 +101,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidActivities_successActivityRemove() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -125,7 +125,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidActivities_successActivityFind() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -149,7 +149,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
     @Test
     public void loadAll_newValidActivities_successActivityLoad() throws ParseException {
 
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -169,7 +169,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidActivities_successActivityRange() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -199,7 +199,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidActivities_successActivityCount() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -225,7 +225,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidActivities_successActivityByParameter() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -253,7 +253,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getAllByEntityExcludeParameter_newValidActivities_successActivityByExcludeParameter() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();
@@ -281,7 +281,7 @@ public class ActivityDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByLinkedEntityParameter_newValidActivities_successActivityByLinkedParameter() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Activity activity = TestsUtil.getActivityForTest();

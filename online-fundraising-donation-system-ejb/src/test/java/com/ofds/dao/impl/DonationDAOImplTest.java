@@ -34,7 +34,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void createDonation_newValidDonation_successDonation() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
         fundraiserDAO.createFundraiser(fundraiser);
 
         Donation donation = TestsUtil.getDonationForTest();
@@ -49,7 +49,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getDonationsByFundraiserEmail_newValidDonations_successTwoDonations() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -72,7 +72,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void edit_newValidDonation_successDonationEdit() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -98,7 +98,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void remove_newValidDonation_successDonationRemove() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -124,7 +124,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void find_newValidDonation_successDonationFind() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -149,7 +149,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void loadAll_newValidDonation_successDonationLoad() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -172,7 +172,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void findRange_newValidDonations_successDonationFindRange() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -205,7 +205,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void count_newValidDonations_successDonationCount() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -234,7 +234,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByEntityParameter_newValidDonations_successDonationByParameter() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -263,7 +263,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
     @Test
     public void getAllByEntityExcludeParameter_newValidDonations_successDonationExcludeByParameter()
             throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
@@ -291,7 +291,7 @@ public class DonationDAOImplTest extends AbstractDAOTest {
 
     @Test
     public void getByLinkedEntityParameterOverloaded_newValidDonations_successDonation() throws ParseException {
-        Fundraiser fundraiser = TestsUtil.getFundraiserForTest();
+        Fundraiser fundraiser = TestsUtil.getFundraiserForTest(TestsUtil.FIRST_FUNDRAISER_EMAIL);
 
         fundraiserDAO.createFundraiser(fundraiser);
         fundraiser = fundraiserDAO.getFundraiserByFundraiserEmail("Xilibit@tibilic.com");
