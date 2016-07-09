@@ -2,12 +2,18 @@ package com.ofds.entity;
 
 import com.ofds.entity.base.BaseEntity;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.*;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,6 +21,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 @Access(AccessType.FIELD)
@@ -45,7 +56,7 @@ public class Groups implements BaseEntity, Serializable {
     @XmlAttribute(required=true)
     private String groupUserId;
 
-    @ManyToMany(mappedBy = "groupsCollection")    
+    @ManyToMany(mappedBy = "groupsCollection")
     private Collection<Charity> charityCollection;
 
     @ManyToMany(mappedBy = "groupsCollection")
