@@ -36,6 +36,12 @@
             -Djboss.bind.address=${arquillian.container.wildfly.9.0.1.Final.node0}
             -Djboss.bind.address.management=${arquillian.container.wildfly.9.0.1.Final.node0}
             -Djboss.bind.address.unsecure=${arquillian.container.wildfly.9.0.1.Final.node0}
+            -Xmx2048m
+            -XX:MaxPermSize=2048m
+            -Xnoagent
+            -Djava.compiler=NONE
+            -Xdebug
+            -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
         </arquillian.container.jbossas.9.0.1.Final.jvm.args>
         <!-- ORM and DB versions -->
         <hibernate-core-version>5.0.0.CR1</hibernate-core-version>
