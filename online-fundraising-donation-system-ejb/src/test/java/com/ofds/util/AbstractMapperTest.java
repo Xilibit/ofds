@@ -1,21 +1,21 @@
 package com.ofds.util;
 
 import com.ofds.TestsUtil;
-import com.ofds.util.person.Person;
 import com.ofds.entity.Activity;
-import com.ofds.entity.Fundraiser;
 import com.ofds.entity.Cause;
 import com.ofds.entity.Charity;
 import com.ofds.entity.Donation;
+import com.ofds.entity.Fundraiser;
 import com.ofds.entity.Groups;
 import com.ofds.entity.base.BaseEntity;
 import com.ofds.util.mapper.Mapper;
 import com.ofds.util.mapper.MapperImpl;
+import com.ofds.util.person.Person;
 import com.ofds.util.person.dto.ActivityDTO;
-import com.ofds.util.person.dto.FundraiserDTO;
-import com.ofds.util.person.dto.CharityDTO;
 import com.ofds.util.person.dto.CauseDTO;
+import com.ofds.util.person.dto.CharityDTO;
 import com.ofds.util.person.dto.DonationDTO;
+import com.ofds.util.person.dto.FundraiserDTO;
 import com.ofds.util.person.dto.GroupsDTO;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;

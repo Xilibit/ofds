@@ -1,9 +1,11 @@
 package com.ofds.util.mapper;
 
-import static org.hamcrest.Matchers.*;
-
 import com.ofds.TestsUtil;
-import com.ofds.entity.*;
+import com.ofds.entity.Activity;
+import com.ofds.entity.Cause;
+import com.ofds.entity.Charity;
+import com.ofds.entity.Donation;
+import com.ofds.entity.Fundraiser;
 import com.ofds.util.AbstractMapperTest;
 import com.ofds.util.person.dto.ActivityDTO;
 import org.jboss.arquillian.junit.Arquillian;
@@ -12,13 +14,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.Locale;
+
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(Arquillian.class)
 public class ActivityMapperTest extends AbstractMapperTest {

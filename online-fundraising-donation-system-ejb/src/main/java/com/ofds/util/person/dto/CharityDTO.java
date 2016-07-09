@@ -2,14 +2,14 @@ package com.ofds.util.person.dto;
 
 import com.ofds.util.person.Person;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 /**
  * Manage the Charity.

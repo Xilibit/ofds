@@ -1,13 +1,13 @@
 package com.ofds.util.person.dto;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Future;
 
 /**
  * Manage the Cause.

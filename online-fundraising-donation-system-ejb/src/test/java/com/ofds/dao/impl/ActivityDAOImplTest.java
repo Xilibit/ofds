@@ -1,7 +1,5 @@
 package com.ofds.dao.impl;
 
-import static org.hamcrest.Matchers.*;
-
 import com.ofds.TestsUtil;
 import com.ofds.dao.AbstractDAOTest;
 import com.ofds.entity.Activity;
@@ -12,11 +10,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 
 @RunWith(Arquillian.class)
 public class ActivityDAOImplTest extends AbstractDAOTest {

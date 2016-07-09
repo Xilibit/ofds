@@ -1,8 +1,9 @@
 package com.ofds.util.mapper;
 
-import java.io.Serializable;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+
+import java.io.Serializable;
 
 /**
  * Manage the default mapper operation realization.

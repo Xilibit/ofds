@@ -2,13 +2,13 @@ package com.ofds.util.person.dto;
 
 import com.ofds.util.person.Person;
 
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.validation.constraints.NotNull;
 
 /**
  * Manage the Fundraiser.
