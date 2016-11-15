@@ -14,14 +14,14 @@
 
     <properties>
         <!-- Version of WildFly containers to use and download -->
-        <version.wildfly9-0>9.0.1.Final</version.wildfly9-0>
+        <version.wildfly10-0>10.1.0.Final</version.wildfly10-0>
         <!-- WildFly Home -->
-        <wildfly9-0Home>${project.build.directory}/wildfly-${version.wildfly9-0}</wildfly9-0Home>
+        <wildfly10-0Home>${project.build.directory}/wildfly-${version.wildfly10-0}</wildfly10-0Home>
         <!-- Arquillian versions to use and download -->
-        <arquillian.bom.version>1.1.8.Final</arquillian.bom.version>
-        <arquillian.wildfly.container.managed>1.0.1.Final</arquillian.wildfly.container.managed>
+        <arquillian.bom.version>1.1.11.Final</arquillian.bom.version>
+        <arquillian.wildfly.container.managed>1.1.0.Final</arquillian.wildfly.container.managed>
         <!-- Shrinkwrap versions -->
-        <shrinkwrap.descriptors.version>2.0.0-alpha-6</shrinkwrap.descriptors.version>
+        <shrinkwrap.descriptors.version>2.0.0-alpha-10</shrinkwrap.descriptors.version>
         <!-- Following will be set as system properties -->
         <statelessViews>false</statelessViews>
         <jboss.socket.binding.port.offset>150</jboss.socket.binding.port.offset>
@@ -31,11 +31,11 @@
         </arquillian.container.all.jvm.args>
         <arquillian.container.all.jvm.args.withIPversion>${arquillian.container.all.jvm.args} ${jvm.args.ip.version}
         </arquillian.container.all.jvm.args.withIPversion>
-        <arquillian.container.wildfly.9.0.1.Final.node0>127.0.0.1</arquillian.container.wildfly.9.0.1.Final.node0>
+        <arquillian.container.wildfly.10.1.0.Final.node0>127.0.0.1</arquillian.container.wildfly.10.1.0.Final.node0>
         <arquillian.container.jbossas.9.0.1.Final.jvm.args>${arquillian.container.all.jvm.args.withIPversion}
-            -Djboss.bind.address=${arquillian.container.wildfly.9.0.1.Final.node0}
-            -Djboss.bind.address.management=${arquillian.container.wildfly.9.0.1.Final.node0}
-            -Djboss.bind.address.unsecure=${arquillian.container.wildfly.9.0.1.Final.node0}
+            -Djboss.bind.address=${arquillian.container.wildfly.10.1.0.Final.node0}
+            -Djboss.bind.address.management=${arquillian.container.wildfly.10.1.0.Final.node0}
+            -Djboss.bind.address.unsecure=${arquillian.container.wildfly.10.1.0.Final.node0}
             -Xmx2048m
             -XX:MaxPermSize=2048m
             -Xnoagent
@@ -44,10 +44,16 @@
             -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
         </arquillian.container.jbossas.9.0.1.Final.jvm.args>
         <!-- ORM and DB versions -->
-        <hibernate-core-version>5.0.0.CR1</hibernate-core-version>
+        <hibernate-core-version>5.2.4.Final</hibernate-core-version>
         <postgresql-jdbc-driver-version>9.4-1200-jdbc41</postgresql-jdbc-driver-version>
         <!-- Enable WS on EAP -->
         <eap.ws.enabled>true</eap.ws.enabled>
+        <javaee.api.version>7.0</javaee.api.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
+        <jboss.annotations.api.1.2.spec.version>1.0.0.Final</jboss.annotations.api.1.2.spec.version>
+        <jboss.ejb.api.3.2.spec.version>1.0.0.Final</jboss.ejb.api.3.2.spec.version>
+        <cdi.api.version>2.0-EDR2</cdi.api.version>
+        <validation.api.version>1.1.0.Final</validation.api.version>
     </properties>
 
     <dependencyManagement>
@@ -75,17 +81,9 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
+            <version>${javaee.api.version}</version>
             <scope>provided</scope>
             <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-            <version>1.4</version>
-            <type>jar</type>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -98,32 +96,32 @@
         <dependency>
             <groupId>javax.activation</groupId>
             <artifactId>activation</artifactId>
-            <version>1.1.1</version>
+            <version>${javax.activation.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.1_spec</artifactId>
-            <version>1.0.1.Final</version>
+            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+            <version>${jboss.annotations.api.1.2.spec.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-            <version>1.0.2.Final</version>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <version>${jboss.ejb.api.3.2.spec.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>2.0-EDR1</version>
+            <version>${cdi.api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
+            <version>${validation.api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -172,20 +170,20 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.1</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
-            <version>1.1.8.Final</version>
+            <version>1.1.11.Final</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.arquillian.extension</groupId>
             <artifactId>arquillian-persistence-api</artifactId>
-            <version>1.0.0.Alpha6</version>
+            <version>1.0.0.Alpha7</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -231,7 +229,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <serverProfile>standalone-full.xml</serverProfile>
+                <serverProfile>standalone.xml</serverProfile>
             </properties>
             <dependencies>
                 <dependency>
@@ -267,7 +265,7 @@
                                         <artifactItem>
                                             <groupId>org.wildfly</groupId>
                                             <artifactId>wildfly-dist</artifactId>
-                                            <version>${version.wildfly9-0}</version>
+                                            <version>${version.wildfly10-0}</version>
                                             <type>zip</type>
                                             <overWrite>false</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
@@ -282,7 +280,7 @@
                         <version>2.18.1</version>
                         <configuration>
                             <environmentVariables>
-                                <JBOSS_HOME>${wildfly9-0Home}</JBOSS_HOME>
+                                <JBOSS_HOME>${wildfly10-0Home}</JBOSS_HOME>
                             </environmentVariables>
                         </configuration>
                     </plugin>
@@ -295,25 +293,25 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.6.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>2.19.1</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <systemPropertyVariables>
                         <project.build.directory>${project.build.directory}</project.build.directory>
-                        <arquillian.container.wildfly.9.0.1.Final.node0>
-                            ${arquillian.container.wildfly.9.0.1.Final.node0}
-                        </arquillian.container.wildfly.9.0.1.Final.node0>
-                        <arquillian.container.jbossas.9.0.1.Final.jvm.args>
+                        <arquillian.container.wildfly.10.1.0.Final.node0>
+                            ${arquillian.container.wildfly.10.1.0.Final.node0}
+                        </arquillian.container.wildfly.10.1.0.Final.node0>
+                        <arquillian.container.jbossas.10.1.0.Final.jvm.args>
                             ${arquillian.container.jbossas.9.0.1.Final.jvm.args}
-                        </arquillian.container.jbossas.9.0.1.Final.jvm.args>
+                        </arquillian.container.jbossas.10.1.0.Final.jvm.args>
                         <arquillian.container.all.jvm.args>${arquillian.container.all.jvm.args}
                         </arquillian.container.all.jvm.args>
                         <logging.props.dir>${project.basedir}/src/test/resources</logging.props.dir>
